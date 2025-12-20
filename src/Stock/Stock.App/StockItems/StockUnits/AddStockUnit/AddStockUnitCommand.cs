@@ -18,8 +18,8 @@ namespace Stock.App.StockItems.StockUnits.AddStockUnit
 
                     await repo.SaveAsync(stockItem, cancellationToken);
                 }
-
-
+                //TODO Handle errors - OneOf
+                return true;
             }
         }
     }

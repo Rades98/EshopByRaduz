@@ -12,6 +12,7 @@
     <NuGetVersion>$(version)</NuGetVersion>
 
     <NoWarn>$(NoWarn);CA2007</NoWarn>
+    <NoWarn>$(NoWarn);CA1000</NoWarn>
 
   </PropertyGroup>
 
