@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Mediator.Request.Transaction;
+using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Stock.App.Common.Outbox;
 using System.Reflection;
 
 namespace Stock.App.Common
@@ -12,7 +15,10 @@ namespace Stock.App.Common
                 .AddMediatR(cfg =>
                 {
                     cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-                });
+                })
+                .AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionPipeline<,>))
+
+                .AddScoped<IOutboxOrchestrator, OutboxOrchestrator>();
 
             return services;
         }

@@ -1,7 +1,10 @@
 using EshopByRaduz.ServiceDefaults;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Stock.Api.Common.Outbox;
 using Stock.App.Common;
+using Stock.App.StockItems.StockUnits.AddStockUnit;
 using Stock.Infrastructure.Common;
 using Stock.Seed;
 
@@ -13,6 +16,9 @@ builder.AddServiceDefaults();
 builder.Services.AddOpenApi();
 
 builder.Services.RegisterInfraStructure(builder.Configuration, builder.Environment);
+builder.Services.RegisterApplicationLayer(builder.Configuration);
+
+builder.Services.AddHostedService<OutboxWorker>();
 
 var app = builder.Build();
 
@@ -62,15 +68,15 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.MapGet("/send", async ([FromServices] IEventPublisher ev) =>
+app.MapGet("/addNew", async ([FromServices] IMediator mediator) =>
 {
-    await ev.PublishAsync(new Shit("dlouhan"), default);
+    var res = await mediator.Send<AddStockUnitCommandResult>(new AddStockUnitCommand("SN-001-07", "SKU-001", "Red-L", Guid.Parse("47053D9C-5756-4630-AF23-142DAAD8844C")));
 
-    return Results.Ok("Cuuuus");
+    return Results.Ok(res);
 })
 .WithName("Greetings");
 
 
-app.Run();
+await app.RunAsync();
 
 record Shit(string Name);

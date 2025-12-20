@@ -2,5 +2,5 @@
 
 namespace Stock.Domain.StockItems.StockUnits
 {
-    public record StockUnitAddedEvent(Guid Id, Guid StockUnitId, Guid WarehouseId) : DomainEvent;
+    public record StockUnitAddedEvent(string Sku, string Variant, string Source) : DomainEvent;
 }

@@ -18,20 +18,29 @@ namespace Stock.Infrastructure.Common
             _producer = new ProducerBuilder<string, string>(config).Build();
         }
 
-        public async Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken)
+        public async Task<bool> PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken)
             where TEvent : class
         {
-
-            ArgumentNullException.ThrowIfNull(@event, nameof(@event));
-
-            var topicName = typeof(TEvent).Name;
-            var message = JsonSerializer.Serialize(@event);
-
-            await _producer.ProduceAsync(topicName, new Message<string, string>
+            try
             {
-                Key = Guid.NewGuid().ToString(),
-                Value = message
-            }, cancellationToken);
+                ArgumentNullException.ThrowIfNull(@event, nameof(@event));
+
+                var topicName = typeof(TEvent).Name;
+                var message = JsonSerializer.Serialize(@event);
+
+                await _producer.ProduceAsync(topicName, new Message<string, string>
+                {
+                    Key = Guid.NewGuid().ToString(),
+                    Value = message
+                }, cancellationToken);
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Dispose()

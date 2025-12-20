@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Stock.Infrastructure.Common.Outbox;
 using Stock.Infrastructure.StockItems;
 using Stock.Infrastructure.StockItems.StockUnits;
 using Stock.Infrastructure.Warehouses;
@@ -17,6 +18,8 @@ namespace Stock.Infrastructure.Common
 
         public DbSet<StockUnitEntity> StockUnits { get; set; } = null!;
 
+        public DbSet<OutboxEntity> Outbox { get; set; } = null!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +28,7 @@ namespace Stock.Infrastructure.Common
             new WarehouseEntityConfiguration().Configure(modelBuilder.Entity<WarehouseEntity>());
             new StockItemEntityConfiguration().Configure(modelBuilder.Entity<StockItemEntity>());
             new StockUnitEntityConfiguration().Configure(modelBuilder.Entity<StockUnitEntity>());
+            new OutboxEntityConfiguration().Configure(modelBuilder.Entity<OutboxEntity>());
         }
     }
 }

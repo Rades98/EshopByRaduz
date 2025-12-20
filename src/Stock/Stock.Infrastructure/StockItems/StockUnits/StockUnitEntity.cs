@@ -14,9 +14,15 @@ namespace Stock.Infrastructure.StockItems.StockUnits
 
         public bool IsLocked { get; set; }
 
+        public Guid? CheckoutReference { get; set; }
+
+        public bool IsSold { get; set; }
+
+        public Guid? OrderReference { get; set; }
+
         public DateTime? LockedUntil { get; set; }
 
-        public Guid WarehouseId { get; set; }
+        public Guid? WarehouseId { get; set; }
 
         public WarehouseEntity? Warehouse { get; set; }
     }

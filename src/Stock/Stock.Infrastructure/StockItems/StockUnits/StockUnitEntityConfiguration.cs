@@ -25,7 +25,8 @@ namespace Stock.Infrastructure.StockItems.StockUnits
             builder.HasOne(x => x.Warehouse)
                 .WithMany()
                 .HasForeignKey(x => x.WarehouseId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired(false);
 
             builder.HasIndex(x => new { x.StockItemId, x.SerialNumber })
                 .HasDatabaseName("IX_StockUnit_StockItemId_SerialNumber")

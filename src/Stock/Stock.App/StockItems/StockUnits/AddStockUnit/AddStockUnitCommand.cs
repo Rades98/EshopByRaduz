@@ -1,29 +1,40 @@
-﻿using DomainObjects;
-using Mediator.Request.Command;
+﻿using Mediator.Request.Command;
+using Stock.App.Common.Outbox;
 
 namespace Stock.App.StockItems.StockUnits.AddStockUnit
 {
-    public sealed record AddStockUnitCommand(string SerialNumber, string Sku, string VariantId, Guid WarehouseId) : ICommand<bool>
+    public sealed record AddStockUnitCommand(string SerialNumber, string Sku, string VariantId, Guid WarehouseId) : ICommand<AddStockUnitCommandResult>
     {
-        internal sealed class AddStockUnitCommandHandler(IStockItemLookup stockLookup, IStockItemRepo repo, IEventDispatcher eventDispatcher) : ICommandHandler<AddStockUnitCommand, bool>
+        internal sealed class AddStockUnitCommandHandler(
+            IStockItemLookup stockLookup,
+            IStockItemRepo repo,
+            IOutboxRepo outboxRepo)
+            : ICommandHandler<AddStockUnitCommand, AddStockUnitCommandResult>
         {
-            public async Task<bool> Handle(AddStockUnitCommand request, CancellationToken cancellationToken)
+            public async Task<AddStockUnitCommandResult> Handle(AddStockUnitCommand request, CancellationToken cancellationToken)
             {
                 var stockItemId = await stockLookup.FindBySkuAndVariant(request.Sku, request.VariantId, cancellationToken);
                 var stockItem = await repo.GetAsync(stockItemId, cancellationToken);
 
                 if (stockItem is not null)
                 {
-                    stockItem.TryAddUnit(Guid.NewGuid(), request.SerialNumber, request.WarehouseId);
+                    var res = stockItem.TryAddUnit(Guid.NewGuid(), request.SerialNumber, request.WarehouseId);
 
-                    await repo.SaveAsync(stockItem, cancellationToken);
+                    if (res.IsSuccess)
+                    {
+                        await repo.SaveAsync(stockItem, cancellationToken);
 
-                    await eventDispatcher.DispatchAsync(stockItem.DomainEvents, cancellationToken);
-                    stockItem.ClearDomainEvents();
+                        await outboxRepo.AddRangeAsync(stockItem.DomainEvents, cancellationToken);
+                        stockItem.ClearDomainEvents();
+
+                        return new() { Failed = false };
+                    }
+
+                    return new() { Failed = true };
+
                 }
 
-                //TODO Handle errors - OneOf
-                return true;
+                return new() { Failed = true };
             }
         }
     }

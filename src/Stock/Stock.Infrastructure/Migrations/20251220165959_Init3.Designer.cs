@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stock.Infrastructure.Common;
 
@@ -11,9 +12,11 @@ using Stock.Infrastructure.Common;
 namespace Stock.Infrastructure.Migrations
 {
     [DbContext(typeof(StockDbContext))]
-    partial class StockDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251220165959_Init3")]
+    partial class Init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,20 +94,11 @@ namespace Stock.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CheckoutReference")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("IsLocked")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsSold")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LockedUntil")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("OrderReference")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("SerialNumber")
                         .IsRequired()
@@ -114,7 +108,7 @@ namespace Stock.Infrastructure.Migrations
                     b.Property<Guid>("StockItemId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("WarehouseId")
+                    b.Property<Guid>("WarehouseId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -179,7 +173,8 @@ namespace Stock.Infrastructure.Migrations
                     b.HasOne("Stock.Infrastructure.Warehouses.WarehouseEntity", "Warehouse")
                         .WithMany()
                         .HasForeignKey("WarehouseId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("StockItem");
 

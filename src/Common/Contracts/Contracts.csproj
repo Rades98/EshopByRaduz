@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\priceInfo.proto" GrpcServices="Both" />
     <Protobuf Include="Protos\stockCount.proto" />
   </ItemGroup>
   

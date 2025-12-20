@@ -17,15 +17,6 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.MapGet("/price", async () =>
-{
-    var channel = GrpcChannel.ForAddress("http://localhost:5104");
-    var client = new PriceInfo.PriceInfoClient(channel);
-
-    return Results.Ok(await client.GetPriceAsync(new PriceInfoRequest { ProductId = "ProductA" }));
-})
-.WithName("Greetings");
-
 app.MapGet("/aval", async () =>
 {
     var channel = GrpcChannel.ForAddress("http://localhost:5104");

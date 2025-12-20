@@ -1,10 +1,12 @@
-﻿using DomainObjects;
+﻿using Mediator.Request.Transaction;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stock.App.Common;
+using Stock.App.Common.Outbox;
 using Stock.App.StockItems;
+using Stock.Infrastructure.Common.Outbox;
 using Stock.Infrastructure.StockItems;
 
 namespace Stock.Infrastructure.Common
@@ -27,8 +29,10 @@ namespace Stock.Infrastructure.Common
             services.AddTransient<IStockItemRepo, StockItemRepo>();
             services.AddTransient<IStockItemLookup, StockItemLookup>();
 
+            services.AddScoped<ITransactionUnitOfWork, UnitOfWork>();
+            services.AddScoped<IOutboxRepo, OutboxRepo>();
+
             services.AddSingleton<IEventPublisher, KafkaEventPublisher>();
-            services.AddSingleton<IEventDispatcher, KafkaEventDispatcher>();
 
             return services;
         }

@@ -28,7 +28,6 @@ var app = builder.Build();
 app.MapDefaultEndpoints();
 
 app.MapGrpcService<StockCountService>();
-app.MapGrpcService<PriceInfoService>();
 
 app.MapGet("/", () => "This is gRPC Server :) ");
 

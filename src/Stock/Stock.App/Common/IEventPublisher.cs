@@ -2,7 +2,7 @@
 {
     public interface IEventPublisher
     {
-        Task PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
+        Task<bool> PublishAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
             where TEvent : class;
     }
 }

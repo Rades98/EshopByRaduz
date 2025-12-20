@@ -8,27 +8,39 @@ namespace Stock.Domain.StockItems.StockUnits
             Guid id,
             SerialNumberValueObject serialNumber,
             bool isLocked,
+            Guid? checkoutReference,
             DateTime? lockedUntil,
-            Guid warehouseId)
+            Guid? warehouseId,
+            bool isSold,
+            Guid? orderReference)
         {
             Id = id;
             SerialNumber = serialNumber;
             IsLocked = isLocked;
+            CheckoutReference = checkoutReference;
             LockedUntil = lockedUntil;
             WarehouseId = warehouseId;
+            IsSold = isSold;
+            OrderReference = orderReference;
         }
 
         public Guid Id { get; }
 
-        public Guid WarehouseId { get; }
+        public Guid? WarehouseId { get; private set; }
 
         public SerialNumberValueObject SerialNumber { get; }
 
         public bool IsLocked { get; private set; }
 
+        public Guid? CheckoutReference { get; private set; }
+
         public DateTime? LockedUntil { get; private set; }
 
-        public bool TryLock(DateTime until)
+        public bool IsSold { get; private set; }
+
+        public Guid? OrderReference { get; private set; }
+
+        public bool Reserve(DateTime until, Guid checkoutReference)
         {
             if (IsLocked)
             {
@@ -42,6 +54,7 @@ namespace Stock.Domain.StockItems.StockUnits
 
             IsLocked = true;
             LockedUntil = until;
+            CheckoutReference = checkoutReference;
             return true;
         }
 
@@ -49,9 +62,27 @@ namespace Stock.Domain.StockItems.StockUnits
         {
             IsLocked = false;
             LockedUntil = null;
+            CheckoutReference = null;
         }
 
-        public bool IsAvailable() => !IsLocked;
+        public bool AssignToOrder(Guid orderId)
+        {
+            if (!IsLocked || IsSold)
+            {
+                return false;
+            }
+
+            IsSold = true;
+            OrderReference = orderId;
+            WarehouseId = null;
+            IsLocked = false;
+            CheckoutReference = null;
+            LockedUntil = null;
+
+            return true;
+        }
+
+        public bool IsAvailable() => !IsLocked && !IsSold;
 
         public static Result<StockUnitModel> CreateNew(Guid id, string serialNumber, Guid warehouseId)
         {
@@ -64,8 +95,11 @@ namespace Stock.Domain.StockItems.StockUnits
                     id,
                     serialNumberValueObject.Value!,
                     isLocked: false,
+                    checkoutReference: null,
                     lockedUntil: null,
-                    warehouseId
+                    warehouseId,
+                    isSold: false,
+                    orderReference: null
                 ));
 
             }
@@ -77,17 +111,23 @@ namespace Stock.Domain.StockItems.StockUnits
 
         public static StockUnitModel Rehydrate(
             Guid id,
-            Guid warehouseId,
+            Guid? warehouseId,
             SerialNumberValueObject serialNumber,
             bool isLocked,
-            DateTime? lockedUntil)
+            Guid? checkoutReference,
+            DateTime? lockedUntil,
+            bool isSold,
+            Guid? orderReference)
         {
             return new StockUnitModel(
                 id,
                 serialNumber,
                 isLocked,
+                checkoutReference,
                 lockedUntil,
-                warehouseId
+                warehouseId,
+                isSold,
+                orderReference
             );
         }
     }

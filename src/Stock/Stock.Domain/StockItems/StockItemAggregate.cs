@@ -3,17 +3,21 @@ using Stock.Domain.StockItems.StockUnits;
 
 namespace Stock.Domain.StockItems
 {
-    public class StockItemAggregate(Guid stockItemId) : AggregateRoot
+    public class StockItemAggregate(Guid stockItemId, string sku, string variantId) : AggregateRoot
     {
         public Guid StockItemId { get; } = stockItemId;
+
+        public string Sku { get; } = sku;
+
+        public string VariantId { get; } = variantId;
 
         private readonly List<StockUnitModel> _units = [];
 
         public IReadOnlyCollection<StockUnitModel> Units => _units;
 
-        public static StockItemAggregate Rehydrate(Guid id, IEnumerable<StockUnitModel> units)
+        public static StockItemAggregate Rehydrate(Guid id, string sku, string variantId, IEnumerable<StockUnitModel> units)
         {
-            var agg = new StockItemAggregate(id);
+            var agg = new StockItemAggregate(id, sku, variantId);
             agg._units.AddRange(units);
             return agg;
         }
@@ -22,12 +26,15 @@ namespace Stock.Domain.StockItems
 
         public int ReservedCount() => _units.Count(u => !u.IsAvailable());
 
-        public bool TryLockUnits(int count, DateTime until)
+        public bool TryLockUnits(int count, DateTime until, Guid checkoutReference)
         {
             var available = _units.Where(u => u.IsAvailable()).Take(count).ToList();
-            if (available.Count < count) return false;
+            if (available.Count < count)
+            {
+                return false;
+            }
 
-            foreach (var unit in available) unit.TryLock(until);
+            foreach (var unit in available) unit.Reserve(until, checkoutReference);
             return true;
         }
 
@@ -45,9 +52,9 @@ namespace Stock.Domain.StockItems
                 _units.Add(stockUnit);
 
                 AddDomainEvent(new StockUnitAddedEvent(
-                    StockItemId,
-                    stockUnit.Id,
-                    warehouseId
+                    Sku,
+                    VariantId,
+                    "StockFill"
                 ));
 
                 return Result<StockUnitModel>.Success(unitToCreate.Value!);
