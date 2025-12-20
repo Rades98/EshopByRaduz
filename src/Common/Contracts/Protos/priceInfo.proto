@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "Stock.Grpc";
+
+service PriceInfo {
+  rpc GetPrice (PriceInfoRequest) returns (PriceInfoReply);
+}
+
+message PriceInfoRequest {
+  string ProductId = 1;
+}
+
+message PriceInfoReply {
+  double Price = 1;
+}

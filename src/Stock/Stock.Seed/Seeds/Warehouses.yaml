@@ -1,0 +1,27 @@
+﻿metadata:
+  tableName: Warehouses
+
+data:
+  - Id: B57687E7-A236-4C18-A623-2FC118C0810C
+    Name: "Praha-Central"
+    Street: "Vinohradská 123"
+    City: "Praha"
+    PostalCode: "13000"
+    Country: "CZ"
+    Type: "Central"
+
+  - Id: 47053D9C-5756-4630-AF23-142DAAD8844C
+    Name: "Brno-Pickup"
+    Street: "Křenová 45"
+    City: "Brno"
+    PostalCode: "60200"
+    Country: "CZ"
+    Type: "PickupPoint"
+
+  - Id: 4E009BD4-2610-4F21-8E2C-68C16A8A36CD
+    Name: "Olomouc-Partner"
+    Street: "Hlavní 78"
+    City: "Olomouc"
+    PostalCode: "77900"
+    Country: "CZ"
+    Type: "Partner"

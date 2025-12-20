@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AnalysisMode>All</AnalysisMode>
+
+    <Version>$(version)</Version>
+    <AssemblyVersion>$(version)</AssemblyVersion>
+    <InformationalVersion>$(version)</InformationalVersion>
+    <NuGetVersion>$(version)</NuGetVersion>
+
+    <NoWarn>$(NoWarn);CA2007</NoWarn>
+
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "Stock.Grpc";
+
+service StockCount {
+  rpc GetStockCount (StockCountRequest) returns (StockCountReply);
+}
+
+message StockCountRequest {
+  string SKU = 1;
+  string VariationId = 2;
+}
+
+message StockCountReply {
+  double Available = 1;
+}

@@ -1,0 +1,14 @@
+files:
+  - path: "Warehouses.yaml"
+    order: 0
+
+  - path: "StockItems.yaml"
+    order: 1
+
+  - path: "StockUnits.yaml"
+    order: 2
+
+  # # Procedures 
+  # - path: "Procedures/GetZsdViolationGroups.sql"
+  #   order: 10000
+  #   isProcedure: true

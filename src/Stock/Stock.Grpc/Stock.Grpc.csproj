@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\..\Orchestration\EshopByRaduz.ServiceDefaults\EshopByRaduz.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Stock.Infrastructure\Stock.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,24 @@
+﻿using System.Text.Json;
+
+namespace Stock.Seed.Models.FileEntity;
+
+internal sealed class SeedFileData
+{
+    public Guid Id { get; set; }
+
+    public string Container { get; set; } = null!;
+
+    public string Filename { get; set; } = null!;
+
+    public string Mime { get; set; } = null!;
+
+    public int Size { get; set; }
+
+    public string Checksum { get; set; } = null!;
+
+    public DateTime CreatedAt { get; set; }
+
+    public Dictionary<string, object> Metadata { get; set; } = [];
+
+    public string MetadataJson => JsonSerializer.Serialize(Metadata);
+}

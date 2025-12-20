@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>1427afbe-96d3-4e7a-9405-cba0dd5e25e9</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="13.1.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.Storage" Version="13.1.0" />
+    <PackageReference Include="Aspire.Hosting.Kafka" Version="13.1.0" />
+    <PackageReference Include="Aspire.Hosting.NodeJs" Version="9.5.2" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="13.1.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.1.0" />
+    <PackageReference Include="Aspire.Hosting.Yarp" Version="13.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Basket\Basket.Api\Basket.Api.csproj" />
+    <ProjectReference Include="..\..\Catalog\Catalog.Api\Catalog.Api.csproj" />
+    <ProjectReference Include="..\..\Checkout\Checkout.Api\Checkout.Api.csproj" />
+    <ProjectReference Include="..\..\Order\Order.Api\Order.Api.csproj" />
+    <ProjectReference Include="..\..\Stock\Stock.Api\Stock.Api.csproj" />
+    <ProjectReference Include="..\..\Stock\Stock.Grpc\Stock.Grpc.csproj" />
+  </ItemGroup>
+
+</Project>

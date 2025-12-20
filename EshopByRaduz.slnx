@@ -1,0 +1,40 @@
+<Solution>
+  <Folder Name="/orchestration/">
+    <Project Path="src/Orchestration/EshopByRaduz.AppHost/EshopByRaduz.AppHost.csproj" />
+    <Project Path="src/Orchestration/EshopByRaduz.ServiceDefaults/EshopByRaduz.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.Props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Basket/">
+    <Project Path="src/Basket/Basket.Api/Basket.Api.csproj" Id="71efb21c-04b2-4a32-ab2f-43a18aecf42f" />
+    <Project Path="src/Basket/Basket.App/Basket.App.csproj" Id="6f1e6346-8010-4410-93a0-16616e870863" />
+    <Project Path="src/Basket/Basket.Domain/Basket.Domain.csproj" Id="c39ec5ba-603c-4c5f-ab81-8287dc21c020" />
+    <Project Path="src/Basket/Basket.Infrastructure/Basket.Infrastructure.csproj" Id="977c44ad-8ee8-42a7-9c23-2c786b2cd158" />
+  </Folder>
+  <Folder Name="/src/Catalog/">
+    <Project Path="src/Catalog/Catalog.Api/Catalog.Api.csproj" Id="df51491c-ffe0-4aff-a001-5eef3b3582d4" />
+  </Folder>
+  <Folder Name="/src/Checkout/">
+    <Project Path="src/Checkout/Checkout.Api/Checkout.Api.csproj" Id="af514581-c046-4394-958c-5a6d221c918b" />
+  </Folder>
+  <Folder Name="/src/Common/">
+    <Project Path="src/Common/Contracts/Contracts.csproj" Id="a2866701-4b31-4f50-9dfb-1093107377ed" />
+    <Project Path="src/Common/DomainObjects/DomainObjects.csproj" Id="ff06b86b-68ea-4880-b757-68091e34bbc5" />
+    <Project Path="src/Common/Mediator/Mediator.csproj" />
+  </Folder>
+  <Folder Name="/src/Order/">
+    <Project Path="src/Order/Order.Api/Order.Api.csproj" Id="dee37468-2f64-481c-9da7-501b46faff2e" />
+  </Folder>
+  <Folder Name="/src/Stock/">
+    <Project Path="src/Stock/Stock.Api/Stock.Api.csproj" Id="c6d91aa4-0dee-4a46-b18f-49dbe65be6a1" />
+    <Project Path="src/Stock/Stock.App/Stock.App.csproj" Id="adbd600e-bb37-40fe-94c5-36225a8498e7" />
+    <Project Path="src/Stock/Stock.Domain/Stock.Domain.csproj" Id="ab604f5e-1979-4ba4-aff3-68ebb447ce8c" />
+    <Project Path="src/Stock/Stock.Grpc/Stock.Grpc.csproj" />
+    <Project Path="src/Stock/Stock.Infrastructure/Stock.Infrastructure.csproj" Id="68e55bbb-a5ea-4c29-9485-4c552205f6fd" />
+    <Project Path="src/Stock/Stock.Seed/Stock.Seed.csproj" Id="7a2955da-6c02-46b5-b9f0-f9670d07f790" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
