@@ -1,11 +1,11 @@
-﻿using Mediator.Request.Command;
-using Stock.App.Common;
+﻿using DomainObjects;
+using Mediator.Request.Command;
 
 namespace Stock.App.StockItems.StockUnits.AddStockUnit
 {
     public sealed record AddStockUnitCommand(string SerialNumber, string Sku, string VariantId, Guid WarehouseId) : ICommand<bool>
     {
-        internal sealed class AddStockUnitCommandHandler(IStockItemLookup stockLookup, IStockItemRepo repo, IEventPublisher eventPub) : ICommandHandler<AddStockUnitCommand, bool>
+        internal sealed class AddStockUnitCommandHandler(IStockItemLookup stockLookup, IStockItemRepo repo, IEventDispatcher eventDispatcher) : ICommandHandler<AddStockUnitCommand, bool>
         {
             public async Task<bool> Handle(AddStockUnitCommand request, CancellationToken cancellationToken)
             {
@@ -17,7 +17,11 @@ namespace Stock.App.StockItems.StockUnits.AddStockUnit
                     stockItem.TryAddUnit(Guid.NewGuid(), request.SerialNumber, request.WarehouseId);
 
                     await repo.SaveAsync(stockItem, cancellationToken);
+
+                    await eventDispatcher.DispatchAsync(stockItem.DomainEvents, cancellationToken);
+                    stockItem.ClearDomainEvents();
                 }
+
                 //TODO Handle errors - OneOf
                 return true;
             }

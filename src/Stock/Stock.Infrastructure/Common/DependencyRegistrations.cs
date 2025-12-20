@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DomainObjects;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +28,7 @@ namespace Stock.Infrastructure.Common
             services.AddTransient<IStockItemLookup, StockItemLookup>();
 
             services.AddSingleton<IEventPublisher, KafkaEventPublisher>();
+            services.AddSingleton<IEventDispatcher, KafkaEventDispatcher>();
 
             return services;
         }
