@@ -9,9 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="StockItems\StockUnits\ReleaseStockUnit\" />
     <Folder Include="StockItems\StockUnits\RemoveStockUnit\" />
-    <Folder Include="StockItems\StockUnits\ReserveStockUnit\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using Stock.Domain.StockItems.StockUnits;
+﻿using Stock.Domain.StockItems.StockUnits.Events;
 using System.Text.Json;
 
 namespace Stock.App.Common.Outbox
@@ -35,6 +35,13 @@ namespace Stock.App.Common.Outbox
             case nameof(StockUnitLockedEvent):
                 success = await eventPublisher.PublishAsync(JsonSerializer.Deserialize<StockUnitLockedEvent>(payload)!, cancellationToken);
                 break;
+
+            case nameof(StockUnitAssignedEvent):
+                success = await eventPublisher.PublishAsync(JsonSerializer.Deserialize<StockUnitAssignedEvent>(payload)!, cancellationToken);
+                break;
+
+            default:
+                throw new InvalidOperationException($"Unknown event type: {type}");
             }
 
             return success;

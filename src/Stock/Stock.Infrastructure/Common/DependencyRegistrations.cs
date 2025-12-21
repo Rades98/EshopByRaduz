@@ -1,5 +1,4 @@
-﻿using Mediator.Request.Transaction;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,7 +28,7 @@ namespace Stock.Infrastructure.Common
             services.AddTransient<IStockItemRepo, StockItemRepo>();
             services.AddTransient<IStockItemLookup, StockItemLookup>();
 
-            services.AddScoped<ITransactionUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IOutboxRepo, OutboxRepo>();
 
             services.AddSingleton<IEventPublisher, KafkaEventPublisher>();

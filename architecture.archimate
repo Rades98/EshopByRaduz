@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="EshopByRaduz" id="id-a684dda0a38c46dd8ec32300560e4317" version="5.0.0">
+  <folder name="Strategy" id="id-4242b9566e3c41f49df4d1c4cb7ae326" type="strategy"/>
+  <folder name="Business" id="id-017c73ee889c460b9ac939aa1e07bd78" type="business"/>
+  <folder name="Application" id="id-d1a80ffb118740a8a59cd0a480a6fae0" type="application"/>
+  <folder name="Technology &amp; Physical" id="id-9b4565f3cfb242b0af67291924e7671a" type="technology"/>
+  <folder name="Motivation" id="id-47be8bf7687f43cebaa8bb70b17bcb38" type="motivation"/>
+  <folder name="Implementation &amp; Migration" id="id-53d51db2d10f4575b759fd3f6475ee9a" type="implementation_migration"/>
+  <folder name="Other" id="id-b977098d48ad45a189ae7c57f8496d37" type="other"/>
+  <folder name="Relations" id="id-6db7cf0cf8d1436f9ff251d6c797fe3c" type="relations"/>
+  <folder name="Views" id="id-a1f7f85da4c442a685f657315a3571c9" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Default View" id="id-fb8f020ed88f43c39da9d13702f2baeb"/>
+  </folder>
+</archimate:model>

@@ -1,6 +1,8 @@
+using Basket.Api;
+using Basket.Api.Endpoints;
 using EshopByRaduz.ServiceDefaults;
-using Grpc.Net.Client;
-using Stock.Grpc;
+using Scalar.AspNetCore;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,32 +10,23 @@ builder.AddServiceDefaults();
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+    ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("RedisDb")!));
+
+builder.Services.AddSingleton<KafkaEventPublisher>();
+builder.Services.AddSingleton<StockGrpcService>();
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+app
+    .MapCreateBasketEndpoint()
+    .MapUpdateBasketEndpoint()
+    .MapGetBasketEndpoint();
 
-app.MapGet("/aval", async () =>
-{
-    var channel = GrpcChannel.ForAddress("http://localhost:5104");
-    var client = new StockCount.StockCountClient(channel);
-
-    var res = await client.GetStockCountAsync(new StockCountRequest { SKU = "SKU-001", VariationId = "Red-L" });
-
-    return Results.Ok(res);
-})
-.WithName("aval");
-
-
-app.MapGet("/x", () =>
-{
-    return Results.Ok("Cuuuus");
-})
-.WithName("Greetings2");
+app.MapOpenApi();
+app.MapScalarApiReference();
 
 app.Run();
 

@@ -1,5 +1,8 @@
 ﻿using DomainObjects;
+using MediatR;
 using Stock.Domain.StockItems.StockUnits;
+using Stock.Domain.StockItems.StockUnits.Events;
+using System.Collections.ObjectModel;
 
 namespace Stock.Domain.StockItems
 {
@@ -24,6 +27,9 @@ namespace Stock.Domain.StockItems
 
         public int GetAvailableCount() => _units.Count(u => u.IsAvailable());
 
+        public ReadOnlyCollection<StockUnitModel> GetAssignedToOrder(Guid orderReference)
+            => _units.Where(x => x.OrderReference == orderReference).ToList().AsReadOnly();
+
         public int ReservedCount() => _units.Count(u => !u.IsAvailable());
 
         public bool TryLockUnits(int count, DateTime until, Guid checkoutReference)
@@ -34,9 +40,46 @@ namespace Stock.Domain.StockItems
                 return false;
             }
 
-            foreach (var unit in available) unit.Reserve(until, checkoutReference);
+            foreach (var unit in available)
+            {
+                if (!unit.Reserve(until, checkoutReference))
+                {
+                    return false;
+                }
+
+                AddDomainEvent(new StockUnitLockedEvent(
+                    Sku,
+                    VariantId,
+                    "Stock"
+                ));
+            }
+
             return true;
         }
+
+        public Result<Unit> TryAssignUnitsToOrder(Guid orderId, Guid checkoutReference)
+        {
+            var assignable = _units.Where(u => u.IsLocked && !u.IsSold && u.CheckoutReference == checkoutReference).ToList();
+
+            foreach (var unit in assignable)
+            {
+                var res = unit.AssignToOrder(orderId, checkoutReference);
+                if (!res.IsSuccess)
+                {
+                    return Result<Unit>.Failure(res.Error!);
+                }
+
+                AddDomainEvent(new StockUnitAssignedEvent(
+                    Sku,
+                    VariantId,
+                    orderId,
+                    "Stock"
+                ));
+            }
+
+            return Result<Unit>.Success(Unit.Value);
+        }
+
 
         public Result<StockUnitModel> TryAddUnit(Guid id, string serial, Guid warehouseId)
         {
@@ -54,7 +97,7 @@ namespace Stock.Domain.StockItems
                 AddDomainEvent(new StockUnitAddedEvent(
                     Sku,
                     VariantId,
-                    "StockFill"
+                    "Stock"
                 ));
 
                 return Result<StockUnitModel>.Success(unitToCreate.Value!);

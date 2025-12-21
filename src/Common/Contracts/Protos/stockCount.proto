@@ -2,15 +2,66 @@ syntax = "proto3";
 
 option csharp_namespace = "Stock.Grpc";
 
-service StockCount {
-  rpc GetStockCount (StockCountRequest) returns (StockCountReply);
+// base
+message StockItem {
+  string sku = 1;
+  string variation = 2;
 }
 
+// reserve 
+message StockItemWithQuantity {
+  StockItem item = 1;
+  int32 quantity = 2;
+}
+
+message ReserveStockRequest {
+  string checkoutReference = 1;
+  repeated StockItemWithQuantity items = 2;
+}
+
+message ReserveStockResponse {
+  bool success = 1;
+  repeated StockItemWithQuantity reservedItems = 2;
+  string error = 3;
+}
+
+// stock count
 message StockCountRequest {
-  string SKU = 1;
-  string VariationId = 2;
+  repeated StockItem items = 1;
+}
+
+message StockItemStock {
+  StockItem item = 1;
+  double available = 2;
 }
 
 message StockCountReply {
-  double Available = 1;
+  repeated StockItemStock stocks = 1;
+}
+
+// Assign to order
+message StockUnit {
+  string serialNumber = 1;
+}
+
+message StockItemUnits {
+  StockItem item = 1;
+  repeated StockUnit units = 2;
+}
+
+message AssignToOrderRequest {
+  string checkoutReference = 1;
+  string orderReference = 2;
+}
+
+message AssignToOrderResponse {
+  bool success = 1;
+  repeated StockItemUnits assignedUnits = 2;
+}
+
+// Service
+service StockService {
+  rpc ReserveStock(ReserveStockRequest) returns (ReserveStockResponse);
+  rpc GetStockCount(StockCountRequest) returns (StockCountReply);
+  rpc AssignToOrder(AssignToOrderRequest) returns (AssignToOrderResponse);
 }

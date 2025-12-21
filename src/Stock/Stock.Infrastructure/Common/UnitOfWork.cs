@@ -1,9 +1,9 @@
-﻿using Mediator.Request.Transaction;
-using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using Stock.App.Common;
 
 namespace Stock.Infrastructure.Common;
 
-public class UnitOfWork(StockDbContext dbContext) : ITransactionUnitOfWork
+public class UnitOfWork(StockDbContext dbContext) : IUnitOfWork
 {
     private IDbContextTransaction? _currentTransaction;
 

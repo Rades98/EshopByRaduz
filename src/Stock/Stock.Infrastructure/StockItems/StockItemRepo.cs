@@ -21,7 +21,9 @@ namespace Stock.Infrastructure.StockItems
                         res.Id,
                         res.Sku,
                         res.VariantId,
-                        res.Units.Select(x =>
+                        res.Units
+                            .Where(x => !x.IsSold)
+                            .Select(x =>
                             StockUnitModel.Rehydrate(
                                 x.Id,
                                 x.WarehouseId,

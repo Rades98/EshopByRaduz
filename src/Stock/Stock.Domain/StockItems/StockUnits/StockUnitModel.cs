@@ -1,4 +1,5 @@
 ﻿using DomainObjects;
+using MediatR;
 
 namespace Stock.Domain.StockItems.StockUnits
 {
@@ -65,11 +66,11 @@ namespace Stock.Domain.StockItems.StockUnits
             CheckoutReference = null;
         }
 
-        public bool AssignToOrder(Guid orderId)
+        public Result<Unit> AssignToOrder(Guid orderId, Guid checkoutReference)
         {
-            if (!IsLocked || IsSold)
+            if (!IsLocked || CheckoutReference != checkoutReference || IsSold || OrderReference is not null)
             {
-                return false;
+                return Result<Unit>.Failure("ASSIGN_TO_ORDER_ERROR_UNIT");
             }
 
             IsSold = true;
@@ -79,7 +80,7 @@ namespace Stock.Domain.StockItems.StockUnits
             CheckoutReference = null;
             LockedUntil = null;
 
-            return true;
+            return Result<Unit>.Success(Unit.Value);
         }
 
         public bool IsAvailable() => !IsLocked && !IsSold;
