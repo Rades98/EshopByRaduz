@@ -8,6 +8,9 @@ files:
   - path: "StockUnits.yaml"
     order: 2
 
+  - path: "StockOutbox.yaml"
+    order: 2
+
   # # Procedures 
   # - path: "Procedures/GetZsdViolationGroups.sql"
   #   order: 10000

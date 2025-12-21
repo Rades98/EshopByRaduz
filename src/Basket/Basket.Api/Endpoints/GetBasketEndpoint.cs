@@ -9,15 +9,14 @@ namespace Basket.Api.Endpoints
     {
         internal static IEndpointRouteBuilder MapGetBasketEndpoint(this IEndpointRouteBuilder app)
         {
-            app.MapGet("/users/{userId:guid}/basket/{basketId:guid}",
+            app.MapGet("/users/{userId:guid}/basket/",
                 async (
                     [FromRoute] Guid userId,
-                    [FromRoute] Guid basketId,
                     [FromServices] IConnectionMultiplexer redis,
                     CancellationToken ct) =>
                 {
                     var db = redis.GetDatabase();
-                    var basketKey = $"basket:{userId}:{basketId}";
+                    var basketKey = $"basket:{userId}";
 
                     var data = await db.StringGetAsync(basketKey);
 
@@ -26,9 +25,9 @@ namespace Basket.Api.Endpoints
                         return Results.NotFound();
                     }
 
-                    var items = JsonSerializer.Deserialize<List<BasketItemDto>>(data!) ?? [];
+                    var basket = JsonSerializer.Deserialize<BasketDto>(data!);
 
-                    return Results.Ok(new BasketDto(items));
+                    return Results.Ok(basket);
                 })
                 .AllowAnonymous()
                 .WithName("GetBasket")

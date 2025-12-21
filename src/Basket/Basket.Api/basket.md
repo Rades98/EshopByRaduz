@@ -1,4 +1,32 @@
-﻿# BASKET FLOW
+﻿# Basket
+Typ:
+
+Application Model
+
+NENÍ:
+
+doména
+
+bounded context (formálně ano, ale bez domény)
+
+Role:
+
+Channel Support
+
+Charakteristika:
+
+dočasný stav
+
+bez invariantů
+
+Redis / memory
+
+žádné eventy
+
+📌 pouze UX facilitátor
+
+
+## BASKET FLOW
 FastApi - zadna architektura
 
 - POST   users/{userId}/basket              → vytvori kosik

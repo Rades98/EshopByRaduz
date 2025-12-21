@@ -1,0 +1,25 @@
+﻿metadata:
+  tableName: Currencies
+
+data:
+  - Code: CZK
+    Symbol: Kč
+    ExchangeRate: 1.0
+    Precision: 2
+    IsMaster: true
+    UpdatedAt: 2025-01-01T00:00:00Z
+
+  - Code: EUR
+    Symbol: €
+    ExchangeRate: 25.50
+    Precision: 2
+    IsMaster: false
+    UpdatedAt: 2025-01-01T00:00:00Z
+
+  - Code: USD
+    Symbol: $
+    ExchangeRate: 23.00
+    Precision: 2
+    IsMaster: false
+    UpdatedAt: 2025-01-01T00:00:00Z
+

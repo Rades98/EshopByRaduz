@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageReference Include="MediatR" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="OneOf" Version="3.0.271" />
     <PackageReference Include="OpenTelemetry" />
   </ItemGroup>
   

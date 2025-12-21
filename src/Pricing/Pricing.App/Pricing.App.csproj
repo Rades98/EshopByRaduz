@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Mediator\Mediator.csproj" />
+    <ProjectReference Include="..\Pricing.Domain\Pricing.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

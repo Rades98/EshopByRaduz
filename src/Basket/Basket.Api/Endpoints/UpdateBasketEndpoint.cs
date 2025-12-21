@@ -1,5 +1,6 @@
-﻿using Basket.Api.Dtos;
+﻿using Basket.Api.Endpoints.RequestModels;
 using Basket.Api.Events;
+using Basket.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
 using System.Text.Json;
@@ -10,18 +11,18 @@ namespace Basket.Api.Endpoints
     {
         internal static IEndpointRouteBuilder MapUpdateBasketEndpoint(this IEndpointRouteBuilder app)
         {
-            app.MapPut("/users/{userId:guid}/basket/{basketId:guid}",
+            app.MapPost("/users/{userId:guid}/basket/",
                 async (
                     [FromRoute] Guid userId,
-                    [FromRoute] Guid basketId,
-                    [FromBody] BasketDto req,
+                    [FromBody] BasketRequestModel req,
                     [FromServices] IConnectionMultiplexer redis,
                     [FromServices] KafkaEventPublisher publisher,
                     [FromServices] StockGrpcService stockGrpcService,
+                    [FromServices] PricingGrpcService pricingGrpcService,
                     CancellationToken ct) =>
                 {
                     var db = redis.GetDatabase();
-                    var basketKey = $"basket:{userId}:{basketId}";
+                    var basketKey = $"basket:{userId}";
 
                     var insufficientItems = await req.GetInvalidStockItems(stockGrpcService, ct);
 
@@ -34,9 +35,11 @@ namespace Basket.Api.Endpoints
                         });
                     }
 
-                    await db.StringSetAsync(basketKey, JsonSerializer.Serialize(req.Items));
+                    var mappedWithPrices = await req.MapBasket(pricingGrpcService, ct);
 
-                    await publisher.PublishAsync(new BasketChangedEvent(userId, basketId), ct);
+                    await db.StringSetAsync(basketKey, JsonSerializer.Serialize(mappedWithPrices));
+
+                    await publisher.PublishAsync(new BasketChangedEvent(userId), ct);
 
                     return Results.Ok(new { Success = true });
                 })

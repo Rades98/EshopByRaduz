@@ -1,4 +1,5 @@
 using Aspire.Hosting.Yarp.Transforms;
+using EshopByRaduz.AppHost.Apps;
 using EshopByRaduz.AppHost.Domains;
 
 var builder = DistributedApplication.CreateBuilder(args);
@@ -17,15 +18,20 @@ var kafka = builder
 
 var catalog = builder.MapCatalog(kafka, sql);
 var (stock, stockGrpc) = builder.MapStock(kafka, sql);
-var (basket, basketGrpc) = builder.MapBasket(kafka, stockGrpc);
-var checkout = builder.MapCheckout(kafka, sql, stockGrpc);
+var pricingGrpc = builder.MapPricing(kafka, sql);
+var (basket, basketGrpc) = builder.MapBasket(kafka, stockGrpc, pricingGrpc);
+var payments = builder.MapPayments(kafka, sql);
+var (shipping, shippinGrpc) = builder.MapShipping(kafka, sql);
+var checkout = builder.MapCheckout(kafka, sql, stockGrpc, pricingGrpc, shippinGrpc);
 var order = builder.MapOrder(kafka, sql);
+var notifications = builder.MapNotifications(kafka);
 
-builder.AddYarp("ingress")
+builder.AddYarp("gateway")
     .WithReference(basket)
     .WithReference(catalog)
     .WithReference(checkout)
     .WithReference(order)
+    .WithReference(shipping)
     .WithConfiguration(config =>
     {
         config.AddRoute("/basket/{**catch-all}", basket)
@@ -39,6 +45,9 @@ builder.AddYarp("ingress")
 
         config.AddRoute("/order/{**catch-all}", order)
             .WithTransformPathRemovePrefix("/order");
+
+        config.AddRoute("/shipping/{**catch-all}", shipping)
+            .WithTransformPathRemovePrefix("/shipping");
     });
 
 builder.Build().Run();

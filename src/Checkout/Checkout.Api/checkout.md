@@ -1,4 +1,32 @@
-# CHECKOUT FLOW
+﻿# Checkout
+Typ:
+
+Process Manager / Saga
+
+Bounded Context:
+
+Checkout BC
+
+Role:
+
+řízení nákupního procesu
+
+orchestrace
+
+koordinace BC
+
+Architektura:
+
+event-driven
+
+state machine
+
+žádné agregáty
+
+📌 Checkout nemodeluje realitu
+📌 Checkout řídí realitu
+
+## CHECKOUT FLOW
 
 z basket prijde list unit
 

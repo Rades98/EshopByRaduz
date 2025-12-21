@@ -1,0 +1,11 @@
+files:
+  - path: "Currencies.yaml"
+    order: 0
+
+  - path: "PriceItems.yaml"
+    order: 0
+
+  # # Procedures 
+  # - path: "Procedures/GetZsdViolationGroups.sql"
+  #   order: 10000
+  #   isProcedure: true

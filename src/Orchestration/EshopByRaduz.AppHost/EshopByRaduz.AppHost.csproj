@@ -4,9 +4,6 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <UserSecretsId>1427afbe-96d3-4e7a-9405-cba0dd5e25e9</UserSecretsId>
   </PropertyGroup>
 
@@ -24,7 +21,13 @@
     <ProjectReference Include="..\..\Basket\Basket.Grpc\Basket.Grpc.csproj" />
     <ProjectReference Include="..\..\Catalog\Catalog.Api\Catalog.Api.csproj" />
     <ProjectReference Include="..\..\Checkout\Checkout.Api\Checkout.Api.csproj" />
+    <ProjectReference Include="..\..\Notifications\Notifications.Service\Notifications.Service.csproj" />
     <ProjectReference Include="..\..\Order\Order.Api\Order.Api.csproj" />
+    <ProjectReference Include="..\..\Payments\Payments.Grpc\Payments.Grpc.csproj" />
+    <ProjectReference Include="..\..\Pricing\Pricing.Api\Pricing.Api.csproj" />
+    <ProjectReference Include="..\..\Pricing\Pricing.Grpc\Pricing.Grpc.csproj" />
+    <ProjectReference Include="..\..\Shipping\Shipping.Api\Shipping.Api.csproj" />
+    <ProjectReference Include="..\..\Shipping\Shipping.Grpc\Shipping.Grpc.csproj" />
     <ProjectReference Include="..\..\Stock\Stock.Api\Stock.Api.csproj" />
     <ProjectReference Include="..\..\Stock\Stock.Grpc\Stock.Grpc.csproj" />
   </ItemGroup>

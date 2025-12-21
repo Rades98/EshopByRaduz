@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "Pricing.Grpc";
+
+package pricing;
+
+// --- ENUMS ---
+
+enum PriceType {
+    STANDARD = 0;
+    PROMO = 1;
+    B2B = 2;
+
+}
+
+// --- MESSAGES ---
+
+message GetPriceRequestItem {
+    string sku = 1;
+    string variant_id = 2;
+    int32 quantity = 3;
+}
+
+message GetPricesRequest {
+    PriceType price_type = 1;
+    string currency_code = 2;
+    repeated GetPriceRequestItem items = 3;
+}
+
+message Money {
+    string amount = 1; 
+    string currency_code = 2;
+}
+
+message PricePerItemResult {
+    string sku = 1;
+    string variant_id = 2;
+    Money unit_price = 3;
+    Money total_price = 4;
+}
+
+message GetComputedPricesForProductsResponse {
+    bool success = 1;
+    repeated PricePerItemResult items = 2;
+    Money total = 3;
+    string error = 4;
+}
+
+// --- SERVICE ---
+
+service PricingService {
+    rpc GetPrices(GetPricesRequest) returns (GetComputedPricesForProductsResponse);
+}

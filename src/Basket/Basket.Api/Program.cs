@@ -1,5 +1,5 @@
-using Basket.Api;
 using Basket.Api.Endpoints;
+using Basket.Api.Services;
 using EshopByRaduz.ServiceDefaults;
 using Scalar.AspNetCore;
 using StackExchange.Redis;
@@ -15,13 +15,13 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
 
 builder.Services.AddSingleton<KafkaEventPublisher>();
 builder.Services.AddSingleton<StockGrpcService>();
+builder.Services.AddSingleton<PricingGrpcService>();
 
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
 
 app
-    .MapCreateBasketEndpoint()
     .MapUpdateBasketEndpoint()
     .MapGetBasketEndpoint();
 

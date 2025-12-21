@@ -1,4 +1,5 @@
-﻿using Basket.Api.Dtos;
+﻿using Basket.Api.Endpoints.RequestModels;
+using Basket.Api.Services;
 using Stock.Grpc;
 
 namespace Basket.Api.Endpoints
@@ -7,7 +8,7 @@ namespace Basket.Api.Endpoints
     {
         internal sealed record InsufficientStockItem(string Sku, string Variant);
 
-        internal static async Task<List<InsufficientStockItem>> GetInvalidStockItems(this BasketDto req, StockGrpcService stockGrpcService, CancellationToken ct)
+        internal static async Task<List<InsufficientStockItem>> GetInvalidStockItems(this BasketRequestModel req, StockGrpcService stockGrpcService, CancellationToken ct)
         {
             var stockRequest = new StockCountRequest();
 

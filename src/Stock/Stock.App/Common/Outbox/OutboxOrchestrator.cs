@@ -1,4 +1,5 @@
-﻿using Stock.Domain.StockItems.StockUnits.Events;
+﻿using Stock.Domain.StockItems.Events;
+using Stock.Domain.StockItems.StockUnits.Events;
 using System.Text.Json;
 
 namespace Stock.App.Common.Outbox
@@ -38,6 +39,10 @@ namespace Stock.App.Common.Outbox
 
             case nameof(StockUnitAssignedEvent):
                 success = await eventPublisher.PublishAsync(JsonSerializer.Deserialize<StockUnitAssignedEvent>(payload)!, cancellationToken);
+                break;
+
+            case nameof(StockItemAddedEvent):
+                success = await eventPublisher.PublishAsync(JsonSerializer.Deserialize<StockItemAddedEvent>(payload)!, cancellationToken);
                 break;
 
             default:
