@@ -15,7 +15,7 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var checkoutDatabase = sql.AddDatabase("CheckoutDatabase");
 
-            var group = builder.AddResource(new GroupResource("Checkout-Orchestrator"));
+            var group = builder.AddResource(new GroupResource("Checkout-CoreDomain-Orchestrator"));
 
             var checkout = builder.AddProject<Projects.Checkout_Api>("checkoutapi")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)

@@ -1,12 +1,12 @@
 ﻿using Database.SQL;
 using DomainObjects;
-using DomainObjects.InOutbox;
 using InOutbox.Orchestrator;
+using InOutbox.Orchestrator.Repos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Collections.ObjectModel;
 
-namespace InOutBox.Database
+namespace InOutBox.Database.Outbox
 {
     public class OutboxRepo<TDbContext>(TDbContext context) : IOutboxRepo
         where TDbContext : DbContext, IOutboxDbContext

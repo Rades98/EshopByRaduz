@@ -1,8 +1,12 @@
-﻿using InOutbox.Orchestrator;
+﻿using InOutbox.Orchestrator.Orchestrator;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-namespace Stock.Api.Common.Outbox
+namespace InOutBox.Workers
 {
-    internal sealed class OutboxWorker(IServiceScopeFactory scopeFactory, ILogger<OutboxWorker> logger) : BackgroundService
+    internal sealed class InOutboxWorker<TOrchestrator>(IServiceScopeFactory scopeFactory, ILogger<InOutboxWorker<TOrchestrator>> logger) : BackgroundService
+        where TOrchestrator : IOrchestrator
     {
         private readonly TimeSpan _pollInterval = TimeSpan.FromSeconds(1);
 
@@ -13,7 +17,7 @@ namespace Stock.Api.Common.Outbox
                 try
                 {
                     using var scope = scopeFactory.CreateScope();
-                    var outboxOrchestrator = scope.ServiceProvider.GetRequiredService<IOutboxOrchestrator>();
+                    var outboxOrchestrator = scope.ServiceProvider.GetRequiredService<TOrchestrator>();
 
                     await outboxOrchestrator.ExecuteAsync(stoppingToken);
                 }

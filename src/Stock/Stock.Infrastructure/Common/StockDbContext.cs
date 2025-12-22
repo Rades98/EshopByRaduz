@@ -1,4 +1,5 @@
-﻿using InOutBox.Database;
+﻿using InOutBox.Database.Extensions;
+using InOutBox.Database.Outbox;
 using Microsoft.EntityFrameworkCore;
 using Stock.Infrastructure.StockItems;
 using Stock.Infrastructure.StockItems.StockUnits;
@@ -28,7 +29,8 @@ namespace Stock.Infrastructure.Common
             new WarehouseEntityConfiguration().Configure(modelBuilder.Entity<WarehouseEntity>());
             new StockItemEntityConfiguration().Configure(modelBuilder.Entity<StockItemEntity>());
             new StockUnitEntityConfiguration().Configure(modelBuilder.Entity<StockUnitEntity>());
-            new InOutboxEntityConfiguration<OutboxEntity>().Configure(modelBuilder.Entity<OutboxEntity>());
+
+            modelBuilder.ConfigureInOutBoxEntity<OutboxEntity>();
         }
     }
 }

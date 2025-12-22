@@ -9,15 +9,16 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var orderDatabase = sql.AddDatabase("OrderDatabase");
 
-            var group = builder.AddResource(new GroupResource("Order-CoreDomain"));
-
             var order = builder.AddProject<Projects.Order_Api>("orderapi")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithReference(orderDatabase)
                     .WaitFor(orderDatabase)
                 .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WithParentRelationship(group);
+                    .WaitFor(kafka);
+
+            var group = builder.AddResource(new GroupResource("Order-CoreDomain"))
+                .WithChildRelationship(orderDatabase)
+                .WithChildRelationship(order);
 
             return order;
         }

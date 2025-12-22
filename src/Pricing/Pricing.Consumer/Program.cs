@@ -1,4 +1,5 @@
 using EshopByRaduz.ServiceDefaults;
+using InOutBox.Workers;
 using Pricing.App.Common;
 using Pricing.Consumer;
 using Pricing.Infrastructure.Common;
@@ -11,6 +12,8 @@ builder.Services.RegisterInfraStructure(builder.Configuration, builder.Environme
 builder.Services.RegisterApplicationLayer(builder.Configuration);
 
 builder.Services.AddHostedService<Worker>();
+
+builder.Services.AddInboxWorker();
 
 var host = builder.Build();
 

@@ -10,7 +10,7 @@ namespace Mediator
             services
                 .AddMediatR(cfg =>
                 {
-                    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                    cfg.RegisterServicesFromAssembly(assembly);
                 });
 
             return services;

@@ -1,5 +1,4 @@
-﻿using InOutbox.Orchestrator;
-using InOutBox.Database;
+﻿using InOutBox.Database.Extensions;
 using Kafka;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +29,7 @@ namespace Stock.Infrastructure.Common
             services.AddTransient<IStockItemLookup, StockItemLookup>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IOutboxRepo, OutboxRepo<StockDbContext>>();
+            services.AddOutboxRepo<StockDbContext>();
 
             services.AddKafkaPublisher();
 

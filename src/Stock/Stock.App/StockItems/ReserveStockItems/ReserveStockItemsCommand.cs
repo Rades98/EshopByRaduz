@@ -1,4 +1,4 @@
-﻿using InOutbox.Orchestrator;
+﻿using InOutbox.Orchestrator.Repos;
 using Mediator.Request.Command;
 using Stock.App.Common;
 using Stock.Domain.StockItems;

@@ -35,7 +35,8 @@ namespace EshopByRaduz.AppHost.Apps
 
             var group = builder.AddResource(new GroupResource("Basket-Channel"))
                 .WithChildRelationship(basket)
-                .WithChildRelationship(basketGrpc);
+                .WithChildRelationship(basketGrpc)
+                .WithChildRelationship(redisDb);
 
             return new(basket, basketGrpc);
         }

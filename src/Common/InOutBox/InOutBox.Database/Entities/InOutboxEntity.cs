@@ -1,8 +1,8 @@
 ﻿using DomainObjects;
-using DomainObjects.InOutbox;
+using InOutbox.Orchestrator;
 using System.Text.Json;
 
-namespace InOutBox.Database
+namespace InOutBox.Database.Entities
 {
     public class InOutboxEntity<TInOutboxEntity>
         where TInOutboxEntity : IInOutboxEntity, new()

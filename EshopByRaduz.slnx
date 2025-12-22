@@ -30,6 +30,7 @@
   <Folder Name="/src/Common/InOutBox/">
     <Project Path="src/Common/InOutBox/InOutBox.Database/InOutBox.Database.csproj" Id="3066bbe3-5b0a-40f8-8ebc-f0b5931fdd40" />
     <Project Path="src/Common/InOutBox/InOutbox.Orchestrator/InOutbox.Orchestrator.csproj" Id="056c8d30-c256-400d-b4d6-9b67bf6eb0b2" />
+    <Project Path="src/Common/InOutBox/InOutBox.Workers/InOutBox.Workers.csproj" Id="1c1f3aaa-de7b-4151-bc8a-6366c196c3f6" />
   </Folder>
   <Folder Name="/src/Notifications/">
     <Project Path="src/Notifications/Notifications.Service/Notifications.Service.csproj" />

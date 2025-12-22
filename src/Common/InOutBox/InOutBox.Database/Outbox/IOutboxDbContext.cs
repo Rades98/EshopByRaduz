@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace InOutBox.Database
+namespace InOutBox.Database.Outbox
 {
     public interface IOutboxDbContext
     {

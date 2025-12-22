@@ -1,10 +1,9 @@
 ﻿using DomainObjects;
-using DomainObjects.InOutbox;
 using System.Collections.ObjectModel;
 
-namespace InOutbox.Orchestrator
+namespace InOutbox.Orchestrator.Repos
 {
-    public interface IOutboxRepo
+    public interface IInOutboxRepo
     {
         Task AddRangeAsync(IReadOnlyCollection<IDomainEvent> events, CancellationToken cancellationToken);
 

@@ -1,8 +1,8 @@
 using EshopByRaduz.ServiceDefaults;
+using InOutBox.Workers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Stock.Api.Common.Outbox;
 using Stock.App.Common;
 using Stock.App.StockItems.StockUnits.AddStockUnit;
 using Stock.Infrastructure.Common;
@@ -18,7 +18,7 @@ builder.Services.AddOpenApi();
 builder.Services.RegisterInfraStructure(builder.Configuration, builder.Environment);
 builder.Services.RegisterApplicationLayer(builder.Configuration);
 
-builder.Services.AddHostedService<OutboxWorker>();
+builder.Services.AddOutboxWorker();
 
 var app = builder.Build();
 

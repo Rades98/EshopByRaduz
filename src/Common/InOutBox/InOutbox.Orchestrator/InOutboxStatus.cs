@@ -1,4 +1,4 @@
-﻿namespace DomainObjects.InOutbox
+﻿namespace InOutbox.Orchestrator
 {
     public enum InOutboxStatus
     {

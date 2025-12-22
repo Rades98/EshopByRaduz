@@ -1,6 +1,8 @@
-﻿namespace InOutbox.Orchestrator
+﻿using InOutbox.Orchestrator.Repos;
+
+namespace InOutbox.Orchestrator.Orchestrator
 {
-    public abstract class OutboxOrchestratorBase(IOutboxRepo outboxRepo) : IOutboxOrchestrator
+    public abstract class InOutboxOrchestratorBase(IInOutboxRepo outboxRepo)
     {
         public async Task ExecuteAsync(CancellationToken cancellationToken)
         {
@@ -8,7 +10,7 @@
 
             foreach (var e in events)
             {
-                if (await SendEvent(e.Type, e.Payload, cancellationToken))
+                if (await Handle(e.Type, e.Payload, cancellationToken))
                 {
                     await outboxRepo.MarkAsPublishedAsync(e.Id, cancellationToken);
                 }
@@ -19,6 +21,6 @@
             }
         }
 
-        public abstract Task<bool> SendEvent(string type, string payload, CancellationToken cancellationToken);
+        protected abstract Task<bool> Handle(string type, string payload, CancellationToken cancellationToken);
     }
 }

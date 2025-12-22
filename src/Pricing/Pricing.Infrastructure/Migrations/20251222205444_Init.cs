@@ -28,6 +28,25 @@ namespace Pricing.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "InboxEvents",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Payload = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OccurredAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LockedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ProcessedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    RetryCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InboxEvents", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PriceItems",
                 columns: table => new
                 {
@@ -58,6 +77,11 @@ namespace Pricing.Infrastructure.Migrations
                 column: "IsMaster");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Outbox_Status_CreatedAt",
+                table: "InboxEvents",
+                columns: new[] { "Status", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PriceItems_CurrencyCode",
                 table: "PriceItems",
                 column: "CurrencyCode");
@@ -73,6 +97,9 @@ namespace Pricing.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "InboxEvents");
+
             migrationBuilder.DropTable(
                 name: "PriceItems");
 

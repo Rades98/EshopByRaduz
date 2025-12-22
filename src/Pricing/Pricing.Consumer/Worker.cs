@@ -1,8 +1,7 @@
 using Confluent.Kafka;
 using DomainContracts.Events;
+using InOutbox.Orchestrator.Repos;
 using Kafka;
-using MediatR;
-using Pricing.App.Pricing.AddPriceForProduct;
 
 namespace Pricing.Consumer;
 
@@ -16,7 +15,8 @@ internal class Worker(ILogger<Worker> logger, IConfiguration configuration, ISer
         {
             BootstrapServers = configuration.GetConnectionString("kafka"),
             GroupId = "pricing-consumer-group",
-            AutoOffsetReset = AutoOffsetReset.Earliest
+            AutoOffsetReset = AutoOffsetReset.Earliest,
+            EnableAutoCommit = false
         };
 
         using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
@@ -31,20 +31,20 @@ internal class Worker(ILogger<Worker> logger, IConfiguration configuration, ISer
 
             var consumeResult = consumer.Consume(stoppingToken);
 
-            var @event = System.Text.Json.JsonSerializer.Deserialize<StockItemAddedEvent>(consumeResult.Message.Value)!;
-
-            using var scope = scopeFactory.CreateScope();
-            var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-
-            var res = await mediator.Send<bool>(new AddPriceForProductCommand(@event.Sku, @event.Variant), stoppingToken);
-
-            if (res)
+            try
             {
-                // OK
+                var @event = System.Text.Json.JsonSerializer.Deserialize<StockItemAddedEvent>(consumeResult.Message.Value)!;
+
+                using var scope = scopeFactory.CreateScope();
+                var inbox = scope.ServiceProvider.GetRequiredService<IInboxRepo>();
+
+                await inbox.AddRangeAsync([@event], stoppingToken);
+
+                consumer.Commit(consumeResult);
             }
-            else
+            catch (Exception ex)
             {
-                // Handle failure - retry etc there should be Inbox btw
+                logger.LogError(ex, "Error processing message: {Message}", consumeResult.Message.Value);
             }
         }
 

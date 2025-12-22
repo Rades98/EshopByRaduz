@@ -12,7 +12,7 @@ using Pricing.Infrastructure.Common;
 namespace Pricing.Infrastructure.Migrations
 {
     [DbContext(typeof(PricingDbContext))]
-    [Migration("20251222125742_Init")]
+    [Migration("20251222205444_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -24,6 +24,48 @@ namespace Pricing.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("InOutBox.Database.Inbox.InboxEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LockedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Payload")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ProcessedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RetryCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Status", "CreatedAt")
+                        .HasDatabaseName("IX_Outbox_Status_CreatedAt");
+
+                    b.ToTable("InboxEvents");
+                });
 
             modelBuilder.Entity("Pricing.Infrastructure.Currency.CurrencyEntity", b =>
                 {

@@ -1,6 +1,6 @@
-﻿using DomainObjects.InOutbox;
+﻿using InOutbox.Orchestrator;
 
-namespace InOutBox.Database
+namespace InOutBox.Database.Entities
 {
     public interface IInOutboxEntity
     {

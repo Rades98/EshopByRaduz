@@ -9,23 +9,24 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var shippingDatabase = sql.AddDatabase("ShippingDatabase");
 
-            var group = builder.AddResource(new GroupResource("Shipping-CoreDomain"));
-
             var shippingGrpc = builder.AddProject<Projects.Shipping_Grpc>("shipping-grpc")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithReference(shippingDatabase)
                     .WaitFor(shippingDatabase)
                 .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WithParentRelationship(group);
+                    .WaitFor(kafka);
 
             var shipping = builder.AddProject<Projects.Shipping_Api>("shipping-api")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithReference(shippingDatabase)
                     .WaitFor(shippingDatabase)
                 .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WithParentRelationship(group);
+                    .WaitFor(kafka);
+
+            var group = builder.AddResource(new GroupResource("Shipping-CoreDomain"))
+                .WithChildRelationship(shippingDatabase)
+                .WithChildRelationship(shippingGrpc)
+                .WithChildRelationship(shipping);
 
             return new(shipping, shippingGrpc);
         }

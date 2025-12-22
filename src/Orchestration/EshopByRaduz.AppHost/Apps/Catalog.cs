@@ -13,8 +13,6 @@ namespace EshopByRaduz.AppHost.Apps
 
             var catalogDatabase = sql.AddDatabase("CatalogDatabase");
 
-            var group = builder.AddResource(new GroupResource("Catalog-SupportingDomain"));
-
             var catalog = builder.AddProject<Projects.Catalog_Api>("catalogapi")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithReference(catalogDatabase)
@@ -22,8 +20,12 @@ namespace EshopByRaduz.AppHost.Apps
                 .WithReference(redisCahe)
                     .WaitFor(redisCahe)
                 .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WithParentRelationship(group);
+                    .WaitFor(kafka);
+
+            var group = builder.AddResource(new GroupResource("Catalog-SupportingDomain"))
+                .WithChildRelationship(catalogDatabase)
+                .WithChildRelationship(catalog)
+                .WithChildRelationship(redisCahe);
 
             return catalog;
         }

@@ -9,15 +9,16 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var paymentsDatabase = sql.AddDatabase("PaymentsDatabase");
 
-            var group = builder.AddResource(new GroupResource("Payments-GenericSubdomain"));
-
             var payments = builder.AddProject<Projects.Payments_Grpc>("payments-grpc")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithReference(paymentsDatabase)
                     .WaitFor(paymentsDatabase)
                 .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WithParentRelationship(group);
+                    .WaitFor(kafka);
+
+            var group = builder.AddResource(new GroupResource("Payments-GenericSubdomain"))
+                .WithChildRelationship(paymentsDatabase)
+                .WithChildRelationship(payments);
 
             return payments;
         }

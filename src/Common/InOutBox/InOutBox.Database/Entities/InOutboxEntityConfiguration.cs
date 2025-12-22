@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace InOutBox.Database
+namespace InOutBox.Database.Entities
 {
     public sealed class InOutboxEntityConfiguration<TInOutBoxEntity> : IEntityTypeConfiguration<TInOutBoxEntity>
         where TInOutBoxEntity : class, IInOutboxEntity

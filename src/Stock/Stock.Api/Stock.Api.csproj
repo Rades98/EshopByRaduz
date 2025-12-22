@@ -8,9 +8,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\InOutBox\InOutBox.Workers\InOutBox.Workers.csproj" />
     <ProjectReference Include="..\..\Orchestration\EshopByRaduz.ServiceDefaults\EshopByRaduz.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Stock.Infrastructure\Stock.Infrastructure.csproj" />
     <ProjectReference Include="..\Stock.Seed\Stock.Seed.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
   </ItemGroup>
 
 </Project>

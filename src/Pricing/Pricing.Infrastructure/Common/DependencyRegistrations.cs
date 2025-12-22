@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InOutBox.Database.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,8 +23,11 @@ namespace Pricing.Infrastructure.Common
                     .EnableSensitiveDataLogging(!env.IsProduction());
                 });
 
+            services.AddInboxRepo<PricingDbContext>();
+
             services.AddTransient<IPricingRepo, PricingRepo>();
             services.AddTransient<IPricingLookup, PricingLookup>();
+
 
             return services;
         }
