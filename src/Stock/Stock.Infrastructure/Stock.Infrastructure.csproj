@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Kafka\Kafka.csproj" />
     <ProjectReference Include="..\..\Common\Database.SQL\Database.SQL.csproj" />
     <ProjectReference Include="..\..\Common\InOutBox\InOutBox.Database\InOutBox.Database.csproj" />
     <ProjectReference Include="..\..\Common\Kafka\Kafka.csproj" />

@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="13.1.0" />
     <PackageReference Include="Aspire.Hosting.Azure.Storage" Version="13.1.0" />
+    <PackageReference Include="Aspire.Hosting.Elasticsearch" Version="13.0.0" />
     <PackageReference Include="Aspire.Hosting.Kafka" Version="13.1.0" />
     <PackageReference Include="Aspire.Hosting.Redis" Version="13.1.0" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.1.0" />
@@ -27,6 +28,8 @@
     <ProjectReference Include="..\..\Pricing\Pricing.Api\Pricing.Api.csproj" />
     <ProjectReference Include="..\..\Pricing\Pricing.Consumer\Pricing.Consumer.csproj" />
     <ProjectReference Include="..\..\Pricing\Pricing.Grpc\Pricing.Grpc.csproj" />
+    <ProjectReference Include="..\..\Search\Search.Api\Search.Api.csproj" />
+    <ProjectReference Include="..\..\Search\Search.Consumer\Search.Consumer.csproj" />
     <ProjectReference Include="..\..\Shipping\Shipping.Api\Shipping.Api.csproj" />
     <ProjectReference Include="..\..\Shipping\Shipping.Grpc\Shipping.Grpc.csproj" />
     <ProjectReference Include="..\..\Stock\Stock.Api\Stock.Api.csproj" />

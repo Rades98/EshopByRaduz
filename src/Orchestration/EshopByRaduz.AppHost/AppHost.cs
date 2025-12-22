@@ -24,6 +24,7 @@ var (shipping, shippinGrpc) = builder.MapShipping(kafka, sql);
 var checkout = builder.MapCheckout(kafka, sql, stockGrpc, pricingGrpc, shippinGrpc);
 var order = builder.MapOrder(kafka, sql);
 var notifications = builder.MapNotifications(kafka);
+var search = builder.MapSearch(kafka);
 
 builder.AddYarp("gateway")
     .WithReference(basket)
@@ -31,6 +32,7 @@ builder.AddYarp("gateway")
     .WithReference(checkout)
     .WithReference(order)
     .WithReference(shipping)
+    .WithReference(search)
     .WithConfiguration(config =>
     {
         config.AddRoute("/basket/{**catch-all}", basket)
@@ -47,6 +49,9 @@ builder.AddYarp("gateway")
 
         config.AddRoute("/shipping/{**catch-all}", shipping)
             .WithTransformPathRemovePrefix("/shipping");
+
+        config.AddRoute("/search/{**catch-all}", search)
+            .WithTransformPathRemovePrefix("/search");
     });
 
 builder.Build().Run();

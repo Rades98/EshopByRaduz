@@ -50,6 +50,10 @@
     <Project Path="src/Pricing/Pricing.Infrastructure/Pricing.Infrastructure.csproj" Id="fce8eae9-219d-4138-b211-56c57ef04aa8" />
     <Project Path="src/Pricing/Pricing.Seed/Pricing.Seed.csproj" Id="5bb2112d-1ae3-41b7-baa8-5f469f97c882" />
   </Folder>
+  <Folder Name="/src/Search/">
+    <Project Path="src/Search/Search.Api/Search.Api.csproj" />
+    <Project Path="src/Search/Search.Consumer/Search.Consumer.csproj" />
+  </Folder>
   <Folder Name="/src/Shipping/">
     <Project Path="src/Shipping/Shipping.Api/Shipping.Api.csproj" />
     <Project Path="src/Shipping/Shipping.Grpc/Shipping.Grpc.csproj" />
