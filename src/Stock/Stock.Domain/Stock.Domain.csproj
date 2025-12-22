@@ -4,7 +4,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\DomainObjects\DomainObjects.csproj" />
+    <ProjectReference Include="..\..\Common\DomainContracts\DomainContracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="StockItems\StockUnits\Events\" />
   </ItemGroup>
 
 </Project>

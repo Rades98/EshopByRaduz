@@ -31,4 +31,4 @@ app.MapGrpcService<StockService>();
 
 app.MapGet("/", () => "This is gRPC Server :) ");
 
-app.Run();
+await app.RunAsync();

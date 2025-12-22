@@ -34,4 +34,4 @@ app.MapGet("/create", async () =>
 })
 .WithName("CreateOrder");
 
-app.Run();
+await app.RunAsync();

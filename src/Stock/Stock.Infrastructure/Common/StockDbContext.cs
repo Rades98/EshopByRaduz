@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Stock.Infrastructure.Common.Outbox;
+﻿using InOutBox.Database;
+using Microsoft.EntityFrameworkCore;
 using Stock.Infrastructure.StockItems;
 using Stock.Infrastructure.StockItems.StockUnits;
 using Stock.Infrastructure.Warehouses;
@@ -10,7 +10,7 @@ namespace Stock.Infrastructure.Common
      dotnet ef migrations add Init --project .\src\Stock\Stock.Infrastructure\Stock.Infrastructure.csproj --startup-project .\src\Stock\Stock.Infrastructure\Stock.Infrastructure.csproj
      */
 
-    public sealed class StockDbContext(DbContextOptions<StockDbContext> options) : DbContext(options)
+    public sealed class StockDbContext(DbContextOptions<StockDbContext> options) : DbContext(options), IOutboxDbContext
     {
         public DbSet<WarehouseEntity> Warehouses { get; set; } = null!;
 
@@ -18,7 +18,7 @@ namespace Stock.Infrastructure.Common
 
         public DbSet<StockUnitEntity> StockUnits { get; set; } = null!;
 
-        public DbSet<OutboxEntity> Outbox { get; set; } = null!;
+        public DbSet<OutboxEntity> OutboxEvents { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,7 +28,7 @@ namespace Stock.Infrastructure.Common
             new WarehouseEntityConfiguration().Configure(modelBuilder.Entity<WarehouseEntity>());
             new StockItemEntityConfiguration().Configure(modelBuilder.Entity<StockItemEntity>());
             new StockUnitEntityConfiguration().Configure(modelBuilder.Entity<StockUnitEntity>());
-            new OutboxEntityConfiguration().Configure(modelBuilder.Entity<OutboxEntity>());
+            new InOutboxEntityConfiguration<OutboxEntity>().Configure(modelBuilder.Entity<OutboxEntity>());
         }
     }
 }

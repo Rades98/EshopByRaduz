@@ -1,6 +1,8 @@
-﻿namespace Basket.Api.Endpoints.RequestModels
-{
-    public sealed record BasketRequestModel(List<BasketItemRequestModel> Items);
+﻿using System.Collections.ObjectModel;
 
-    public sealed record BasketItemRequestModel(string Sku, string Variant, int Quantity);
+namespace Basket.Api.Endpoints.RequestModels
+{
+    internal sealed record BasketRequestModel(ReadOnlyCollection<BasketItemRequestModel> Items);
+
+    internal sealed record BasketItemRequestModel(string Sku, string Variant, int Quantity);
 }

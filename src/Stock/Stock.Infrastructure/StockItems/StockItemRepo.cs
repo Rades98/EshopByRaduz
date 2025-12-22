@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Database.SQL;
+using Microsoft.EntityFrameworkCore;
 using Stock.App.StockItems;
 using Stock.Domain.StockItems;
 using Stock.Domain.StockItems.StockUnits;
@@ -36,7 +37,7 @@ namespace Stock.Infrastructure.StockItems
                 .SingleAsync(cancellationToken)!;
 
         public Task SaveAsync(StockItemAggregate aggregate, CancellationToken cancellationToken)
-            => context.UpdateWithinTransaction<StockItemEntity>(async context =>
+            => context.UpdateWithinTransaction<StockItemEntity, StockDbContext>(async context =>
             {
                 ArgumentNullException.ThrowIfNull(aggregate);
 

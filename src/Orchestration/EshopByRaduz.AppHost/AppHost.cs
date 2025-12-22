@@ -1,6 +1,5 @@
 using Aspire.Hosting.Yarp.Transforms;
 using EshopByRaduz.AppHost.Apps;
-using EshopByRaduz.AppHost.Domains;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -14,7 +13,7 @@ var sql = builder.AddSqlServer("sql", port: 10434)
 var kafka = builder
         .AddKafka("kafka")
         .WithKafkaUI(kafkaUI => kafkaUI.WithHostPort(9100))
-        .WithDataVolume(isReadOnly: false);
+        .WithDataVolume("kafka-data", isReadOnly: false);
 
 var catalog = builder.MapCatalog(kafka, sql);
 var (stock, stockGrpc) = builder.MapStock(kafka, sql);

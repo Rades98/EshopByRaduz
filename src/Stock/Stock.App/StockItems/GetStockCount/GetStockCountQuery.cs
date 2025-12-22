@@ -1,11 +1,10 @@
 ﻿using Mediator.Request.Query;
-using Stock.App.StockItems.ReserveStockUnits;
 using Stock.Domain.StockItems;
 using System.Collections.ObjectModel;
 
 namespace Stock.App.StockItems.GetStockCount
 {
-    public sealed record GetStockCountQuery(ReadOnlyCollection<StockItemCountRequest> request) : IQuery<ReadOnlyCollection<StockItemCountResponse>>
+    public sealed record GetStockCountQuery(ReadOnlyCollection<StockItemCountRequest> Request) : IQuery<ReadOnlyCollection<StockItemCountResponse>>
     {
         internal sealed class GetStockCountQueryHandler(IStockItemLookup stockLookup, IStockItemRepo repo)
             : IQueryHandler<GetStockCountQuery, ReadOnlyCollection<StockItemCountResponse>>
@@ -14,7 +13,7 @@ namespace Stock.App.StockItems.GetStockCount
             {
                 var results = new List<StockItemCountResponse>();
 
-                foreach (var item in request.request)
+                foreach (var item in request.Request)
                 {
 
                     var stockItemId = await stockLookup.FindBySkuAndVariant(item.Sku, item.VariantId, cancellationToken);

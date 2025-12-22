@@ -1,4 +1,4 @@
-﻿using Stock.App.Common.Outbox;
+﻿using InOutbox.Orchestrator;
 
 namespace Stock.Api.Common.Outbox
 {

@@ -20,10 +20,16 @@
   </Folder>
   <Folder Name="/src/Common/">
     <Project Path="src/Common/Contracts/Contracts.csproj" Id="a2866701-4b31-4f50-9dfb-1093107377ed" />
+    <Project Path="src/Common/Database.SQL/Database.SQL.csproj" Id="a1bf8a57-2a3f-4510-9db1-eb90457eefdb" />
     <Project Path="src/Common/DomainContracts/DomainContracts.csproj" Id="07a83e5a-8d54-4e4b-8189-35f2b1ca6f4d" />
     <Project Path="src/Common/DomainObjects/DomainObjects.csproj" Id="ff06b86b-68ea-4880-b757-68091e34bbc5" />
+    <Project Path="src/Common/Kafka/Kafka.csproj" Id="19e974d7-39a3-497b-97b3-98cd501b332a" />
     <Project Path="src/Common/Mediator/Mediator.csproj" />
     <Project Path="src/Common/Seeder/Seeder.csproj" Id="e7438e75-03ca-4056-905c-07b533f01692" />
+  </Folder>
+  <Folder Name="/src/Common/InOutBox/">
+    <Project Path="src/Common/InOutBox/InOutBox.Database/InOutBox.Database.csproj" Id="3066bbe3-5b0a-40f8-8ebc-f0b5931fdd40" />
+    <Project Path="src/Common/InOutBox/InOutbox.Orchestrator/InOutbox.Orchestrator.csproj" Id="056c8d30-c256-400d-b4d6-9b67bf6eb0b2" />
   </Folder>
   <Folder Name="/src/Notifications/">
     <Project Path="src/Notifications/Notifications.Service/Notifications.Service.csproj" />
@@ -35,9 +41,10 @@
     <Project Path="src/Payments/Payments.Grpc/Payments.Grpc.csproj" />
   </Folder>
   <Folder Name="/src/Pricing/">
-    <Project Path="src/Pricing/Pricing.Domain/Pricing.Domain.csproj" Id="b77fb784-4672-4845-a9a4-63be24a741e3" />
     <Project Path="src/Pricing/Pricing.Api/Pricing.Api.csproj" />
     <Project Path="src/Pricing/Pricing.App/Pricing.App.csproj" Id="4a7d4092-de48-450a-9e0b-f3f5c2040a7c" />
+    <Project Path="src/Pricing/Pricing.Consumer/Pricing.Consumer.csproj" />
+    <Project Path="src/Pricing/Pricing.Domain/Pricing.Domain.csproj" Id="b77fb784-4672-4845-a9a4-63be24a741e3" />
     <Project Path="src/Pricing/Pricing.Grpc/Pricing.Grpc.csproj" />
     <Project Path="src/Pricing/Pricing.Infrastructure/Pricing.Infrastructure.csproj" Id="fce8eae9-219d-4138-b211-56c57ef04aa8" />
     <Project Path="src/Pricing/Pricing.Seed/Pricing.Seed.csproj" Id="5bb2112d-1ae3-41b7-baa8-5f469f97c882" />

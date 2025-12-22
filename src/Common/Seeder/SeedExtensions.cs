@@ -14,7 +14,7 @@ namespace Seeder
                                                         .WithNamingConvention(CamelCaseNamingConvention.Instance)
                                                         .Build();
 
-        public static IDeserializer GetDeserializer() => _yamlDeserializer;
+        public static IDeserializer Deserializer => _yamlDeserializer;
 
         public static async Task<string?> GenerateScript(this SeedFile file, string basePath, IHostEnvironment env)
         {
@@ -44,7 +44,7 @@ namespace Seeder
             if (member.Metadata.AdditionalUseCaseName != null && member.Metadata.AdditionalUseCaseName == "FilesUseCase")
             {
                 seedMemberFile = _yamlDeserializer.Deserialize<SeedMemberFile>(await File.ReadAllTextAsync(memberPath, Encoding.UTF8));
-                member = seedMemberFile.Metadata.ConvertToSeedMember(seedMemberFile.Data);
+                member = seedMemberFile.Metadata.ConvertToSeedMember([.. seedMemberFile.Data]);
             }
 
             var sqlScript = member.GenerateInsertStatements();
@@ -63,7 +63,7 @@ namespace Seeder
             var result = new SeedMember
             {
                 Metadata = meta,
-                Data = data == null
+                Data = new(data == null
                     ? []
                     : [.. data.Select(item =>
                 {
@@ -119,7 +119,7 @@ namespace Seeder
                     }
 
                     return (object)dict;
-                })]
+                })])
             };
 
             return result;

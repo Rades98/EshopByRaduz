@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Stock.Infrastructure.StockItems
 {
-    internal class StockItemEntityConfiguration : IEntityTypeConfiguration<StockItemEntity>
+    internal sealed class StockItemEntityConfiguration : IEntityTypeConfiguration<StockItemEntity>
     {
         public void Configure(EntityTypeBuilder<StockItemEntity> builder)
         {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Pricing.Infrastructure.Currency
 {
-    internal class CurrencyEntityConfiguration : IEntityTypeConfiguration<CurrencyEntity>
+    internal sealed class CurrencyEntityConfiguration : IEntityTypeConfiguration<CurrencyEntity>
     {
         public void Configure(EntityTypeBuilder<CurrencyEntity> builder)
         {

@@ -38,7 +38,7 @@ public static class SeedExtensions
 
         using var db = new PricingDbContext(options);
 
-        var seed = Seeder.SeedExtensions.GetDeserializer().Deserialize<SeedModel>(await File.ReadAllTextAsync(seedPath));
+        var seed = Seeder.SeedExtensions.Deserializer.Deserialize<SeedModel>(await File.ReadAllTextAsync(seedPath));
 
         foreach (var file in seed.Files.OrderBy(x => x.Order))
         {

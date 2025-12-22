@@ -10,6 +10,6 @@ namespace Stock.Infrastructure.StockItems
 
         public required string VariantId { get; set; }
 
-        public ICollection<StockUnitEntity> Units { get; set; } = [];
+        public ICollection<StockUnitEntity> Units { get; } = [];
     }
 }

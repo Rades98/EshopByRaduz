@@ -1,6 +1,6 @@
-﻿using Mediator.Request.Command;
+﻿using InOutbox.Orchestrator;
+using Mediator.Request.Command;
 using Stock.App.Common;
-using Stock.App.Common.Outbox;
 using Stock.Domain.StockItems;
 
 namespace Stock.App.StockItems.AssignStockItemsToOrder

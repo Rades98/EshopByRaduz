@@ -6,7 +6,7 @@ namespace Pricing.Domain.Pricing.PriceItem
     {
         public string Sku { get; }
 
-        public string? VariantId { get; }
+        public string VariantId { get; }
 
         public MoneyValueObject Price { get; }
 
@@ -16,13 +16,16 @@ namespace Pricing.Domain.Pricing.PriceItem
 
         public DateTime? ValidTo { get; }
 
+        public bool IsApplicable { get; }
+
         private PriceItemModel(
             string sku,
-            string? variantId,
+            string variantId,
             MoneyValueObject price,
             PriceType priceType,
             DateTime validFrom,
-            DateTime? validTo)
+            DateTime? validTo,
+            bool isApplicable)
         {
             Sku = sku;
             VariantId = variantId;
@@ -30,18 +33,35 @@ namespace Pricing.Domain.Pricing.PriceItem
             PriceType = priceType;
             ValidFrom = validFrom;
             ValidTo = validTo;
+            IsApplicable = isApplicable;
+        }
+
+        public static PriceItemModel CreateInapplicable(
+            string sku,
+            string variantId,
+            DateTime validFrom)
+        {
+            return new PriceItemModel(
+                sku,
+                variantId,
+                MoneyValueObject.Create(new(0, "CZK")).Value!,
+                PriceType.Standard,
+                validFrom,
+                null,
+                isApplicable: false);
         }
 
         public bool IsValid(DateTime at) =>
-            ValidFrom <= at && (ValidTo == null || at <= ValidTo);
+            IsApplicable && ValidFrom <= at && (ValidTo == null || at <= ValidTo);
 
         public static PriceItemModel Rehydrate(
             string sku,
-            string? variantId,
+            string variantId,
             MoneyValueObject price,
             PriceType priceType,
             DateTime validFrom,
-            DateTime? validTo)
+            DateTime? validTo,
+            bool isApplicable)
         {
             return new PriceItemModel(
                 sku,
@@ -49,7 +69,8 @@ namespace Pricing.Domain.Pricing.PriceItem
                 price,
                 priceType,
                 validFrom,
-                validTo);
+                validTo,
+                isApplicable);
         }
     }
 }

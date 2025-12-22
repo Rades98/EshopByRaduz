@@ -7,7 +7,7 @@ namespace Pricing.App.Pricing
     {
         Task<PricingAggregate?> GetAsync(ReadOnlyCollection<Guid> priceItemIds, CancellationToken cancellationToken);
 
-        Task AddAsync(PricingAggregate aggregate, CancellationToken cancellationToken);
+        Task<bool> AddAsync(PricingAggregate aggregate, CancellationToken cancellationToken);
 
         Task SaveAsync(PricingAggregate aggregate, CancellationToken cancellationToken);
     }

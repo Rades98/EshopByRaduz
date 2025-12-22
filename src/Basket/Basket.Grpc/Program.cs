@@ -23,4 +23,4 @@ app.MapDefaultEndpoints();
 
 //app.MapGrpcService<GreeterService>();
 
-app.Run();
+await app.RunAsync();

@@ -1,9 +1,9 @@
-﻿using Mediator.Request.Command;
+﻿using InOutbox.Orchestrator;
+using Mediator.Request.Command;
 using Stock.App.Common;
-using Stock.App.Common.Outbox;
 using Stock.Domain.StockItems;
 
-namespace Stock.App.StockItems.ReserveStockUnits
+namespace Stock.App.StockItems.ReserveStockItems
 {
     public sealed record ReserveStockItemsCommand(ReserveStockItemsRequest Request) : ICommand<bool>
     {

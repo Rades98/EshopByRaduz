@@ -16,6 +16,8 @@ public class DateOnlyConverter : IYamlTypeConverter
 
     public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer)
     {
+        _ = emitter is null ? throw new ArgumentNullException(nameof(emitter)) : "";
+
         var date = (DateOnly)value!;
         emitter.Emit(new Scalar(date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)));
     }

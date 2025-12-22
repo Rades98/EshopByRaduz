@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Mediator;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -8,11 +9,7 @@ namespace Pricing.App.Common
     {
         public static IServiceCollection RegisterApplicationLayer(this IServiceCollection services, IConfiguration configuration)
         {
-            services
-                .AddMediatR(cfg =>
-                {
-                    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-                });
+            services.AddMediator(Assembly.GetExecutingAssembly());
 
             return services;
         }

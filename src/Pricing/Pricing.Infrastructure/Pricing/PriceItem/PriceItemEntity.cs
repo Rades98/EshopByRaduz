@@ -9,11 +9,11 @@ namespace Pricing.Infrastructure.Pricing.PriceItem
 
         public string Sku { get; set; } = null!;
 
-        public string? VariantId { get; set; }
+        public string VariantId { get; set; } = null!;
 
         public decimal Price { get; set; }
 
-        public required string CurrencyCode { get; set; }
+        public string? CurrencyCode { get; set; }
 
         public CurrencyEntity Currency { get; set; } = null!;
 
@@ -22,5 +22,7 @@ namespace Pricing.Infrastructure.Pricing.PriceItem
         public DateTime ValidFrom { get; set; }
 
         public DateTime? ValidTo { get; set; }
+
+        public bool IsApplicable { get; set; }
     }
 }

@@ -7,4 +7,5 @@ builder.AddServiceDefaults();
 builder.Services.AddHostedService<Worker>();
 
 var host = builder.Build();
-host.Run();
+
+await host.RunAsync();

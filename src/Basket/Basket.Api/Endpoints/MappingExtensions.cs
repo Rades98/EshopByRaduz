@@ -31,7 +31,7 @@ namespace Basket.Api.Endpoints
 
             foreach (var item in requestModel.Items)
             {
-                var priceInfo = stockPrices.Items.FirstOrDefault(x => x.Sku == item.Sku && x.VariantId == item.Variant);
+                var priceInfo = stockPrices.Items.FirstOrDefault(x => x.Sku == item.Sku && x.VariantId == item.Variant)!;
                 basketItems.Add(new BasketItemDto(item.Sku, item.Variant, item.Quantity, priceInfo.TotalPrice.Amount, priceInfo.UnitPrice.Amount));
             }
 

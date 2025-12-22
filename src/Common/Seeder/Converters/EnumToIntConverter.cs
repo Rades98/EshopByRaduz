@@ -16,6 +16,8 @@ public class EnumToIntConverter : IYamlTypeConverter
 
     public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer)
     {
+        _ = emitter is null ? throw new ArgumentNullException(nameof(emitter)) : "";
+
         var enumValue = value as Enum;
         emitter.Emit(new Scalar(Convert.ToInt32(enumValue, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture)));
     }

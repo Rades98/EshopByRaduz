@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InOutbox.Orchestrator;
+using InOutBox.Database;
+using Kafka;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stock.App.Common;
-using Stock.App.Common.Outbox;
 using Stock.App.StockItems;
-using Stock.Infrastructure.Common.Outbox;
 using Stock.Infrastructure.StockItems;
 
 namespace Stock.Infrastructure.Common
@@ -29,9 +30,11 @@ namespace Stock.Infrastructure.Common
             services.AddTransient<IStockItemLookup, StockItemLookup>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IOutboxRepo, OutboxRepo>();
+            services.AddScoped<IOutboxRepo, OutboxRepo<StockDbContext>>();
 
-            services.AddSingleton<IEventPublisher, KafkaEventPublisher>();
+            services.AddKafkaPublisher();
+
+            services.AddSingleton<IEventPublisher, EventPublisher>();
 
             return services;
         }

@@ -25,6 +25,7 @@
     <ProjectReference Include="..\..\Order\Order.Api\Order.Api.csproj" />
     <ProjectReference Include="..\..\Payments\Payments.Grpc\Payments.Grpc.csproj" />
     <ProjectReference Include="..\..\Pricing\Pricing.Api\Pricing.Api.csproj" />
+    <ProjectReference Include="..\..\Pricing\Pricing.Consumer\Pricing.Consumer.csproj" />
     <ProjectReference Include="..\..\Pricing\Pricing.Grpc\Pricing.Grpc.csproj" />
     <ProjectReference Include="..\..\Shipping\Shipping.Api\Shipping.Api.csproj" />
     <ProjectReference Include="..\..\Shipping\Shipping.Grpc\Shipping.Grpc.csproj" />

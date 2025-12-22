@@ -25,4 +25,4 @@ app.MapDefaultEndpoints();
 // Configure the HTTP request pipeline.
 //app.MapGrpcService<PricingService>();
 
-app.Run();
+await app.RunAsync();

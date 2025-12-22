@@ -1,6 +1,7 @@
 ﻿using Basket.Api.Endpoints.RequestModels;
-using Basket.Api.Events;
 using Basket.Api.Services;
+using DomainContracts.Events;
+using Kafka;
 using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
 using System.Text.Json;
@@ -16,7 +17,7 @@ namespace Basket.Api.Endpoints
                     [FromRoute] Guid userId,
                     [FromBody] BasketRequestModel req,
                     [FromServices] IConnectionMultiplexer redis,
-                    [FromServices] KafkaEventPublisher publisher,
+                    [FromServices] IKafkaPublisher publisher,
                     [FromServices] StockGrpcService stockGrpcService,
                     [FromServices] PricingGrpcService pricingGrpcService,
                     CancellationToken ct) =>

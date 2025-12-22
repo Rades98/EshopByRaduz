@@ -4,7 +4,7 @@ using Stock.Domain.StockItems.StockUnits;
 
 namespace Stock.Infrastructure.StockItems.StockUnits
 {
-    internal class StockUnitEntityConfiguration : IEntityTypeConfiguration<StockUnitEntity>
+    internal sealed class StockUnitEntityConfiguration : IEntityTypeConfiguration<StockUnitEntity>
     {
         public void Configure(EntityTypeBuilder<StockUnitEntity> builder)
         {

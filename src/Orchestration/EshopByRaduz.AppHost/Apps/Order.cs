@@ -1,6 +1,6 @@
 ﻿using EshopByRaduz.AppHost.Resources;
 
-namespace EshopByRaduz.AppHost.Domains
+namespace EshopByRaduz.AppHost.Apps
 {
     internal static class Order
     {

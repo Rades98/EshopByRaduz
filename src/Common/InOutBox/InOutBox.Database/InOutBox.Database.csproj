@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Database.SQL\Database.SQL.csproj" />
+    <ProjectReference Include="..\InOutbox.Orchestrator\InOutbox.Orchestrator.csproj" />
+  </ItemGroup>
+
+</Project>

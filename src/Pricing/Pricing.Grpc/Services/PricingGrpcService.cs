@@ -4,7 +4,7 @@ using Pricing.App.Pricing.GetPricesForProducts;
 
 namespace Pricing.Grpc.Services
 {
-    public class PricingGrpcService(IMediator mediator) : PricingService.PricingServiceBase
+    internal class PricingGrpcService(IMediator mediator) : PricingService.PricingServiceBase
     {
         public async override Task<GetComputedPricesForProductsResponse> GetPrices(GetPricesRequest request, ServerCallContext context)
         {

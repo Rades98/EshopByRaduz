@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Stock.App.StockItems.ReserveStockUnits
+namespace Stock.App.StockItems.ReserveStockItems
 {
     public sealed record ReserveStockItemsRequest(ReadOnlyCollection<ReserveStockItemRequest> Items, Guid CheckoutReference);
 

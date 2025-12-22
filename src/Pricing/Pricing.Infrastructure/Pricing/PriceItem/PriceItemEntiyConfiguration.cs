@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Pricing.Infrastructure.Pricing.PriceItem
 {
-    internal class PriceItemEntityConfiguration : IEntityTypeConfiguration<PriceItemEntity>
+    internal sealed class PriceItemEntityConfiguration : IEntityTypeConfiguration<PriceItemEntity>
     {
         public void Configure(EntityTypeBuilder<PriceItemEntity> builder)
         {
@@ -32,7 +32,7 @@ namespace Pricing.Infrastructure.Pricing.PriceItem
             builder.HasOne(p => p.Currency)
                 .WithMany()
                 .HasForeignKey(p => p.CurrencyCode)
-                .IsRequired()
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasIndex(p => new { p.Sku, p.VariantId, p.PriceType, p.CurrencyCode })

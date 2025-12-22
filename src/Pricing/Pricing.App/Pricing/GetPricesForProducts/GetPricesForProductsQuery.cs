@@ -16,7 +16,7 @@ namespace Pricing.App.Pricing.GetPricesForProducts
 
                 foreach (var item in query.Request.Items)
                 {
-                    var pricingIds = await pricingLookup.GetPriceIdsForProducts(item.Sku, item.VariantId, cancellationToken);
+                    var pricingIds = await pricingLookup.GetPriceIdsForProducts(item.Sku, item.VariantId!, cancellationToken);
                     var pricingAggregate = await pricingRepo.GetAsync(pricingIds, cancellationToken);
 
                     if (pricingAggregate is null)

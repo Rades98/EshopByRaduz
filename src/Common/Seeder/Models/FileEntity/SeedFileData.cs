@@ -18,7 +18,7 @@ public sealed class SeedFileData
 
     public DateTime CreatedAt { get; set; }
 
-    public Dictionary<string, object> Metadata { get; set; } = [];
+    public Dictionary<string, object> Metadata { get; } = [];
 
     public string MetadataJson => JsonSerializer.Serialize(Metadata);
 }

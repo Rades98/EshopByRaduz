@@ -21,5 +21,5 @@ app.MapGet("/", () =>
 })
 .WithName("Greetings");
 
-app.Run();
+await app.RunAsync();
 

@@ -1,6 +1,6 @@
-﻿using Mediator.Request.Command;
+﻿using InOutbox.Orchestrator;
+using Mediator.Request.Command;
 using Stock.App.Common;
-using Stock.App.Common.Outbox;
 
 namespace Stock.App.StockItems.StockUnits.AddStockUnit
 {

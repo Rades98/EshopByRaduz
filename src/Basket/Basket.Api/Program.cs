@@ -1,6 +1,7 @@
 using Basket.Api.Endpoints;
 using Basket.Api.Services;
 using EshopByRaduz.ServiceDefaults;
+using Kafka;
 using Scalar.AspNetCore;
 using StackExchange.Redis;
 
@@ -13,7 +14,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
     ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("RedisDb")!));
 
-builder.Services.AddSingleton<KafkaEventPublisher>();
+builder.Services.AddKafkaPublisher();
 builder.Services.AddSingleton<StockGrpcService>();
 builder.Services.AddSingleton<PricingGrpcService>();
 
@@ -28,5 +29,5 @@ app
 app.MapOpenApi();
 app.MapScalarApiReference();
 
-app.Run();
+await app.RunAsync();
 

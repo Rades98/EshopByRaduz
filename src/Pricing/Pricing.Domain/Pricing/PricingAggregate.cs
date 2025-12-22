@@ -6,11 +6,30 @@ namespace Pricing.Domain.Pricing
 {
     public class PricingAggregate : AggregateRoot
     {
-        private readonly IReadOnlyList<PriceItemModel> _prices;
+        private List<PriceItemModel> _prices = [];
+
+        private string _sku;
+        private string _variantId;
 
         private PricingAggregate(IReadOnlyList<PriceItemModel> prices)
         {
-            _prices = prices;
+            _prices = [.. prices];
+            _sku = prices.Count > 0 ? prices[0].Sku : string.Empty;
+            _variantId = prices.Count > 0 ? prices[0].VariantId : string.Empty;
+        }
+
+        public IReadOnlyList<PriceItemModel> Prices => _prices;
+
+        public static PricingAggregate Create(string sku, string variant)
+            => new([]) { _sku = sku, _variantId = variant };
+
+        public PricingAggregate AddInapplicableItem(DateTime validFrom)
+        {
+            var item = PriceItemModel.CreateInapplicable(_sku, _variantId, validFrom);
+
+            _prices.Add(item);
+
+            return this;
         }
 
         public Result<PriceItemModel> GetPrice(
@@ -57,6 +76,6 @@ namespace Pricing.Domain.Pricing
         }
 
         public static PricingAggregate Rehydrate(IReadOnlyList<PriceItemModel> prices)
-            => new(prices);
+            => new(prices ?? []);
     }
 }

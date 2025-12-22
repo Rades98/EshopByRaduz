@@ -59,8 +59,10 @@ namespace Pricing.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CurrencyCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(3)");
+
+                    b.Property<bool>("IsApplicable")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,6)");
@@ -81,6 +83,7 @@ namespace Pricing.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("VariantId")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -90,7 +93,7 @@ namespace Pricing.Infrastructure.Migrations
 
                     b.HasIndex("Sku", "VariantId", "PriceType", "CurrencyCode")
                         .IsUnique()
-                        .HasFilter("[VariantId] IS NOT NULL");
+                        .HasFilter("[CurrencyCode] IS NOT NULL");
 
                     b.ToTable("PriceItems");
                 });
@@ -100,8 +103,7 @@ namespace Pricing.Infrastructure.Migrations
                     b.HasOne("Pricing.Infrastructure.Currency.CurrencyEntity", "Currency")
                         .WithMany()
                         .HasForeignKey("CurrencyCode")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Currency");
                 });

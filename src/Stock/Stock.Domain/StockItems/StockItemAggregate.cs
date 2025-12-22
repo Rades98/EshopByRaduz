@@ -1,7 +1,7 @@
-﻿using DomainObjects;
+﻿using DomainContracts.Events;
+using DomainObjects;
 using MediatR;
 using Stock.Domain.StockItems.StockUnits;
-using Stock.Domain.StockItems.StockUnits.Events;
 using System.Collections.ObjectModel;
 
 namespace Stock.Domain.StockItems

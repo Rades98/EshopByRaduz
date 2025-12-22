@@ -1,6 +1,8 @@
-﻿namespace Seeder.Models;
+﻿using System.Collections.ObjectModel;
+
+namespace Seeder.Models;
 
 public sealed class SeedModel
 {
-    public List<SeedFile> Files { get; set; } = [];
+    public Collection<SeedFile> Files { get; set; } = [];
 }

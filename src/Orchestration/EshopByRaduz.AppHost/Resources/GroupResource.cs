@@ -1,8 +1,7 @@
 ﻿namespace EshopByRaduz.AppHost.Resources
 {
-    public class GroupResource : Resource
+    internal class GroupResource(string name) : Resource(name)
     {
-        public GroupResource(string name) : base(name) { }
     }
 
 }

@@ -4,21 +4,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Confluent.Kafka" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Kafka\Kafka.csproj" />
+    <ProjectReference Include="..\..\Common\Database.SQL\Database.SQL.csproj" />
+    <ProjectReference Include="..\..\Common\InOutBox\InOutBox.Database\InOutBox.Database.csproj" />
+    <ProjectReference Include="..\..\Common\Kafka\Kafka.csproj" />
     <ProjectReference Include="..\Stock.App\Stock.App.csproj" />
   </ItemGroup>
 

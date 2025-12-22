@@ -1,29 +1,12 @@
-﻿using Stock.Domain.StockItems.Events;
-using Stock.Domain.StockItems.StockUnits.Events;
+﻿using DomainContracts.Events;
+using InOutbox.Orchestrator;
 using System.Text.Json;
 
 namespace Stock.App.Common.Outbox
 {
-    internal class OutboxOrchestrator(IOutboxRepo outboxRepo, IEventPublisher eventPublisher) : IOutboxOrchestrator
+    internal class OutboxOrchestrator(IOutboxRepo outboxRepo, IEventPublisher eventPublisher) : OutboxOrchestratorBase(outboxRepo), IOutboxOrchestrator
     {
-        public async Task ExecuteAsync(CancellationToken cancellationToken)
-        {
-            var events = await outboxRepo.ClaimPendingAndFailedEventsAsync(50, cancellationToken);
-
-            foreach (var e in events)
-            {
-                if (await SendEvent(e.Type, e.Payload, cancellationToken))
-                {
-                    await outboxRepo.MarkAsPublishedAsync(e.Id, cancellationToken);
-                }
-                else
-                {
-                    await outboxRepo.MarkAsFailedAsync(e.Id, cancellationToken);
-                }
-            }
-        }
-
-        private async Task<bool> SendEvent(string type, string payload, CancellationToken cancellationToken)
+        public override async Task<bool> SendEvent(string type, string payload, CancellationToken cancellationToken)
         {
             var success = false;
 

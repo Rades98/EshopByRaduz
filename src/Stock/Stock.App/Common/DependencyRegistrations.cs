@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using InOutbox.Orchestrator;
+using Mediator;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Stock.App.Common.Outbox;
 using System.Reflection;
@@ -10,11 +12,7 @@ namespace Stock.App.Common
         public static IServiceCollection RegisterApplicationLayer(this IServiceCollection services, IConfiguration configuration)
         {
             services
-                .AddMediatR(cfg =>
-                {
-                    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-                })
-
+                .AddMediator(Assembly.GetExecutingAssembly())
                 .AddScoped<IOutboxOrchestrator, OutboxOrchestrator>();
 
             return services;

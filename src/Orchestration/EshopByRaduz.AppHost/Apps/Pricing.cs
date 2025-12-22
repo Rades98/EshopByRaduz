@@ -9,15 +9,12 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var pricingDatabase = sql.AddDatabase("PricingDatabase");
 
-            var group = builder.AddResource(new GroupResource("Pricing-CoreDomain"));
-
             var pricingGrpc = builder.AddProject<Projects.Pricing_Grpc>("pricing-grpc")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithReference(pricingDatabase)
                     .WaitFor(pricingDatabase)
                 .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WithParentRelationship(group);
+                    .WaitFor(kafka);
 
             var pricingSeed = builder.AddProject<Projects.Pricing_Api>("pricing-api-seed")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
@@ -25,8 +22,19 @@ namespace EshopByRaduz.AppHost.Apps
                 .WithReference(pricingDatabase)
                     .WaitFor(pricingDatabase)
                 .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WithParentRelationship(group);
+                    .WaitFor(kafka);
+
+            var pricingConsumer = builder.AddProject<Projects.Pricing_Consumer>("pricing-consumer")
+                .WithReference(pricingDatabase)
+                    .WaitFor(pricingDatabase)
+                .WithReference(kafka)
+                    .WaitFor(kafka);
+
+            var group = builder.AddResource(new GroupResource("Pricing-CoreDomain"))
+                .WithChildRelationship(pricingDatabase)
+                .WithChildRelationship(pricingGrpc)
+                .WithChildRelationship(pricingSeed)
+                .WithChildRelationship(pricingConsumer);
 
             return pricingGrpc;
         }

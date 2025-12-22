@@ -36,5 +36,5 @@ app.MapGet("/create", async () =>
 })
 .WithName("create");
 
-app.Run();
+await app.RunAsync();
 

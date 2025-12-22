@@ -2,12 +2,11 @@
 using MediatR;
 using Stock.App.StockItems.AssignStockItemsToOrder;
 using Stock.App.StockItems.GetStockCount;
-using Stock.App.StockItems.ReserveStockUnits;
-using System.Collections.ObjectModel;
+using Stock.App.StockItems.ReserveStockItems;
 
 namespace Stock.Grpc.Services
 {
-    internal class StockService(IMediator mediator) : Grpc.StockService.StockServiceBase
+    internal sealed class StockService(IMediator mediator) : Grpc.StockService.StockServiceBase
     {
         public override async Task<StockCountReply> GetStockCount(StockCountRequest request, ServerCallContext context)
         {
@@ -16,7 +15,7 @@ namespace Stock.Grpc.Services
 
             var commandRequest = request.Items.Select(x => new StockItemCountRequest(x.Sku, x.Variation)).ToList().AsReadOnly();
 
-            var res = await mediator.Send<ReadOnlyCollection<StockItemCountResponse>>(new GetStockCountQuery(commandRequest), context.CancellationToken);
+            var res = await mediator.Send(new GetStockCountQuery(commandRequest), context.CancellationToken);
 
             return new StockCountReply()
             {
