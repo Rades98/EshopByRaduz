@@ -1,0 +1,31 @@
+metadata:
+  tableName: PriceGroups
+
+data:
+  - Id: 7C2AE9F9-E409-40E4-A26C-F689569F0C3A
+    Sku: "SKU-002"
+    VariantId: "Blue-M"
+
+  - Id: C908EC76-6EDD-4FFC-9C17-DA00C796251F
+    Sku: "SKU-003"
+    VariantId: "Green-S"
+
+  - Id: AEEE7DBD-4D56-46BB-A90B-A653832F6050
+    Sku: "SKU-004"
+    VariantId: "Black-XL"
+
+  - Id: 12748EE4-758F-438D-B19E-C1A050793A60
+    Sku: "SKU-005"
+    VariantId: "White-M"
+
+  - Id: 80268AA2-DC5C-4E1C-A570-C4DD7A9D24B1
+    Sku: "SKU-006"
+    VariantId: "Yellow-L"
+
+  - Id: BFEE0362-4402-45EA-960E-A28C5EF56ADF
+    Sku: "SKU-007"
+    VariantId: "Pink-S"
+
+  - Id: 6D73F4FB-F761-4CBD-B840-17C336140DD1
+    Sku: "SKU-008"
+    VariantId: "Gray-XL"

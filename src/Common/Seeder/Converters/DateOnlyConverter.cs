@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using YamlDotNet.Core;
-using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
 namespace Seeder.Converters;
@@ -19,6 +18,6 @@ public class DateOnlyConverter : IYamlTypeConverter
         _ = emitter is null ? throw new ArgumentNullException(nameof(emitter)) : "";
 
         var date = (DateOnly)value!;
-        emitter.Emit(new Scalar(date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)));
+        emitter.Emit(new YamlDotNet.Core.Events.Scalar(date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)));
     }
 }

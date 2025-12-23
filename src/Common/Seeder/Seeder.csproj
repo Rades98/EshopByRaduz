@@ -4,4 +4,8 @@
     <NoWarn>$(NoWarn);CA2227</NoWarn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="YamlDotNet" />
+  </ItemGroup>
+
 </Project>

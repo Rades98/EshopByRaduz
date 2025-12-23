@@ -1,4 +1,5 @@
-﻿using InOutBox.Database.Extensions;
+﻿using Database.SQL;
+using InOutBox.Database.Extensions;
 using Kafka;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +29,7 @@ namespace Stock.Infrastructure.Common
             services.AddTransient<IStockItemRepo, StockItemRepo>();
             services.AddTransient<IStockItemLookup, StockItemLookup>();
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddUow<StockDbContext>();
             services.AddOutboxRepo<StockDbContext>();
 
             services.AddKafkaPublisher();

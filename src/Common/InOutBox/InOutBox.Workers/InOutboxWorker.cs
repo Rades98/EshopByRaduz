@@ -8,10 +8,12 @@ namespace InOutBox.Workers
     internal sealed class InOutboxWorker<TOrchestrator>(IServiceScopeFactory scopeFactory, ILogger<InOutboxWorker<TOrchestrator>> logger) : BackgroundService
         where TOrchestrator : IOrchestrator
     {
-        private readonly TimeSpan _pollInterval = TimeSpan.FromSeconds(1);
+        private readonly TimeSpan _pollInterval = TimeSpan.FromSeconds(10);
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            await Task.Delay(10, stoppingToken);
+
             while (!stoppingToken.IsCancellationRequested)
             {
                 try
@@ -34,5 +36,4 @@ namespace InOutBox.Workers
             }
         }
     }
-
 }

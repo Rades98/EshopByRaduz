@@ -12,12 +12,12 @@ namespace Pricing.App.Pricing.GetPricesForProducts
             public async Task<OneOf<GetPricesForProductsResponse, string>> Handle(GetPricesForProductsQuery query, CancellationToken cancellationToken)
             {
                 var priceResults = new List<PricePerItemResult>();
-                var total = MoneyValueObject.Create((0m, query.Request.CurrencyCode)).Value!;
+                var total = MoneyValueObject.Create(0m, query.Request.CurrencyCode).Value!;
 
                 foreach (var item in query.Request.Items)
                 {
-                    var pricingIds = await pricingLookup.GetPriceIdsForProducts(item.Sku, item.VariantId!, cancellationToken);
-                    var pricingAggregate = await pricingRepo.GetAsync(pricingIds, cancellationToken);
+                    var groupId = await pricingLookup.GetPriceGroupIdforProduct(item.Sku, item.VariantId!, cancellationToken);
+                    var pricingAggregate = await pricingRepo.GetAsync(groupId, cancellationToken);
 
                     if (pricingAggregate is null)
                     {
@@ -25,8 +25,6 @@ namespace Pricing.App.Pricing.GetPricesForProducts
                     }
 
                     var priceResult = pricingAggregate.GetPrice(
-                        item.Sku,
-                        item.VariantId,
                         query.Request.PriceType,
                         query.Request.CurrencyCode,
                         DateTime.UtcNow);
@@ -45,7 +43,7 @@ namespace Pricing.App.Pricing.GetPricesForProducts
                         unitPrice,
                         totalPrice));
 
-                    total = MoneyValueObject.Create((total.Amount + totalPrice.Amount, total.CurrencyCode)).Value!;
+                    total = MoneyValueObject.Create(total.Amount + totalPrice.Amount, total.CurrencyCode).Value!;
                 }
 
                 return new GetPricesForProductsResponse(priceResults, total);

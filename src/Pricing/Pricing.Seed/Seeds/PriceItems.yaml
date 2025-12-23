@@ -3,71 +3,57 @@ metadata:
 
 data:
   - Id: 7C2AE9F9-E409-40E4-A26C-F689569F0C3A
-    Sku: "SKU-002"
-    VariantId: "Blue-M"
+    PriceGroupId: "7C2AE9F9-E409-40E4-A26C-F689569F0C3A"
     Price: 999.00
     CurrencyCode: "CZK"
     PriceType: Standard
     ValidFrom: "2024-01-01T00:00:00Z"
     ValidTo: null
-    IsApplicable: true
 
   - Id: C908EC76-6EDD-4FFC-9C17-DA00C796251F
-    Sku: "SKU-003"
-    VariantId: "Green-S"
+    PriceGroupId: "C908EC76-6EDD-4FFC-9C17-DA00C796251F"
     Price: 899.00
     CurrencyCode: "CZK"
     PriceType: Standard
     ValidFrom: "2024-01-01T00:00:00Z"
     ValidTo: null
-    IsApplicable: true
 
   - Id: AEEE7DBD-4D56-46BB-A90B-A653832F6050
-    Sku: "SKU-004"
-    VariantId: "Black-XL"
+    PriceGroupId: "AEEE7DBD-4D56-46BB-A90B-A653832F6050"
     Price: 1499.00
     CurrencyCode: "CZK"
     PriceType: Standard
     ValidFrom: "2024-01-01T00:00:00Z"
     ValidTo: null
-    IsApplicable: true
 
   - Id: 12748EE4-758F-438D-B19E-C1A050793A60
-    Sku: "SKU-005"
-    VariantId: "White-M"
+    PriceGroupId: "12748EE4-758F-438D-B19E-C1A050793A60"
     Price: 1099.00
     CurrencyCode: "CZK"
     PriceType: Standard
     ValidFrom: "2024-01-01T00:00:00Z"
     ValidTo: null
-    IsApplicable: true
 
   - Id: 80268AA2-DC5C-4E1C-A570-C4DD7A9D24B1
-    Sku: "SKU-006"
-    VariantId: "Yellow-L"
+    PriceGroupId: "80268AA2-DC5C-4E1C-A570-C4DD7A9D24B1"
     Price: 1199.00
     CurrencyCode: "CZK"
     PriceType: Standard
     ValidFrom: "2024-01-01T00:00:00Z"
     ValidTo: null
-    IsApplicable: true
 
   - Id: BFEE0362-4402-45EA-960E-A28C5EF56ADF
-    Sku: "SKU-007"
-    VariantId: "Pink-S"
+    PriceGroupId: "BFEE0362-4402-45EA-960E-A28C5EF56ADF"
     Price: 799.00
     CurrencyCode: "CZK"
     PriceType: Standard
     ValidFrom: "2024-01-01T00:00:00Z"
     ValidTo: null
-    IsApplicable: true
 
   - Id: 6D73F4FB-F761-4CBD-B840-17C336140DD1
-    Sku: "SKU-008"
-    VariantId: "Gray-XL"
+    PriceGroupId: "6D73F4FB-F761-4CBD-B840-17C336140DD1"
     Price: 1599.00
     CurrencyCode: "CZK"
     PriceType: Standard
     ValidFrom: "2024-01-01T00:00:00Z"
     ValidTo: null
-    IsApplicable: true

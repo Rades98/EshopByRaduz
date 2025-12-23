@@ -1,4 +1,5 @@
 ﻿using DomainContracts;
+using DomainContracts.Events.Pricing;
 using DomainObjects;
 using Pricing.Domain.Pricing.PriceItem;
 
@@ -11,42 +12,108 @@ namespace Pricing.Domain.Pricing
         private string _sku;
         private string _variantId;
 
-        private PricingAggregate(IReadOnlyList<PriceItemModel> prices)
+        public string Sku => _sku;
+
+        public string VariantId => _variantId;
+
+        public Guid GroupId { get; private set; }
+
+        private PricingAggregate(Guid id, string sku, string variant, IReadOnlyList<PriceItemModel> prices)
         {
             _prices = [.. prices];
-            _sku = prices.Count > 0 ? prices[0].Sku : string.Empty;
-            _variantId = prices.Count > 0 ? prices[0].VariantId : string.Empty;
+            _sku = sku;
+            _variantId = variant;
+            GroupId = id;
         }
 
         public IReadOnlyList<PriceItemModel> Prices => _prices;
 
-        public static PricingAggregate Create(string sku, string variant)
-            => new([]) { _sku = sku, _variantId = variant };
+        public static PricingAggregate Create(Guid id, string sku, string variant)
+            => new(id, sku, variant, []);
 
-        public PricingAggregate AddInapplicableItem(DateTime validFrom)
+        public Result<PriceItemModel> AddPrice(PriceType priceType, MoneyValueObject moneyValue, DateTime validFrom, DateTime? validTo)
         {
-            var item = PriceItemModel.CreateInapplicable(_sku, _variantId, validFrom);
+            var newPrice = PriceItemModel.Rehydrate(moneyValue, priceType, validFrom, validTo);
 
-            _prices.Add(item);
+            var overlap = _prices.Any(p =>
+                p.PriceType == priceType &&
+                p.PriceType != PriceType.Promo &&
+                (
+                    (p.ValidTo == null) ||
+                    (validTo == null) ||
+                    (p.ValidTo != null && validTo != null &&
+                     p.ValidFrom <= validTo && validFrom <= p.ValidTo)
+                )
+            );
 
-            return this;
+            if (overlap)
+            {
+                return Result<PriceItemModel>.Failure("PRICE_ERROR_OVERLAP");
+            }
+
+            _prices.Add(newPrice);
+
+            AddDomainEvent(new PriceItemAddedEvent(
+                Sku,
+                VariantId,
+                priceType.ToString(),
+                moneyValue.Amount,
+                moneyValue.CurrencyCode,
+                "Pricing"));
+
+            return Result<PriceItemModel>.Success(newPrice);
+        }
+
+        public bool HasValidPrice(PriceType priceType, string currencyCode, DateTime at)
+        {
+            return _prices.Any(p =>
+                p.PriceType == priceType &&
+                p.IsValid(at) &&
+                p.Price.CurrencyCode == currencyCode);
+        }
+
+        public Result<PriceItemModel> UpdatePrice(
+            PriceType priceType,
+            MoneyValueObject newPrice,
+            DateTime validFrom,
+            DateTime? validTo = null)
+        {
+            var updated = PriceItemModel.Rehydrate(newPrice, priceType, validFrom, validTo);
+
+            var overlappingPrices = _prices
+                .Where(p => p.PriceType == priceType && p.PriceType != PriceType.Promo && p.Overlaps(updated))
+                .ToList();
+
+            foreach (var old in overlappingPrices)
+            {
+                old.Invalidate();
+            }
+
+            _prices.Add(updated);
+
+            AddDomainEvent(new PriceItemAddedEvent(
+                Sku,
+                VariantId,
+                priceType.ToString(),
+                newPrice.Amount,
+                newPrice.CurrencyCode,
+                "Pricing"));
+
+            return Result<PriceItemModel>.Success(updated);
         }
 
         public Result<PriceItemModel> GetPrice(
-            string sku,
-            string? variantId,
             PriceType requestedType,
             string currencyCode,
             DateTime at)
         {
             var price = _prices
                 .Where(p =>
-                    p.Sku == sku &&
-                    p.VariantId == variantId &&
                     p.PriceType == requestedType &&
                     p.IsValid(at) &&
                     p.Price.CurrencyCode == currencyCode)
                 .OrderByDescending(p => p.ValidFrom)
+                    .ThenByDescending(p => p.ValidTo)
                 .FirstOrDefault();
 
             if (price != null)
@@ -59,11 +126,10 @@ namespace Pricing.Domain.Pricing
             {
                 price = _prices
                     .Where(p =>
-                        p.Sku == sku &&
-                        p.VariantId == variantId &&
                         p.PriceType == PriceType.Standard &&
                         p.IsValid(at))
                     .OrderByDescending(p => p.ValidFrom)
+                        .ThenByDescending(p => p.ValidTo)
                     .FirstOrDefault();
 
                 if (price != null)
@@ -75,7 +141,7 @@ namespace Pricing.Domain.Pricing
             return Result<PriceItemModel>.Failure("PRICE_ERROR_NOT_FOUND");
         }
 
-        public static PricingAggregate Rehydrate(IReadOnlyList<PriceItemModel> prices)
-            => new(prices ?? []);
+        public static PricingAggregate Rehydrate(Guid id, string sku, string variant, IReadOnlyList<PriceItemModel> prices)
+            => new(id, sku, variant, prices ?? []);
     }
 }

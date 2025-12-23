@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-using Stock.App.Common;
+﻿using Database.Contracts;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Stock.Infrastructure.Common;
+namespace Database.SQL;
 
-public class UnitOfWork(StockDbContext dbContext) : IUnitOfWork
+public class UnitOfWork<TDbContext>(TDbContext dbContext) : IUnitOfWork
+    where TDbContext : DbContext
 {
     private IDbContextTransaction? _currentTransaction;
 

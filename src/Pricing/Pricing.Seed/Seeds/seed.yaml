@@ -2,8 +2,11 @@ files:
   - path: "Currencies.yaml"
     order: 0
 
-  - path: "PriceItems.yaml"
+  - path: "PriceGroups.yaml"
     order: 0
+
+  - path: "PriceItems.yaml"
+    order: 1
 
   # # Procedures 
   # - path: "Procedures/GetZsdViolationGroups.sql"

@@ -1,4 +1,4 @@
-﻿using DomainContracts.Events;
+﻿using DomainContracts.Events.Stock;
 using DomainObjects;
 using MediatR;
 using Stock.Domain.StockItems.StockUnits;

@@ -1,8 +1,11 @@
-﻿using InOutBox.Database.Extensions;
+﻿using Database.SQL;
+using InOutBox.Database.Extensions;
+using Kafka;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pricing.App.Common;
 using Pricing.App.Pricing;
 using Pricing.Infrastructure.Pricing;
 
@@ -24,9 +27,16 @@ namespace Pricing.Infrastructure.Common
                 });
 
             services.AddInboxRepo<PricingDbContext>();
+            services.AddOutboxRepo<PricingDbContext>();
+
+            services.AddUow<PricingDbContext>();
 
             services.AddTransient<IPricingRepo, PricingRepo>();
             services.AddTransient<IPricingLookup, PricingLookup>();
+
+            services.AddKafkaPublisher();
+
+            services.AddSingleton<IEventPublisher, EventPublisher>();
 
 
             return services;

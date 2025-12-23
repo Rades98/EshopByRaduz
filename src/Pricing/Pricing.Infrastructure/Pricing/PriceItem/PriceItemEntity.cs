@@ -1,5 +1,6 @@
 ﻿using DomainContracts;
 using Pricing.Infrastructure.Currency;
+using Pricing.Infrastructure.Pricing.PriceGroup;
 
 namespace Pricing.Infrastructure.Pricing.PriceItem
 {
@@ -7,13 +8,13 @@ namespace Pricing.Infrastructure.Pricing.PriceItem
     {
         public Guid Id { get; set; }
 
-        public string Sku { get; set; } = null!;
+        public Guid PriceGroupId { get; set; }
 
-        public string VariantId { get; set; } = null!;
+        public PriceGroupEntity Group { get; set; } = null!;
 
         public decimal Price { get; set; }
 
-        public string? CurrencyCode { get; set; }
+        public required string CurrencyCode { get; set; }
 
         public CurrencyEntity Currency { get; set; } = null!;
 
@@ -22,7 +23,5 @@ namespace Pricing.Infrastructure.Pricing.PriceItem
         public DateTime ValidFrom { get; set; }
 
         public DateTime? ValidTo { get; set; }
-
-        public bool IsApplicable { get; set; }
     }
 }

@@ -28,6 +28,8 @@
     <ProjectReference Include="..\..\Pricing\Pricing.Api\Pricing.Api.csproj" />
     <ProjectReference Include="..\..\Pricing\Pricing.Consumer\Pricing.Consumer.csproj" />
     <ProjectReference Include="..\..\Pricing\Pricing.Grpc\Pricing.Grpc.csproj" />
+    <ProjectReference Include="..\..\Regulatory\Regulatory.Consumer\Regulatory.Consumer.csproj" />
+    <ProjectReference Include="..\..\Regulatory\Regulatory.Grpc\Regulatory.Grpc.csproj" />
     <ProjectReference Include="..\..\Search\Search.Api\Search.Api.csproj" />
     <ProjectReference Include="..\..\Search\Search.Consumer\Search.Consumer.csproj" />
     <ProjectReference Include="..\..\Shipping\Shipping.Api\Shipping.Api.csproj" />

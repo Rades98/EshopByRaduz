@@ -47,18 +47,48 @@ namespace Pricing.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OutboxEvents",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Payload = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OccurredAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LockedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ProcessedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    RetryCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OutboxEvents", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PriceGroups",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Sku = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    VariantId = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PriceGroups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PriceItems",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Sku = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    VariantId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PriceGroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
                     CurrencyCode = table.Column<string>(type: "nvarchar(3)", nullable: true),
-                    PriceType = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PriceType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsApplicable = table.Column<bool>(type: "bit", nullable: false)
+                    ValidTo = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,6 +98,12 @@ namespace Pricing.Infrastructure.Migrations
                         column: x => x.CurrencyCode,
                         principalTable: "Currencies",
                         principalColumn: "Code",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PriceItems_PriceGroups_PriceGroupId",
+                        column: x => x.PriceGroupId,
+                        principalTable: "PriceGroups",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -82,16 +118,19 @@ namespace Pricing.Infrastructure.Migrations
                 columns: new[] { "Status", "CreatedAt" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Outbox_Status_CreatedAt",
+                table: "OutboxEvents",
+                columns: new[] { "Status", "CreatedAt" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PriceItems_CurrencyCode",
                 table: "PriceItems",
                 column: "CurrencyCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PriceItems_Sku_VariantId_PriceType_CurrencyCode",
+                name: "IX_PriceItems_PriceGroupId",
                 table: "PriceItems",
-                columns: new[] { "Sku", "VariantId", "PriceType", "CurrencyCode" },
-                unique: true,
-                filter: "[CurrencyCode] IS NOT NULL");
+                column: "PriceGroupId");
         }
 
         /// <inheritdoc />
@@ -101,10 +140,16 @@ namespace Pricing.Infrastructure.Migrations
                 name: "InboxEvents");
 
             migrationBuilder.DropTable(
+                name: "OutboxEvents");
+
+            migrationBuilder.DropTable(
                 name: "PriceItems");
 
             migrationBuilder.DropTable(
                 name: "Currencies");
+
+            migrationBuilder.DropTable(
+                name: "PriceGroups");
         }
     }
 }

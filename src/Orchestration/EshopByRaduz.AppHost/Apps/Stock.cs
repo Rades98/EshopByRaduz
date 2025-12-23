@@ -18,6 +18,7 @@ namespace EshopByRaduz.AppHost.Apps
 
             var stock = builder.AddProject<Projects.Stock_Api>("stockapi")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
+                .MapUrlsToScalar()
                 .WaitForCompletion(stockSeed)
                 .WithReference(stockDatabase)
                     .WaitFor(stockDatabase)

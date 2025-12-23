@@ -3,6 +3,7 @@ using InOutBox.Workers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 using Stock.App.Common;
 using Stock.App.StockItems.StockUnits.AddStockUnit;
 using Stock.Infrastructure.Common;
@@ -63,19 +64,20 @@ if (args.Contains("--seed"))
 
 app.MapDefaultEndpoints();
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
 app.MapGet("/addNew", async ([FromServices] IMediator mediator) =>
 {
     var res = await mediator.Send<AddStockUnitCommandResult>(new AddStockUnitCommand("SN-001-07", "SKU-001", "Red-L", Guid.Parse("47053D9C-5756-4630-AF23-142DAAD8844C")));
 
     return Results.Ok(res);
 })
+.WithOpenApi()
 .WithName("Greetings");
 
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.MapScalarApiReference();
+}
 
 await app.RunAsync();
 

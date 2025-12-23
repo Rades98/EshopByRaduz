@@ -1,17 +1,19 @@
 using EshopByRaduz.ServiceDefaults;
 using Microsoft.EntityFrameworkCore;
+using Pricing.Api.Endpoints;
 using Pricing.App.Common;
 using Pricing.Infrastructure.Common;
 using Pricing.Seed;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.Services.AddOpenApi();
+
 builder.Services.RegisterInfraStructure(builder.Configuration, builder.Environment);
 builder.Services.RegisterApplicationLayer(builder.Configuration);
-
-builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
@@ -56,13 +58,11 @@ if (args.Contains("--seed"))
 
 app.MapDefaultEndpoints();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+app.MapUpsertPricingEndpoint();
 
-
+app.MapOpenApi();
+app.MapScalarApiReference();
 
 await app.RunAsync();
+
 

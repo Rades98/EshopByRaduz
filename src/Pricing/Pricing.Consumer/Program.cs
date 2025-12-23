@@ -15,6 +15,8 @@ builder.Services.AddHostedService<Worker>();
 
 builder.Services.AddInboxWorker();
 
+builder.Services.AddOutboxWorker();
+
 var host = builder.Build();
 
 await host.RunAsync();

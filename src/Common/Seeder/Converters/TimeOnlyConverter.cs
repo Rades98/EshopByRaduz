@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using YamlDotNet.Core;
-using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
 namespace Seeder.Converters;
@@ -17,6 +16,6 @@ public class TimeOnlyConverter : IYamlTypeConverter
     public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer)
     {
         var time = (TimeOnly)value!;
-        emitter.Emit(new Scalar(time.ToString("HH:mm:ss", CultureInfo.InvariantCulture)));
+        emitter.Emit(new YamlDotNet.Core.Events.Scalar(time.ToString("HH:mm:ss", CultureInfo.InvariantCulture)));
     }
 }

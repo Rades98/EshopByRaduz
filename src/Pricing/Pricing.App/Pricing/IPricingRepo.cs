@@ -1,14 +1,13 @@
 ﻿using Pricing.Domain.Pricing;
-using System.Collections.ObjectModel;
 
 namespace Pricing.App.Pricing
 {
     public interface IPricingRepo
     {
-        Task<PricingAggregate?> GetAsync(ReadOnlyCollection<Guid> priceItemIds, CancellationToken cancellationToken);
+        Task<PricingAggregate> GetAsync(Guid priceGroupId, CancellationToken cancellationToken);
 
         Task<bool> AddAsync(PricingAggregate aggregate, CancellationToken cancellationToken);
 
-        Task SaveAsync(PricingAggregate aggregate, CancellationToken cancellationToken);
+        Task<bool> SaveAsync(PricingAggregate aggregate, CancellationToken cancellationToken);
     }
 }

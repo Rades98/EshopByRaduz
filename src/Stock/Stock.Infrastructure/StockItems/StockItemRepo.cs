@@ -46,9 +46,6 @@ namespace Stock.Infrastructure.StockItems
                         .ThenInclude(u => u.Warehouse)
                     .SingleAsync(x => x.Id == aggregate.StockItemId, cancellationToken);
 
-                entity.Sku = aggregate.Sku;
-                entity.VariantId = aggregate.VariantId;
-
                 var unitsToRemove = entity.Units
                     .Where(u => !aggregate.Units.Any(au => au.Id == u.Id))
                     .ToList();

@@ -1,4 +1,4 @@
-﻿namespace Stock.App.Common
+﻿namespace Database.Contracts
 {
     public interface IUnitOfWork
     {

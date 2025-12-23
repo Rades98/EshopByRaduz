@@ -4,7 +4,7 @@ namespace EshopByRaduz.AppHost.Apps
 {
     internal static class Pricing
     {
-        public static IResourceBuilder<ProjectResource> MapPricing
+        public static (IResourceBuilder<ProjectResource> PricingGrpc, IResourceBuilder<ProjectResource> PricingApi) MapPricing
             (this IDistributedApplicationBuilder builder, IResourceBuilder<KafkaServerResource> kafka, IResourceBuilder<SqlServerServerResource> sql)
         {
             var pricingDatabase = sql.AddDatabase("PricingDatabase");
@@ -16,6 +16,15 @@ namespace EshopByRaduz.AppHost.Apps
                     .WaitFor(pricingDatabase)
                 .WithReference(kafka)
                     .WaitFor(kafka);
+
+            var pricingApi = builder.AddProject<Projects.Pricing_Api>("pricing-api")
+                .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
+                .MapUrlsToScalar()
+                .WithReference(pricingDatabase)
+                    .WaitFor(pricingDatabase)
+                .WithReference(kafka)
+                    .WaitFor(kafka)
+                .WaitForCompletion(pricingSeed);
 
             var pricingGrpc = builder.AddProject<Projects.Pricing_Grpc>("pricing-grpc")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
@@ -33,11 +42,12 @@ namespace EshopByRaduz.AppHost.Apps
 
             var group = builder.AddResource(new GroupResource("Pricing-CoreDomain"))
                 .WithChildRelationship(pricingDatabase)
+                .WithChildRelationship(pricingApi)
                 .WithChildRelationship(pricingGrpc)
                 .WithChildRelationship(pricingSeed)
                 .WithChildRelationship(pricingConsumer);
 
-            return pricingGrpc;
+            return new(pricingGrpc, pricingApi);
         }
     }
 }

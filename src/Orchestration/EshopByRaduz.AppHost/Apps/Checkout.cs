@@ -10,7 +10,8 @@ namespace EshopByRaduz.AppHost.Apps
             IResourceBuilder<SqlServerServerResource> sql,
             IResourceBuilder<ProjectResource> stockGrpc,
             IResourceBuilder<ProjectResource> pricingGrpc,
-            IResourceBuilder<ProjectResource> shippingGrpc
+            IResourceBuilder<ProjectResource> shippingGrpc,
+            IResourceBuilder<ProjectResource> regulatoryGrpc
             )
         {
             var checkoutDatabase = sql.AddDatabase("CheckoutDatabase");
@@ -29,7 +30,9 @@ namespace EshopByRaduz.AppHost.Apps
                     .WaitFor(pricingGrpc)
                 .WithReference(shippingGrpc)
                     .WaitFor(shippingGrpc)
-                .WithParentRelationship(group);
+                .WithParentRelationship(group)
+                    .WaitFor(regulatoryGrpc)
+                .WithParentRelationship(regulatoryGrpc);
 
             return checkout;
         }

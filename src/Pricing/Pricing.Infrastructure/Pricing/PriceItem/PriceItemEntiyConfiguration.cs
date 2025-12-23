@@ -9,13 +9,6 @@ namespace Pricing.Infrastructure.Pricing.PriceItem
         {
             builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.Sku)
-                .IsRequired()
-                .HasMaxLength(50);
-
-            builder.Property(p => p.VariantId)
-                .HasMaxLength(50);
-
             builder.Property(p => p.Price)
                 .HasColumnType("decimal(18,6)")
                 .IsRequired();
@@ -35,8 +28,11 @@ namespace Pricing.Infrastructure.Pricing.PriceItem
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasIndex(p => new { p.Sku, p.VariantId, p.PriceType, p.CurrencyCode })
-                   .IsUnique();
+            builder.HasOne(p => p.Group)
+                .WithMany(g => g.Items)
+                .HasForeignKey(p => p.PriceGroupId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

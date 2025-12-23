@@ -1,4 +1,4 @@
-﻿using DomainContracts.Events;
+﻿using DomainContracts.Events.Stock;
 using InOutbox.Orchestrator.Orchestrator;
 using InOutbox.Orchestrator.Repos;
 using System.Text.Json;

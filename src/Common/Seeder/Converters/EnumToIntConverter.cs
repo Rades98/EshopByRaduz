@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using YamlDotNet.Core;
-using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
 namespace Seeder.Converters;
@@ -19,6 +18,6 @@ public class EnumToIntConverter : IYamlTypeConverter
         _ = emitter is null ? throw new ArgumentNullException(nameof(emitter)) : "";
 
         var enumValue = value as Enum;
-        emitter.Emit(new Scalar(Convert.ToInt32(enumValue, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture)));
+        emitter.Emit(new YamlDotNet.Core.Events.Scalar(Convert.ToInt32(enumValue, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture)));
     }
 }

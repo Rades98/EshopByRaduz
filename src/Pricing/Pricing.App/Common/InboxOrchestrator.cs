@@ -1,8 +1,8 @@
-﻿using DomainContracts.Events;
+﻿using DomainContracts.Events.Stock;
 using InOutbox.Orchestrator.Orchestrator;
 using InOutbox.Orchestrator.Repos;
 using MediatR;
-using Pricing.App.Pricing.AddPriceForProduct;
+using Pricing.App.Pricing.AddPriceGroupForProduct;
 using System.Text.Json;
 
 namespace Pricing.App.Common
@@ -17,7 +17,7 @@ namespace Pricing.App.Common
             {
             case nameof(StockItemAddedEvent):
                 var @event = JsonSerializer.Deserialize<StockUnitAddedEvent>(payload)!;
-                success = await mediator.Send<bool>(new AddPriceForProductCommand(@event.Sku, @event.Variant), cancellationToken); ;
+                success = await mediator.Send<bool>(new AddPriceGroupForProductCommand(@event.Sku, @event.Variant), cancellationToken); ;
                 break;
 
             default:

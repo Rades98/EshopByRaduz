@@ -1,7 +1,9 @@
 ﻿using InOutBox.Database.Entities;
 using InOutBox.Database.Inbox;
+using InOutBox.Database.Outbox;
 using Microsoft.EntityFrameworkCore;
 using Pricing.Infrastructure.Currency;
+using Pricing.Infrastructure.Pricing.PriceGroup;
 using Pricing.Infrastructure.Pricing.PriceItem;
 
 namespace Pricing.Infrastructure.Common
@@ -10,11 +12,17 @@ namespace Pricing.Infrastructure.Common
      dotnet ef migrations add Init --project .\src\Pricing\Pricing.Infrastructure\Pricing.Infrastructure.csproj --startup-project .\src\Pricing\Pricing.Infrastructure\Pricing.Infrastructure.csproj
      */
 
-    public sealed class PricingDbContext(DbContextOptions<PricingDbContext> options) : DbContext(options), IInboxDbContext
+    public sealed class PricingDbContext(DbContextOptions<PricingDbContext> options) : DbContext(options), IInboxDbContext, IOutboxDbContext
     {
         public DbSet<CurrencyEntity> Currencies { get; set; } = null!;
+
+        public DbSet<PriceGroupEntity> PriceGroups { get; set; } = null!;
+
         public DbSet<PriceItemEntity> PriceItems { get; set; } = null!;
+
         public DbSet<InboxEntity> InboxEvents { get; set; } = null!;
+
+        public DbSet<OutboxEntity> OutboxEvents { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +31,8 @@ namespace Pricing.Infrastructure.Common
             new CurrencyEntityConfiguration().Configure(modelBuilder.Entity<CurrencyEntity>());
             new PriceItemEntityConfiguration().Configure(modelBuilder.Entity<PriceItemEntity>());
             new InOutboxEntityConfiguration<InboxEntity>().Configure(modelBuilder.Entity<InboxEntity>());
+            new InOutboxEntityConfiguration<OutboxEntity>().Configure(modelBuilder.Entity<OutboxEntity>());
+            new PriceGroupEntityConfiguration().Configure(modelBuilder.Entity<PriceGroupEntity>());
         }
     }
 }

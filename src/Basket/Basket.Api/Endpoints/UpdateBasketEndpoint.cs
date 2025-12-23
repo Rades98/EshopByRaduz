@@ -1,6 +1,6 @@
 ﻿using Basket.Api.Endpoints.RequestModels;
 using Basket.Api.Services;
-using DomainContracts.Events;
+using DomainContracts.Events.Basket;
 using Kafka;
 using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;

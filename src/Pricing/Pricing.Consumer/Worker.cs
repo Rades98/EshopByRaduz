@@ -1,5 +1,5 @@
 using Confluent.Kafka;
-using DomainContracts.Events;
+using DomainContracts.Events.Stock;
 using InOutbox.Orchestrator.Repos;
 using Kafka;
 

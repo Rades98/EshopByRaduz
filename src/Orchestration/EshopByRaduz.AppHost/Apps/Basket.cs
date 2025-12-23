@@ -8,6 +8,7 @@ namespace EshopByRaduz.AppHost.Apps
             this IDistributedApplicationBuilder builder,
             IResourceBuilder<KafkaServerResource> kafka,
             IResourceBuilder<ProjectResource> stockGrpc,
+            IResourceBuilder<ProjectResource> regulatoryGrpc,
             IResourceBuilder<ProjectResource> pricingGrpc)
         {
             var redisDb = builder.AddRedis("RedisDb")
@@ -24,7 +25,9 @@ namespace EshopByRaduz.AppHost.Apps
                 .WithReference(stockGrpc)
                     .WaitFor(stockGrpc)
                 .WithReference(pricingGrpc)
-                    .WaitFor(pricingGrpc);
+                    .WaitFor(pricingGrpc)
+                .WithReference(regulatoryGrpc)
+                    .WaitFor(regulatoryGrpc);
 
             var basketGrpc = builder.AddProject<Projects.Basket_Grpc>("basket-grpc")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)

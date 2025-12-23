@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Seeds\PriceGroups.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Seeds\PriceItems.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

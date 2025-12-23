@@ -16,12 +16,20 @@ var kafka = builder
         .WithDataVolume("kafka-data", isReadOnly: false);
 
 var catalog = builder.MapCatalog(kafka, sql);
+var regulatoryGrpc = builder.MapRegulatory(kafka, sql);
+
 var (stock, stockGrpc) = builder.MapStock(kafka, sql);
-var pricingGrpc = builder.MapPricing(kafka, sql);
-var (basket, basketGrpc) = builder.MapBasket(kafka, stockGrpc, pricingGrpc);
+
+var (pricingGrpc, pricingApi) = builder.MapPricing(kafka, sql);
+
+var (basket, basketGrpc) = builder.MapBasket(kafka, stockGrpc, pricingGrpc, regulatoryGrpc);
+
 var payments = builder.MapPayments(kafka, sql);
+
 var (shipping, shippinGrpc) = builder.MapShipping(kafka, sql);
-var checkout = builder.MapCheckout(kafka, sql, stockGrpc, pricingGrpc, shippinGrpc);
+
+var checkout = builder.MapCheckout(kafka, sql, stockGrpc, pricingGrpc, shippinGrpc, regulatoryGrpc);
+
 var order = builder.MapOrder(kafka, sql);
 var notifications = builder.MapNotifications(kafka);
 var search = builder.MapSearch(kafka);
@@ -33,6 +41,7 @@ builder.AddYarp("gateway")
     .WithReference(order)
     .WithReference(shipping)
     .WithReference(search)
+    .WithReference(pricingApi)
     .WithConfiguration(config =>
     {
         config.AddRoute("/basket/{**catch-all}", basket)
@@ -52,6 +61,9 @@ builder.AddYarp("gateway")
 
         config.AddRoute("/search/{**catch-all}", search)
             .WithTransformPathRemovePrefix("/search");
+
+        config.AddRoute("/pricing/{**catch-all}", pricingApi)
+            .WithTransformPathRemovePrefix("/pricing");
     });
 
 builder.Build().Run();

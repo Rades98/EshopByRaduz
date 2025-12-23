@@ -64,6 +64,48 @@ namespace Pricing.Infrastructure.Migrations
                     b.ToTable("InboxEvents");
                 });
 
+            modelBuilder.Entity("InOutBox.Database.Outbox.OutboxEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LockedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Payload")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ProcessedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RetryCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Status", "CreatedAt")
+                        .HasDatabaseName("IX_Outbox_Status_CreatedAt");
+
+                    b.ToTable("OutboxEvents");
+                });
+
             modelBuilder.Entity("Pricing.Infrastructure.Currency.CurrencyEntity", b =>
                 {
                     b.Property<string>("Code")
@@ -94,6 +136,27 @@ namespace Pricing.Infrastructure.Migrations
                     b.ToTable("Currencies");
                 });
 
+            modelBuilder.Entity("Pricing.Infrastructure.Pricing.PriceGroup.PriceGroupEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Sku")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("VariantId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PriceGroups");
+                });
+
             modelBuilder.Entity("Pricing.Infrastructure.Pricing.PriceItem.PriceItemEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -103,20 +166,15 @@ namespace Pricing.Infrastructure.Migrations
                     b.Property<string>("CurrencyCode")
                         .HasColumnType("nvarchar(3)");
 
-                    b.Property<bool>("IsApplicable")
-                        .HasColumnType("bit");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,6)");
 
+                    b.Property<Guid>("PriceGroupId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("PriceType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Sku")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ValidFrom")
                         .HasColumnType("datetime2");
@@ -124,18 +182,11 @@ namespace Pricing.Infrastructure.Migrations
                     b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("VariantId")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CurrencyCode");
 
-                    b.HasIndex("Sku", "VariantId", "PriceType", "CurrencyCode")
-                        .IsUnique()
-                        .HasFilter("[CurrencyCode] IS NOT NULL");
+                    b.HasIndex("PriceGroupId");
 
                     b.ToTable("PriceItems");
                 });
@@ -147,7 +198,20 @@ namespace Pricing.Infrastructure.Migrations
                         .HasForeignKey("CurrencyCode")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("Pricing.Infrastructure.Pricing.PriceGroup.PriceGroupEntity", "Group")
+                        .WithMany("Items")
+                        .HasForeignKey("PriceGroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Currency");
+
+                    b.Navigation("Group");
+                });
+
+            modelBuilder.Entity("Pricing.Infrastructure.Pricing.PriceGroup.PriceGroupEntity", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
