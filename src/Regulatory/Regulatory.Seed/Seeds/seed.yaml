@@ -1,0 +1,11 @@
+files:
+  - path: "Outbox.yaml"
+    order: 2
+
+  - path: "Inbox.yaml"
+    order: 2
+
+  # # Procedures 
+  # - path: "Procedures/GetZsdViolationGroups.sql"
+  #   order: 10000
+  #   isProcedure: true

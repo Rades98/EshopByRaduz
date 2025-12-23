@@ -4,8 +4,6 @@ public class SeedMemberMetadata
 {
     public required string TableName { get; set; }
 
-    public bool IsDevTestOnly { get; set; }
-
     public bool Force { get; set; }
 
     public bool AllowIdentityInsert { get; set; }

@@ -1,5 +1,4 @@
 using EshopByRaduz.ServiceDefaults;
-using InOutBox.Workers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,49 +16,14 @@ builder.AddServiceDefaults();
 builder.Services.AddOpenApi();
 
 builder.Services.RegisterInfraStructure(builder.Configuration, builder.Environment);
-builder.Services.RegisterApplicationLayer(addInOutBoxOrchestrators: true); // better move to worker or smth
-
-builder.Services.AddOutboxWorker();
+builder.Services.RegisterApplicationLayer();
 
 var app = builder.Build();
 
-if (args.Contains("--seed"))
+using (var scope = app.Services.CreateScope())
 {
-    var scope = app.Services.CreateScope();
-
-    var db = scope.ServiceProvider.GetRequiredService<StockDbContext>();
-    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-
-    try
-    {
-        await db.Database.MigrateAsync();
-        logger.LogInformation("SQL migrations applied succesfully");
-    }
-    catch (Exception e)
-    {
-        logger.LogError(e, "SQL migrations failed");
-        scope.Dispose();
-        Environment.Exit(1);
-        return;
-    }
-
-    try
-    {
-        await scope.ServiceProvider.ApplySeed(app.Environment);
-        logger.LogInformation("SQL seed applied succesfully");
-    }
-    catch (Exception e)
-    {
-        logger.LogError(e, "SQL seed failed");
-        scope.Dispose();
-        Environment.Exit(1);
-        return;
-    }
-
-    scope.Dispose();
-
-    Environment.Exit(0);
-    return;
+    await scope.ServiceProvider.GetRequiredService<StockDbContext>().Database.MigrateAsync();
+    await scope.ServiceProvider.ApplySeed();
 }
 
 app.MapDefaultEndpoints();

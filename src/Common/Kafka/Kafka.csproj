@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KafkaClient\Kafka.Contracts\Kafka.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

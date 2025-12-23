@@ -8,7 +8,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="StockItems\StockUnits\Events\" />
   </ItemGroup>
 

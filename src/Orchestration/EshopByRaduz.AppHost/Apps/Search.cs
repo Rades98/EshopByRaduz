@@ -11,7 +11,7 @@ namespace EshopByRaduz.AppHost.Apps
 
             var search = builder.AddProject<Projects.Search_Api>("search-api");
 
-            var searchConsumer = builder.AddProject<Projects.Search_Consumer>("search-consumer")
+            var searchConsumer = builder.AddProject<Projects.Search_Worker>("search-worker")
                 .WithReference(kafka)
                     .WaitFor(kafka);
 

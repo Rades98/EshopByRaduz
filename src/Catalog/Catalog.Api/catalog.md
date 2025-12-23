@@ -22,3 +22,6 @@ Clean Architecture / CRUD domain
 ✔ entity ano
 ✖ agregáty většinou ne
 ✔ silně event-driven read model
+
+3 agregaty
+product + reviews + recommendations

@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Orchestration\EshopByRaduz.ServiceDefaults\EshopByRaduz.ServiceDefaults.csproj" />
-    <ProjectReference Include="..\Pricing.Seed\Pricing.Seed.csproj" />
+    <ProjectReference Include="..\Pricing.Infrastructure\Pricing.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,6 +12,7 @@ var sql = builder.AddSqlServer("sql", port: 10434)
 
 var kafka = builder
         .AddKafka("kafka")
+        .WithLifetime(ContainerLifetime.Persistent)
         .WithKafkaUI(kafkaUI => kafkaUI.WithHostPort(9100))
         .WithDataVolume("kafka-data", isReadOnly: false);
 

@@ -11,5 +11,6 @@
     <ProjectReference Include="..\..\Common\InOutBox\InOutBox.Workers\InOutBox.Workers.csproj" />
     <ProjectReference Include="..\..\Orchestration\EshopByRaduz.ServiceDefaults\EshopByRaduz.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Pricing.Infrastructure\Pricing.Infrastructure.csproj" />
+    <ProjectReference Include="..\Pricing.Seed\Pricing.Seed.csproj" />
   </ItemGroup>
 </Project>

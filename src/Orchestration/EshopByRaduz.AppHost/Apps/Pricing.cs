@@ -9,9 +9,7 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var pricingDatabase = sql.AddDatabase("PricingDatabase");
 
-            var pricingSeed = builder.AddProject<Projects.Pricing_Api>("pricing-seed")
-                .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
-                .WithArgs("--seed")
+            var pricingConsumer = builder.AddProject<Projects.Pricing_Worker>("pricing-worker")
                 .WithReference(pricingDatabase)
                     .WaitFor(pricingDatabase)
                 .WithReference(kafka)
@@ -23,28 +21,20 @@ namespace EshopByRaduz.AppHost.Apps
                 .WithReference(pricingDatabase)
                     .WaitFor(pricingDatabase)
                 .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WaitForCompletion(pricingSeed);
+                    .WaitFor(kafka);
 
             var pricingGrpc = builder.AddProject<Projects.Pricing_Grpc>("pricing-grpc")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithReference(pricingDatabase)
                     .WaitFor(pricingDatabase)
-                .WithReference(kafka)
-                .WaitForCompletion(pricingSeed);
+                .WithReference(kafka);
 
-            var pricingConsumer = builder.AddProject<Projects.Pricing_Consumer>("pricing-consumer")
-                .WithReference(pricingDatabase)
-                    .WaitFor(pricingDatabase)
-                .WithReference(kafka)
-                    .WaitFor(kafka)
-                .WaitForCompletion(pricingSeed);
+
 
             var group = builder.AddResource(new GroupResource("Pricing-CoreDomain"))
                 .WithChildRelationship(pricingDatabase)
                 .WithChildRelationship(pricingApi)
                 .WithChildRelationship(pricingGrpc)
-                .WithChildRelationship(pricingSeed)
                 .WithChildRelationship(pricingConsumer);
 
             return new(pricingGrpc, pricingApi);

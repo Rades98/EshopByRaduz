@@ -6,6 +6,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Contracts\Contracts.csproj" />
     <ProjectReference Include="..\..\Orchestration\EshopByRaduz.ServiceDefaults\EshopByRaduz.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Regulatory.Infrastructure\Regulatory.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

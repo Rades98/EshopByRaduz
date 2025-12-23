@@ -21,7 +21,7 @@ builder.AddServiceDefaults();
 builder.Services.AddGrpc();
 
 builder.Services.RegisterInfraStructure(builder.Configuration, builder.Environment);
-builder.Services.RegisterApplicationLayer(builder.Configuration);
+builder.Services.RegisterApplicationLayer();
 
 var app = builder.Build();
 

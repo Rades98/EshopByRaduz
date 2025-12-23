@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\DomainContracts\DomainContracts.csproj" />
+    <ProjectReference Include="..\..\Common\InOutBox\InOutbox.Orchestrator\InOutbox.Orchestrator.csproj" />
+    <ProjectReference Include="..\..\Common\KafkaClient\Kafka.Contracts\Kafka.Contracts.csproj" />
+    <ProjectReference Include="..\..\Common\Mediator\Mediator.csproj" />
+    <ProjectReference Include="..\Regulatory.Domain\Regulatory.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

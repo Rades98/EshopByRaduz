@@ -1,0 +1,14 @@
+metadata:
+  tableName: OutboxEvents
+
+data:
+  # - Id: 12DC4340-7DBD-47A9-B4D8-BE6E3C1AC631
+  #   Type: StockItemAddedEvent
+  #   Payload: '{"Sku":"SKU-001","Variant":"Red-L","Source":"Stock","OccurredAt":"2025-12-21T21:27:30.8445012Z","EventId":"3549bf6b-e653-4c77-a939-6d6e0be2d94c"}'
+  #   OccurredAt: 2025-12-21T21:27:30.8445012Z 
+  #   CreatedAt: 2025-12-21T21:27:30.8445012Z 
+  #   Status: Pending
+  #   RetryCount: 0
+  #   LockedAt: null
+    
+

@@ -9,17 +9,15 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var stockDatabase = sql.AddDatabase("StockDatabase");
 
-            var stockSeed = builder.AddProject<Projects.Stock_Api>("stock-seed")
-                .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
-                .WithArgs("--seed")
-                .WithHttpEndpoint(port: 5555, name: "stockSeed")
+            var worker = builder.AddProject<Projects.Stock_Worker>("stock-worker")
                 .WithReference(stockDatabase)
-                    .WaitFor(stockDatabase);
+                    .WaitFor(stockDatabase)
+                .WithReference(kafka)
+                    .WaitFor(kafka);
 
             var stock = builder.AddProject<Projects.Stock_Api>("stock-api")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .MapUrlsToScalar()
-                .WaitForCompletion(stockSeed)
                 .WithReference(stockDatabase)
                     .WaitFor(stockDatabase)
                 .WithReference(kafka)
@@ -27,15 +25,14 @@ namespace EshopByRaduz.AppHost.Apps
 
             var stockGrpc = builder.AddProject<Projects.Stock_Grpc>("stock-grpc")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
-                .WaitForCompletion(stockSeed)
                 .WithReference(stockDatabase)
                     .WaitFor(stockDatabase);
 
             var group = builder.AddResource(new GroupResource("Stock-CoreDomain"))
                 .WithChildRelationship(stockDatabase)
+                .WithChildRelationship(worker)
                 .WithChildRelationship(stock)
-                .WithChildRelationship(stockGrpc)
-                .WithChildRelationship(stockSeed);
+                .WithChildRelationship(stockGrpc);
 
             return new(stock, stockGrpc);
         }

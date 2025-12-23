@@ -1,26 +1,26 @@
 using Confluent.Kafka;
-using DomainContracts.Events.Stock;
+using DomainContracts.Events.Catalog;
 using InOutbox.Orchestrator.Repos;
 using Kafka;
 
-namespace Pricing.Consumer;
+namespace Regulatory.Worker;
 
-internal class Worker(ILogger<Worker> logger, IConfiguration configuration, IServiceScopeFactory scopeFactory) : BackgroundService
+internal class CatalogGroupConsumer(ILogger<CatalogGroupConsumer> logger, IConfiguration configuration, IServiceScopeFactory scopeFactory) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        await KafkaTopicInitializer.EnsureTopics(configuration.GetConnectionString("kafka")!, "StockItemAddedEvent");
+        await KafkaTopicInitializer.EnsureTopics(configuration.GetConnectionString("kafka")!, "CatalogGroupAddedEvent");
 
         var config = new ConsumerConfig
         {
             BootstrapServers = configuration.GetConnectionString("kafka"),
-            GroupId = "pricing-consumer-group",
+            GroupId = "regulatory-consumer-group",
             AutoOffsetReset = AutoOffsetReset.Earliest,
             EnableAutoCommit = false
         };
 
         using var consumer = new ConsumerBuilder<Ignore, string>(config).Build();
-        consumer.Subscribe("StockItemAddedEvent");
+        consumer.Subscribe("CatalogGroupAddedEvent");
 
         while (!stoppingToken.IsCancellationRequested)
         {
@@ -33,7 +33,7 @@ internal class Worker(ILogger<Worker> logger, IConfiguration configuration, ISer
 
             try
             {
-                var @event = System.Text.Json.JsonSerializer.Deserialize<StockItemAddedEvent>(consumeResult.Message.Value)!;
+                var @event = System.Text.Json.JsonSerializer.Deserialize<CatalogGroupAddedEvent>(consumeResult.Message.Value)!;
 
                 using var scope = scopeFactory.CreateScope();
                 var inbox = scope.ServiceProvider.GetRequiredService<IInboxRepo>();
@@ -47,7 +47,5 @@ internal class Worker(ILogger<Worker> logger, IConfiguration configuration, ISer
                 logger.LogError(ex, "Error processing message: {Message}", consumeResult.Message.Value);
             }
         }
-
-        consumer.Close();
     }
 }

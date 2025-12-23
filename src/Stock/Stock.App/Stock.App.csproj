@@ -6,6 +6,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Database.Contracts\Database.Contracts.csproj" />
     <ProjectReference Include="..\..\Common\InOutBox\InOutbox.Orchestrator\InOutbox.Orchestrator.csproj" />
+    <ProjectReference Include="..\..\Common\KafkaClient\Kafka.Contracts\Kafka.Contracts.csproj" />
     <ProjectReference Include="..\..\Common\Mediator\Mediator.csproj" />
     <ProjectReference Include="..\Stock.Domain\Stock.Domain.csproj" />
   </ItemGroup>

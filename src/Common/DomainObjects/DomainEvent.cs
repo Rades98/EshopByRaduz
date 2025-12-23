@@ -6,5 +6,4 @@
 
         public Guid EventId { get; } = Guid.NewGuid();
     }
-
 }

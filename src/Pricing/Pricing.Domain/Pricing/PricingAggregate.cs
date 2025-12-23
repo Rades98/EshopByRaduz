@@ -59,7 +59,9 @@ namespace Pricing.Domain.Pricing
                 priceType.ToString(),
                 moneyValue.Amount,
                 moneyValue.CurrencyCode,
-                "Pricing"));
+                "Pricing",
+                validFrom,
+                validTo));
 
             return Result<PriceItemModel>.Success(newPrice);
         }
@@ -100,7 +102,9 @@ namespace Pricing.Domain.Pricing
                 priceType.ToString(),
                 newPrice.Amount,
                 newPrice.CurrencyCode,
-                "Pricing"));
+                "Pricing",
+                validFrom,
+                validTo));
 
             return Result<PriceItemModel>.Success(updated);
         }
@@ -144,6 +148,7 @@ namespace Pricing.Domain.Pricing
             return Result<PriceItemModel>.Failure("PRICE_ERROR_NOT_FOUND");
         }
 
+        // rehydratace per mena.. pouzit kurzovni listek, nestorovat.. drzet vse v jedne mene
         public static PricingAggregate Rehydrate(Guid id, string sku, string variant, IReadOnlyList<PriceItemModel> prices)
             => new(id, sku, variant, prices ?? []);
     }

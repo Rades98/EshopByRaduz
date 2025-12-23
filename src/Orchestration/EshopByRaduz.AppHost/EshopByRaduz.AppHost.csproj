@@ -26,16 +26,17 @@
     <ProjectReference Include="..\..\Order\Order.Api\Order.Api.csproj" />
     <ProjectReference Include="..\..\Payments\Payments.Grpc\Payments.Grpc.csproj" />
     <ProjectReference Include="..\..\Pricing\Pricing.Api\Pricing.Api.csproj" />
-    <ProjectReference Include="..\..\Pricing\Pricing.Consumer\Pricing.Consumer.csproj" />
+    <ProjectReference Include="..\..\Pricing\Pricing.Worker\Pricing.Worker.csproj" />
     <ProjectReference Include="..\..\Pricing\Pricing.Grpc\Pricing.Grpc.csproj" />
-    <ProjectReference Include="..\..\Regulatory\Regulatory.Consumer\Regulatory.Consumer.csproj" />
+    <ProjectReference Include="..\..\Regulatory\Regulatory.Worker\Regulatory.Worker.csproj" />
     <ProjectReference Include="..\..\Regulatory\Regulatory.Grpc\Regulatory.Grpc.csproj" />
     <ProjectReference Include="..\..\Search\Search.Api\Search.Api.csproj" />
-    <ProjectReference Include="..\..\Search\Search.Consumer\Search.Consumer.csproj" />
+    <ProjectReference Include="..\..\Search\Search.Worker\Search.Worker.csproj" />
     <ProjectReference Include="..\..\Shipping\Shipping.Api\Shipping.Api.csproj" />
     <ProjectReference Include="..\..\Shipping\Shipping.Grpc\Shipping.Grpc.csproj" />
     <ProjectReference Include="..\..\Stock\Stock.Api\Stock.Api.csproj" />
     <ProjectReference Include="..\..\Stock\Stock.Grpc\Stock.Grpc.csproj" />
+    <ProjectReference Include="..\..\Stock\Stock.Worker\Stock.Worker.csproj" />
   </ItemGroup>
 
 </Project>

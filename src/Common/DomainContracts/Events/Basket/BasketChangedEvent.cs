@@ -1,4 +1,6 @@
-﻿namespace DomainContracts.Events.Basket
+﻿using DomainObjects;
+
+namespace DomainContracts.Events.Basket
 {
-    public sealed record BasketChangedEvent(Guid UserReference);
+    public sealed record BasketChangedEvent(Guid UserReference) : DomainEvent;
 }

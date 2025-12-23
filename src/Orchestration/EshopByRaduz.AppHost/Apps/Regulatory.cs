@@ -9,13 +9,13 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var regulatoryDatabase = sql.AddDatabase("RegulatoryDatabase");
 
-            var regulatory = builder.AddProject<Projects.Regulatory_Grpc>("regulatory-grpc")
+            var regulatory_grpc = builder.AddProject<Projects.Regulatory_Grpc>("regulatory-grpc")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithReference(regulatoryDatabase)
                     .WaitFor(regulatoryDatabase)
                 .WithReference(kafka);
 
-            var regulatoryConsumer = builder.AddProject<Projects.Regulatory_Consumer>("regulatory-consumer")
+            var worker = builder.AddProject<Projects.Regulatory_Worker>("regulatory-worker")
                 .WithReference(regulatoryDatabase)
                     .WaitFor(regulatoryDatabase)
                 .WithReference(kafka)
@@ -23,10 +23,10 @@ namespace EshopByRaduz.AppHost.Apps
 
             var group = builder.AddResource(new GroupResource("Regulatory-CoreDomain"))
                 .WithChildRelationship(regulatoryDatabase)
-                .WithChildRelationship(regulatory)
-                .WithChildRelationship(regulatoryConsumer);
+                .WithChildRelationship(regulatory_grpc)
+                .WithChildRelationship(worker);
 
-            return regulatory;
+            return regulatory_grpc;
         }
     }
 }

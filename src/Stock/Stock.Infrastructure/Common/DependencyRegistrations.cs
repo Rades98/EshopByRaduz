@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Stock.App.Common;
 using Stock.App.StockItems;
 using Stock.Infrastructure.StockItems;
 
@@ -33,8 +32,6 @@ namespace Stock.Infrastructure.Common
             services.AddOutboxRepo<StockDbContext>();
 
             services.AddKafkaPublisher();
-
-            services.AddSingleton<IEventPublisher, EventPublisher>();
 
             return services;
         }

@@ -1,4 +1,4 @@
-﻿using InOutBox.Database.Entities;
+﻿using InOutBox.Database.Extensions;
 using InOutBox.Database.Inbox;
 using InOutBox.Database.Outbox;
 using Microsoft.EntityFrameworkCore;
@@ -30,9 +30,10 @@ namespace Pricing.Infrastructure.Common
 
             new CurrencyEntityConfiguration().Configure(modelBuilder.Entity<CurrencyEntity>());
             new PriceItemEntityConfiguration().Configure(modelBuilder.Entity<PriceItemEntity>());
-            new InOutboxEntityConfiguration<InboxEntity>().Configure(modelBuilder.Entity<InboxEntity>());
-            new InOutboxEntityConfiguration<OutboxEntity>().Configure(modelBuilder.Entity<OutboxEntity>());
             new PriceGroupEntityConfiguration().Configure(modelBuilder.Entity<PriceGroupEntity>());
+
+            modelBuilder.ConfigureInOutBoxEntity<OutboxEntity>();
+            modelBuilder.ConfigureInOutBoxEntity<InboxEntity>();
         }
     }
 }

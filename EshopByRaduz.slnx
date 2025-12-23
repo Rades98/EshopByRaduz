@@ -24,7 +24,6 @@
     <Project Path="src/Common/Database.SQL/Database.SQL.csproj" Id="a1bf8a57-2a3f-4510-9db1-eb90457eefdb" />
     <Project Path="src/Common/DomainContracts/DomainContracts.csproj" Id="07a83e5a-8d54-4e4b-8189-35f2b1ca6f4d" />
     <Project Path="src/Common/DomainObjects/DomainObjects.csproj" Id="ff06b86b-68ea-4880-b757-68091e34bbc5" />
-    <Project Path="src/Common/Kafka/Kafka.csproj" Id="19e974d7-39a3-497b-97b3-98cd501b332a" />
     <Project Path="src/Common/Mediator/Mediator.csproj" />
     <Project Path="src/Common/Seeder/Seeder.csproj" Id="e7438e75-03ca-4056-905c-07b533f01692" />
   </Folder>
@@ -32,6 +31,10 @@
     <Project Path="src/Common/InOutBox/InOutBox.Database/InOutBox.Database.csproj" Id="3066bbe3-5b0a-40f8-8ebc-f0b5931fdd40" />
     <Project Path="src/Common/InOutBox/InOutbox.Orchestrator/InOutbox.Orchestrator.csproj" Id="056c8d30-c256-400d-b4d6-9b67bf6eb0b2" />
     <Project Path="src/Common/InOutBox/InOutBox.Workers/InOutBox.Workers.csproj" Id="1c1f3aaa-de7b-4151-bc8a-6366c196c3f6" />
+  </Folder>
+  <Folder Name="/src/Common/KafkaClient/">
+    <Project Path="src/Common/Kafka/Kafka.csproj" Id="19e974d7-39a3-497b-97b3-98cd501b332a" />
+    <Project Path="src/Common/KafkaClient/Kafka.Contracts/Kafka.Contracts.csproj" Id="57eab4a6-bdca-4e87-ae2e-5196def59c50" />
   </Folder>
   <Folder Name="/src/Notifications/">
     <Project Path="src/Notifications/Notifications.Service/Notifications.Service.csproj" />
@@ -45,19 +48,23 @@
   <Folder Name="/src/Pricing/">
     <Project Path="src/Pricing/Pricing.Api/Pricing.Api.csproj" />
     <Project Path="src/Pricing/Pricing.App/Pricing.App.csproj" Id="4a7d4092-de48-450a-9e0b-f3f5c2040a7c" />
-    <Project Path="src/Pricing/Pricing.Consumer/Pricing.Consumer.csproj" />
     <Project Path="src/Pricing/Pricing.Domain/Pricing.Domain.csproj" Id="b77fb784-4672-4845-a9a4-63be24a741e3" />
     <Project Path="src/Pricing/Pricing.Grpc/Pricing.Grpc.csproj" />
     <Project Path="src/Pricing/Pricing.Infrastructure/Pricing.Infrastructure.csproj" Id="fce8eae9-219d-4138-b211-56c57ef04aa8" />
     <Project Path="src/Pricing/Pricing.Seed/Pricing.Seed.csproj" Id="5bb2112d-1ae3-41b7-baa8-5f469f97c882" />
+    <Project Path="src/Pricing/Pricing.Worker/Pricing.Worker.csproj" />
   </Folder>
   <Folder Name="/src/Regulatory/">
-    <Project Path="src/Regulatory/Regulatory.Consumer/Regulatory.Consumer.csproj" />
+    <Project Path="src/Regulatory/Regulatory.App/Regulatory.App.csproj" Id="55594dca-1c91-41b9-b355-840059b87003" />
+    <Project Path="src/Regulatory/Regulatory.Domain/Regulatory.Domain.csproj" Id="8cb8e474-d16d-443a-955d-e59fb72ae328" />
     <Project Path="src/Regulatory/Regulatory.Grpc/Regulatory.Grpc.csproj" />
+    <Project Path="src/Regulatory/Regulatory.Infrastructure/Regulatory.Infrastructure.csproj" Id="da9e2f63-f21f-47ad-a3a9-3e0228147b81" />
+    <Project Path="src/Regulatory/Regulatory.Seed/Regulatory.Seed.csproj" Id="c3f83946-a036-4976-9ee5-86669bf9857d" />
+    <Project Path="src/Regulatory/Regulatory.Worker/Regulatory.Worker.csproj" />
   </Folder>
   <Folder Name="/src/Search/">
     <Project Path="src/Search/Search.Api/Search.Api.csproj" />
-    <Project Path="src/Search/Search.Consumer/Search.Consumer.csproj" />
+    <Project Path="src/Search/Search.Worker/Search.Worker.csproj" />
   </Folder>
   <Folder Name="/src/Shipping/">
     <Project Path="src/Shipping/Shipping.Api/Shipping.Api.csproj" />
@@ -70,6 +77,7 @@
     <Project Path="src/Stock/Stock.Grpc/Stock.Grpc.csproj" />
     <Project Path="src/Stock/Stock.Infrastructure/Stock.Infrastructure.csproj" Id="68e55bbb-a5ea-4c29-9485-4c552205f6fd" />
     <Project Path="src/Stock/Stock.Seed/Stock.Seed.csproj" Id="7a2955da-6c02-46b5-b9f0-f9670d07f790" />
+    <Project Path="src/Stock/Stock.Worker/Stock.Worker.csproj" />
   </Folder>
   <Folder Name="/tests/" />
 </Solution>

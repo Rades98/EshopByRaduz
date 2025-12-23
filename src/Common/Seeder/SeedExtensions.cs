@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Hosting;
-using Seeder.Models;
+﻿using Seeder.Models;
 using Seeder.Models.FileEntity;
 using System.Globalization;
 using System.Text;
@@ -16,7 +15,7 @@ namespace Seeder
 
         public static IDeserializer Deserializer => _yamlDeserializer;
 
-        public static async Task<string?> GenerateScript(this SeedFile file, string basePath, IHostEnvironment env)
+        public static async Task<string?> GenerateScript(this SeedFile file, string basePath)
         {
             var splitted = file.Path.Split('/');
             var memberPath = Path.Combine(basePath, Path.Combine(splitted));
@@ -35,11 +34,6 @@ namespace Seeder
             SeedMemberFile seedMemberFile;
 
             member = _yamlDeserializer.Deserialize<SeedMember>(await File.ReadAllTextAsync(memberPath, Encoding.UTF8));
-
-            if (member.Metadata.IsDevTestOnly && (env.IsProduction() || env.IsStaging()))
-            {
-                return null;
-            }
 
             if (member.Metadata.AdditionalUseCaseName != null && member.Metadata.AdditionalUseCaseName == "FilesUseCase")
             {

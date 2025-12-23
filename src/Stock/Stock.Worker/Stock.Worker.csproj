@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>dotnet-Regulatory.Consumer-3fc4f7ce-b452-4000-9e35-c4f0a36c3a90</UserSecretsId>
+    <UserSecretsId>dotnet-Stock.Worker-fc2d3db9-63fa-44cd-94f1-5bca84746fb9</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\InOutBox\InOutBox.Workers\InOutBox.Workers.csproj" />
     <ProjectReference Include="..\..\Orchestration\EshopByRaduz.ServiceDefaults\EshopByRaduz.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Stock.Infrastructure\Stock.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

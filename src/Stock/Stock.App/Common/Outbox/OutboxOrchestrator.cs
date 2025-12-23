@@ -1,11 +1,12 @@
 ﻿using DomainContracts.Events.Stock;
 using InOutbox.Orchestrator.Orchestrator;
 using InOutbox.Orchestrator.Repos;
+using Kafka;
 using System.Text.Json;
 
 namespace Stock.App.Common.Outbox
 {
-    internal class OutboxOrchestrator(IOutboxRepo outboxRepo, IEventPublisher eventPublisher) : OutboxOrchestratorBase(outboxRepo)
+    internal class OutboxOrchestrator(IOutboxRepo outboxRepo, IKafkaPublisher eventPublisher) : OutboxOrchestratorBase(outboxRepo)
     {
         public override async Task<bool> SendEvent(string type, string payload, CancellationToken cancellationToken)
         {
