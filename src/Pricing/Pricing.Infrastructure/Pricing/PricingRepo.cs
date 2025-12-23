@@ -48,6 +48,7 @@ namespace Pricing.Infrastructure.Pricing
                     pg.Sku,
                     pg.VariantId,
                     pg.Items.Select(item => PriceItemModel.Rehydrate(
+                        item.Id,
                         MoneyValueObject.Create(item.Price, item.CurrencyCode).Value!,
                         item.PriceType,
                         item.ValidFrom,
@@ -65,13 +66,10 @@ namespace Pricing.Infrastructure.Pricing
 
                 foreach (var price in aggregate.Prices)
                 {
-                    var existingItem = entity.Items.FirstOrDefault(i =>
-                        i.PriceType == price.PriceType &&
-                        i.CurrencyCode == price.Price.CurrencyCode &&
-                        i.ValidFrom == price.ValidFrom);
+                    var existingItem = entity.Items.FirstOrDefault(i => i.Id == price.Id);
+
                     if (existingItem is not null)
                     {
-                        existingItem.Price = price.Price.Amount;
                         existingItem.ValidTo = price.ValidTo;
                     }
                     else

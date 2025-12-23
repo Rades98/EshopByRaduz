@@ -9,14 +9,14 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var stockDatabase = sql.AddDatabase("StockDatabase");
 
-            var stockSeed = builder.AddProject<Projects.Stock_Api>("stockapiseed")
+            var stockSeed = builder.AddProject<Projects.Stock_Api>("stock-seed")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithArgs("--seed")
                 .WithHttpEndpoint(port: 5555, name: "stockSeed")
                 .WithReference(stockDatabase)
                     .WaitFor(stockDatabase);
 
-            var stock = builder.AddProject<Projects.Stock_Api>("stockapi")
+            var stock = builder.AddProject<Projects.Stock_Api>("stock-api")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .MapUrlsToScalar()
                 .WaitForCompletion(stockSeed)

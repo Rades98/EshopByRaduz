@@ -37,7 +37,6 @@ namespace Pricing.App.Pricing.UpdatePricesForProduct
                             return money.Error!;
                         }
 
-                        // TODO FIX
                         aggreagete.UpdatePrice(item.PriceType, money.Value!, item.ValidFrom, item.ValidTo);
                     }
                     else

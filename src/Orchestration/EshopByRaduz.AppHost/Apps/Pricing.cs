@@ -9,7 +9,7 @@ namespace EshopByRaduz.AppHost.Apps
         {
             var pricingDatabase = sql.AddDatabase("PricingDatabase");
 
-            var pricingSeed = builder.AddProject<Projects.Pricing_Api>("pricing-api-seed")
+            var pricingSeed = builder.AddProject<Projects.Pricing_Api>("pricing-seed")
                 .WithEnvironment("ASPNETCORE_ENVIRONMENT", builder.Environment.EnvironmentName)
                 .WithArgs("--seed")
                 .WithReference(pricingDatabase)

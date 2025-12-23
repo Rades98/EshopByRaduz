@@ -12,12 +12,16 @@ namespace Pricing.Domain.Pricing.PriceItem
 
         public DateTime? ValidTo { get; private set; }
 
+        public Guid Id { get; private set; }
+
         private PriceItemModel(
+            Guid id,
             MoneyValueObject price,
             PriceType priceType,
             DateTime validFrom,
             DateTime? validTo)
         {
+            Id = id;
             Price = price;
             PriceType = priceType;
             ValidFrom = validFrom;
@@ -38,12 +42,28 @@ namespace Pricing.Domain.Pricing.PriceItem
         }
 
         public static PriceItemModel Rehydrate(
+            Guid id,
             MoneyValueObject price,
             PriceType priceType,
             DateTime validFrom,
             DateTime? validTo)
         {
             return new PriceItemModel(
+                id,
+                price,
+                priceType,
+                validFrom,
+                validTo);
+        }
+
+        public static PriceItemModel Create(
+            MoneyValueObject price,
+            PriceType priceType,
+            DateTime validFrom,
+            DateTime? validTo)
+        {
+            return new PriceItemModel(
+                Guid.NewGuid(),
                 price,
                 priceType,
                 validFrom,

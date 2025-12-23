@@ -9,7 +9,7 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.AddServiceDefaults();
 
 builder.Services.RegisterInfraStructure(builder.Configuration, builder.Environment);
-builder.Services.RegisterApplicationLayer(builder.Configuration);
+builder.Services.RegisterApplicationLayer(builder.Configuration, addInOutBoxOrchestrators: true);
 
 builder.Services.AddHostedService<Worker>();
 

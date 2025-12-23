@@ -9,11 +9,15 @@ namespace Pricing.App.Common
 {
     public static class DependencyRegistrations
     {
-        public static IServiceCollection RegisterApplicationLayer(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection RegisterApplicationLayer(this IServiceCollection services, IConfiguration configuration, bool addInOutBoxOrchestrators = false)
         {
             services.AddMediator(Assembly.GetExecutingAssembly());
-            services.TryAddScoped<IInboxOrchestrator, InboxOrchestrator>();
-            services.TryAddScoped<IOutboxOrchestrator, OutboxOrchestrator>();
+
+            if (addInOutBoxOrchestrators)
+            {
+                services.TryAddScoped<IInboxOrchestrator, InboxOrchestrator>();
+                services.TryAddScoped<IOutboxOrchestrator, OutboxOrchestrator>();
+            }
 
             return services;
         }

@@ -33,7 +33,7 @@ namespace Pricing.Domain.Pricing
 
         public Result<PriceItemModel> AddPrice(PriceType priceType, MoneyValueObject moneyValue, DateTime validFrom, DateTime? validTo)
         {
-            var newPrice = PriceItemModel.Rehydrate(moneyValue, priceType, validFrom, validTo);
+            var newPrice = PriceItemModel.Create(moneyValue, priceType, validFrom, validTo);
 
             var overlap = _prices.Any(p =>
                 p.PriceType == priceType &&
@@ -78,7 +78,7 @@ namespace Pricing.Domain.Pricing
             DateTime validFrom,
             DateTime? validTo = null)
         {
-            var updated = PriceItemModel.Rehydrate(newPrice, priceType, validFrom, validTo);
+            var updated = PriceItemModel.Create(newPrice, priceType, validFrom, validTo);
 
             var overlappingPrices = _prices
                 .Where(p => p.PriceType == priceType && p.PriceType != PriceType.Promo && p.Overlaps(updated))
@@ -86,7 +86,10 @@ namespace Pricing.Domain.Pricing
 
             foreach (var old in overlappingPrices)
             {
-                old.Invalidate();
+                if (!(updated.ValidTo is not null && old.ValidTo is null))
+                {
+                    old.Invalidate();
+                }
             }
 
             _prices.Add(updated);
