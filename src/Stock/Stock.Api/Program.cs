@@ -17,7 +17,7 @@ builder.AddServiceDefaults();
 builder.Services.AddOpenApi();
 
 builder.Services.RegisterInfraStructure(builder.Configuration, builder.Environment);
-builder.Services.RegisterApplicationLayer(builder.Configuration);
+builder.Services.RegisterApplicationLayer(addInOutBoxOrchestrators: true); // better move to worker or smth
 
 builder.Services.AddOutboxWorker();
 
