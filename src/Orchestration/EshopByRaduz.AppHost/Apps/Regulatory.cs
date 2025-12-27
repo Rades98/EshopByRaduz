@@ -21,7 +21,7 @@ namespace EshopByRaduz.AppHost.Apps
                 .WithReference(kafka)
                     .WaitFor(kafka);
 
-            var group = builder.AddResource(new GroupResource("Regulatory-CoreDomain"))
+            var group = builder.AddResource(new GroupResource("Regulatory-SupportingDomain"))
                 .WithChildRelationship(regulatoryDatabase)
                 .WithChildRelationship(regulatory_grpc)
                 .WithChildRelationship(worker);

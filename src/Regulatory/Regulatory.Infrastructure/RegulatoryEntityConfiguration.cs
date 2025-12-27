@@ -13,6 +13,10 @@ namespace Regulatory.Infrastructure
                 .IsRequired()
                 .HasMaxLength(50);
 
+            builder.Property(c => c.CountryCode)
+                .IsRequired()
+                .HasMaxLength(3);
+
             builder.Property(t => t.IsActive)
                .HasDefaultValue(false);
 

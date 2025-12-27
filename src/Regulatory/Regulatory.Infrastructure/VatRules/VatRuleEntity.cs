@@ -8,8 +8,6 @@
 
         public RegulatoryEntity Regulatory { get; set; } = null!;
 
-        public required string CountryCode { get; set; }
-
         public decimal VatRate { get; set; }
 
         public DateTime ValidFrom { get; set; }

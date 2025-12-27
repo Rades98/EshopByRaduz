@@ -122,7 +122,7 @@ namespace Seeder
         private static string GenerateInsertStatements(this SeedMember seedMember)
         {
             var metadata = seedMember.Metadata;
-            var dataList = seedMember.Data;
+            var dataList = seedMember.Data ?? [];
 
             var sb = new StringBuilder();
 

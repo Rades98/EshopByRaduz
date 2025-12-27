@@ -48,7 +48,7 @@
     <element xsi:type="archimate:BusinessInteraction" name="Vytvoření objednávky" id="id-252c5718ed5b46a08ddc00656cfe44d2"/>
     <element xsi:type="archimate:BusinessInteraction" name="Zrušení objednávky" id="id-fb54d219528240eab8b235862c2c9e31"/>
     <element xsi:type="archimate:BusinessInteraction" name="Expedice objednávky" id="id-1198fcbc6a6a43c3a11c206a58f33bd1"/>
-    <element xsi:type="archimate:BusinessInteraction" name="Reklamace objednávky/kusu" id="id-19a20332fd494235998c69e0701f2520"/>
+    <element xsi:type="archimate:BusinessInteraction" name="Reklamace" id="id-19a20332fd494235998c69e0701f2520"/>
     <element xsi:type="archimate:BusinessInteraction" name="Kampaň" id="id-957318775ad34f9aaa76d8eaab83967a"/>
     <element xsi:type="archimate:BusinessInteraction" name="Indexace položek" id="id-8f36d8896ca947789a515ed49a307830"/>
     <element xsi:type="archimate:BusinessInteraction" name="Přiřazení položky k objednávce" id="id-eb7216114aee4c84aecf758604e61d41"/>
@@ -867,7 +867,7 @@
           <sourceConnection xsi:type="archimate:Connection" id="id-4f1d5c3c85a44fd9a3fab6743bc90b5d" source="id-cf2fa18e666f412aa4868210e0137e6c" target="id-2d8adad69fed4d81b3d643cb529bbac7" archimateRelationship="id-8dfeda76080a479a9ba78111e098a5cb"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="id-22db77c546644fd0a3ff108f38657503" targetConnections="id-92aa10b0e3e14299b0fa0d438698ec89 id-13f4837d293641ce86dc4e2c262a4c8c id-66867749784a432e9c5cf345d0ae192d" fillColor="#66cc00" archimateElement="id-19a20332fd494235998c69e0701f2520">
-          <bounds x="1344" y="615" width="144" height="48"/>
+          <bounds x="1367" y="615" width="108" height="48"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-e800a6c4a14a44e48297874230998f20" source="id-22db77c546644fd0a3ff108f38657503" target="id-9efa328a24f040ffb36a702b677920f0" archimateRelationship="id-2804296ca6224042abad163e6cdef4cb"/>
         </child>
         <child xsi:type="archimate:DiagramObject" id="id-f1034cafbe3642748c6de3a82b97d215" targetConnections="id-7b3a7181c1a743fb834bf84dc87f0475 id-2d053141cb4843dd9d83f63a712dd40b id-7d2bea6e902c47b4bef872d884e14c48" fillColor="#66cc00" archimateElement="id-957318775ad34f9aaa76d8eaab83967a">

@@ -9,6 +9,8 @@ namespace Regulatory.Infrastructure
 
         public required string ProductGroup { get; set; }
 
+        public required string CountryCode { get; set; }
+
         public bool IsActive { get; set; }
 
         public Collection<VatRuleEntity> VatRules { get; } = [];

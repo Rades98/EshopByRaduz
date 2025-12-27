@@ -28,7 +28,7 @@ namespace EshopByRaduz.AppHost.Apps
                 .WithReference(stockDatabase)
                     .WaitFor(stockDatabase);
 
-            var group = builder.AddResource(new GroupResource("Stock-CoreDomain"))
+            var group = builder.AddResource(new GroupResource("Stock-SupportingDomain"))
                 .WithChildRelationship(stockDatabase)
                 .WithChildRelationship(worker)
                 .WithChildRelationship(stock)

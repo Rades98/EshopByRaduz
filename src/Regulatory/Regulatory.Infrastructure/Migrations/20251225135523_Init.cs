@@ -55,6 +55,7 @@ namespace Regulatory.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProductGroup = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CountryCode = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
@@ -68,7 +69,6 @@ namespace Regulatory.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RegulatoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CountryCode = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
                     VatRate = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ValidTo = table.Column<DateTime>(type: "datetime2", nullable: true)

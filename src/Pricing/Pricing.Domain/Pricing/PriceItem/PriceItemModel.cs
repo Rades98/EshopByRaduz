@@ -56,7 +56,8 @@ namespace Pricing.Domain.Pricing.PriceItem
                 validTo);
         }
 
-        public static PriceItemModel Create(
+        // TODO RESULT - validate price etc
+        internal static PriceItemModel Create(
             MoneyValueObject price,
             PriceType priceType,
             DateTime validFrom,

@@ -9,10 +9,6 @@ namespace Regulatory.Infrastructure.VatCountry
         {
             builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.CountryCode)
-                .IsRequired()
-                .HasMaxLength(3);
-
             builder.Property(c => c.VatRate)
                 .IsRequired()
                 .HasColumnType("decimal(5,2)");

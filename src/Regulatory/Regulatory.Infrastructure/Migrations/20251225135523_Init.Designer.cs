@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Pricing.Infrastructure.Common;
+using Regulatory.Infrastructure.Common;
 
 #nullable disable
 
-namespace Pricing.Infrastructure.Migrations
+namespace Regulatory.Infrastructure.Migrations
 {
-    [DbContext(typeof(PricingDbContext))]
-    [Migration("20251223003345_Init")]
+    [DbContext(typeof(RegulatoryDbContext))]
+    [Migration("20251225135523_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -109,75 +109,40 @@ namespace Pricing.Infrastructure.Migrations
                     b.ToTable("OutboxEvents");
                 });
 
-            modelBuilder.Entity("Pricing.Infrastructure.Currency.CurrencyEntity", b =>
+            modelBuilder.Entity("Regulatory.Infrastructure.RegulatoryEntity", b =>
                 {
-                    b.Property<string>("Code")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CountryCode")
+                        .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
-                    b.Property<decimal>("ExchangeRate")
-                        .HasColumnType("decimal(18,6)");
-
-                    b.Property<bool>("IsMaster")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Precision")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Symbol")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Code");
-
-                    b.HasIndex("IsMaster");
-
-                    b.ToTable("Currencies");
-                });
-
-            modelBuilder.Entity("Pricing.Infrastructure.Pricing.PriceGroup.PriceGroupEntity", b =>
-                {
-                    b.Property<Guid>("Id")
+                    b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
-                    b.Property<string>("Sku")
+                    b.Property<string>("ProductGroup")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("VariantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("PriceGroups");
+                    b.ToTable("Regulatories");
                 });
 
-            modelBuilder.Entity("Pricing.Infrastructure.Pricing.PriceItem.PriceItemEntity", b =>
+            modelBuilder.Entity("Regulatory.Infrastructure.VatCountry.VatRuleEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CurrencyCode")
-                        .HasColumnType("nvarchar(3)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,6)");
-
-                    b.Property<Guid>("PriceGroupId")
+                    b.Property<Guid>("RegulatoryId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PriceType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ValidFrom")
                         .HasColumnType("datetime2");
@@ -185,36 +150,29 @@ namespace Pricing.Infrastructure.Migrations
                     b.Property<DateTime?>("ValidTo")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal>("VatRate")
+                        .HasColumnType("decimal(5,2)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CurrencyCode");
+                    b.HasIndex("RegulatoryId");
 
-                    b.HasIndex("PriceGroupId");
-
-                    b.ToTable("PriceItems");
+                    b.ToTable("VatRules");
                 });
 
-            modelBuilder.Entity("Pricing.Infrastructure.Pricing.PriceItem.PriceItemEntity", b =>
+            modelBuilder.Entity("Regulatory.Infrastructure.VatCountry.VatRuleEntity", b =>
                 {
-                    b.HasOne("Pricing.Infrastructure.Currency.CurrencyEntity", "Currency")
-                        .WithMany()
-                        .HasForeignKey("CurrencyCode")
+                    b.HasOne("Regulatory.Infrastructure.RegulatoryEntity", "Regulatory")
+                        .WithMany("VatRules")
+                        .HasForeignKey("RegulatoryId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Pricing.Infrastructure.Pricing.PriceGroup.PriceGroupEntity", "Group")
-                        .WithMany("Items")
-                        .HasForeignKey("PriceGroupId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Currency");
-
-                    b.Navigation("Group");
+                    b.Navigation("Regulatory");
                 });
 
-            modelBuilder.Entity("Pricing.Infrastructure.Pricing.PriceGroup.PriceGroupEntity", b =>
+            modelBuilder.Entity("Regulatory.Infrastructure.RegulatoryEntity", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("VatRules");
                 });
 #pragma warning restore 612, 618
         }
