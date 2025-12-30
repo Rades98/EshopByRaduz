@@ -1,0 +1,69 @@
+# Založení Itemu
+
+## Účel
+Zajistit, že pro každý produkt, který je uvedený do nabídky, existuje odpovídající položka zásob (Stock Item), která reprezentuje jeho fyzickou nebo disponibilní existenci v systému.
+Stock Item je business entita, která umožňuje:
+
+- sledovat dostupnost,
+- provádět rezervace,
+- plánovat výdej,
+- řídit doplňování.
+
+---
+
+## Spouštěč
+Produkt je uveden do nabídky (aktivace produktu nebo varianty).
+
+---
+
+## Kroky procesu
+
+1. Produkt je uveden do nabídky.
+     - Produkt má definované SKU, varianty, parametry.
+     - Produkt nebo varianta je aktivována.
+
+2. Stock doména reaguje na informaci o produktu.
+
+     - Ověří, zda pro daný SKU/Variant existuje odpovídající položka zásob.
+     - Stock Item reprezentuje možnost držet, rezervovat a vydávat daný produkt.
+     -  Business pravidla:
+         - Každý aktivní produkt musí mít svůj Stock Item.
+         - Stock Item vzniká i tehdy, když je počáteční množství 0 (např. pre‑sale, backorder).
+
+3. Pokud položka zásob neexistuje, vzniká nový Stock Item.
+
+     - Vytvoří se entita reprezentující zásobu produktu.
+     - informace potřebné pro budoucí rezervace a dostupnost
+
+4. Stock Item je zařazen do procesů dostupnosti.
+
+     - Lze jej zahrnout do výpočtů dostupnosti.
+     - Lze jej rezervovat.
+     - Lze jej plánovat pro výdej.
+
+5. Informace o existenci Stock Itemu je zpřístupněna ostatním doménám.
+
+     - Checkout může dotazovat dostupnost.
+     - Fulfillment může plánovat výdej.
+     - Pricing může pracovat s dostupností.
+
+Výsledek:
+
+- Produkt je plně integrovaný do skladového a prodejního procesu.
+- Systém umí:
+     - zobrazit dostupnost,
+     - přijímat rezervace,
+     - plánovat výdej,
+     - řídit replenishment.
+
+---
+
+## Archimate view
+
+TBD
+
+<!-- <div class="iframe-wrapper">
+  <iframe 
+    src="../../../../Archi/id-a684dda0a38c46dd8ec32300560e4317/views/id-9d271ea16f4f4bd69d43dc69b6f64b15.html" loading="lazy">
+  </iframe>
+</div> -->

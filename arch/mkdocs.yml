@@ -20,7 +20,11 @@ nav:
         - TOGAF/Business/DomainStakeholder.md
         - TOGAF/Business/Domains.md
         - Domains: 
-          - TOGAF/Business/Domains/Stock.md
+          - Stock: 
+            - TOGAF/Business/Domains/Stock/Stock.md
+            - TOGAF/Business/Domains/Stock/Dictionary.md
+            - Funkce: 
+              - TOGAF/Business/Domains/Stock/ItemCreation.md
 
     - ADR:
       - ADR/ADRs.md

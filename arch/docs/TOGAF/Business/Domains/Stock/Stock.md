@@ -35,6 +35,6 @@ Podporuje také zpětné příjmy (vratky, reklamace) a synchronizuje CostSnapsh
 
 <div class="iframe-wrapper">
   <iframe 
-    src="../../../Archi/id-a684dda0a38c46dd8ec32300560e4317/views/id-9d271ea16f4f4bd69d43dc69b6f64b15.html" loading="lazy">
+    src="../../../../Archi/id-a684dda0a38c46dd8ec32300560e4317/views/id-9d271ea16f4f4bd69d43dc69b6f64b15.html" loading="lazy">
   </iframe>
 </div>
