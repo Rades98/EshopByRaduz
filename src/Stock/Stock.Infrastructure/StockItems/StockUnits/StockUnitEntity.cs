@@ -1,4 +1,5 @@
-﻿using Stock.Infrastructure.Warehouses;
+﻿using Stock.Infrastructure.StockItems.StockUnits.CostSnapshot;
+using Stock.Infrastructure.Warehouses;
 
 namespace Stock.Infrastructure.StockItems.StockUnits
 {
@@ -25,5 +26,7 @@ namespace Stock.Infrastructure.StockItems.StockUnits
         public Guid? WarehouseId { get; set; }
 
         public WarehouseEntity? Warehouse { get; set; }
+
+        public CostSnapshotEntity? CostSnapshot { get; private set; }
     }
 }
