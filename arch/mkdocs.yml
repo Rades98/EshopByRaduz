@@ -32,6 +32,7 @@ nav:
       - ADR/ADR_00007.md
       - ADR/ADR_00008.md
       - ADR/ADR_00009.md
+      - ADR/ADR_00010.md
     - ITIL:
        - ITIL/IncidentManagement.md
        - ITIL/ChangeManagement.md
