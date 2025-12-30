@@ -44,6 +44,7 @@ nav:
 
 plugins:
   - search
+  - codeinclude
   - mermaid2
 
 theme:

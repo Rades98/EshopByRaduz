@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main 
+      - master 
 
 jobs:
   build-deploy:
@@ -26,6 +26,7 @@ jobs:
           pip install mkdocs-codeinclude-plugin
           pip install mkdocs-material
           pip install mkdocs-bootswatch
+          pip install mkdocs-mermaid2-plugin
 
       - name: Build MkDocs site
         run: mkdocs build --strict --config-file arch/mkdocs.yml
