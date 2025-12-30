@@ -44,8 +44,6 @@ nav:
 
 plugins:
   - search
-  - swagger-ui-tag
-  - codeinclude
   - mermaid2
 
 theme:
