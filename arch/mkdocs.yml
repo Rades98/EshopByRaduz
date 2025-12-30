@@ -1,0 +1,76 @@
+site_name: 'EshopByRaduz'
+
+nav:
+  - Home: index.md
+  - Arch:
+    - TOGAF:
+      - Motivation: 
+        - TOGAF/Motivation/Motivation.md 
+        - Stakeholders: 
+            - TOGAF/Motivation/Stakeholders/BusinessOwner.md
+            - TOGAF/Motivation/Stakeholders/Marketing.md
+            - TOGAF/Motivation/Stakeholders/Management.md
+            - TOGAF/Motivation/Stakeholders/Operations.md
+            - TOGAF/Motivation/Stakeholders/Finance.md
+            - TOGAF/Motivation/Stakeholders/Compliance.md
+            - TOGAF/Motivation/Stakeholders/IT.md
+            - TOGAF/Motivation/Stakeholders/Customer.md
+            - TOGAF/Motivation/Stakeholders/POs.md
+      - Business:
+        - TOGAF/Business/DomainStakeholder.md
+        - TOGAF/Business/Domains.md
+        - Domains: 
+          - TOGAF/Business/Domains/Stock.md
+
+    - ADR:
+      - ADR/ADR_00001.md
+      - ADR/ADR_00002.md
+      - ADR/ADR_00003.md
+      - ADR/ADR_00004.md
+      - ADR/ADR_00005.md
+      - ADR/ADR_00006.md
+      - ADR/ADR_00007.md
+      - ADR/ADR_00008.md
+      - ADR/ADR_00009.md
+    - ITIL:
+       - ITIL/IncidentManagement.md
+       - ITIL/ChangeManagement.md
+       - ITIL/ProblemManagement.md
+       - ITIL/Sla.md
+  - Codebase:
+    - CommonLibs:
+       - Code/Common/InOutbox.md
+       - Code/Common/DomainObjects.md
+
+plugins:
+  - search
+  - swagger-ui-tag
+  - codeinclude
+  - mermaid2
+
+theme:
+  name: 'material'
+  features:
+    - navigation.top
+    - navigation.tabs
+    - footer.only_login
+    - navigation.instant
+    - navigation.tracking
+
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.toc
+  - fenced_code
+  - attr_list
+  - pymdownx.extra:
+      pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_css: 
+  - styles/custom.css
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js'

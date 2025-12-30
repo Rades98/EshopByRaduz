@@ -1,0 +1,11 @@
+.md-content iframe {
+    position: relative;
+    z-index: 2 !important;
+    width:100vw; 
+    
+    height: clamp(300px, 100vh, 120vh);
+}
+
+.iframe-wrapper{
+    width: 65vw;
+}

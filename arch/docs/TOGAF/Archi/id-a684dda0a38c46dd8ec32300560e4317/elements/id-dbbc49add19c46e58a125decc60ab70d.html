@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="frame" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<title>Dodržet daňové předpisy</title>
+
+	<!-- JQUERY -->
+	<script type="text/javascript" src="../../lib/jquery/jquery.min.js"></script>
+	<!-- BOOTSTRAP -->
+	<link type="text/css" rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.min.yeti.css">
+	<script type="text/javascript" src="../../lib/bootstrap/js/bootstrap-3.4.1.min.js"></script>
+	<!-- REPORT SPECIFIC -->
+	<link type="text/css" rel="stylesheet" href="../../css/model.css">
+	<link type="text/css" rel="stylesheet" href="../../css/i18n.css">
+	<script type="text/javascript" src="../../js/frame.js"></script>
+	<script type="text/javascript" src="../../js/imageMapResizer.min.js"></script>
+</head>
+
+<body>
+	<div class="panel panel-default root-panel">
+
+		<div class="panel-heading root-panel-heading">
+            <!-- Name -->
+               <b>Dodr&#382;et da&#328;ov&#233; p&#345;edpisy</b>
+
+            <!-- If a View with Viewpoint -->
+			   (<span class="i18n-elementtype-Goal"></span>)
+			   <a class="glyphicon glyphicon-info-sign" id="hint-Goal" target="hint"></a>
+		</div>
+
+		<div class="panel-body root-panel-body">
+		    <!-- If this is a digram model (has children and no bounds) show the image -->
+
+			<div role="tabpanel">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+                    <!-- Purpose / Documentation / Content -->
+					   <li role="presentation" class="active"><a href="#documentation" aria-controls="documentation" role="tab" data-toggle="tab" class="i18n-documentation"></a></li>
+
+                    <!-- Properties -->
+                    <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab" class="i18n-properties"></a></li>
+
+                    <!-- Analysis -->
+                    	<li role="presentation"><a href="#analysis" aria-controls="analysis" role="tab" data-toggle="tab" class="i18n-analysis"></a></li>
+
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="documentation">
+						<div class="convertlinks documentation" style="white-space:pre-wrap"></div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="properties">
+						<table class="table table-striped table-hover table-condensed">
+							<thead>
+								<tr>
+									<th class="i18n-key"></th>
+									<th class="i18n-value"></th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="analysis">
+						<table class="table table-striped table-hover table-condensed" id="used-in-views">
+							<thead>
+								<tr><th colspan="2" class="i18n-used-in-views" /></tr>
+								<tr>
+									<th class="i18n-name"></th>
+									<th class="i18n-viewpoint"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="used-in-views-id-9f656fa4aff2417f8949687296b2a457">
+																	<td><a href="../views/id-9f656fa4aff2417f8949687296b2a457.html" target="view" title="Compliance"> Compliance </a></td>
+																	<td><span class="i18n-viewpoint-" /></td>
+																</tr><tr id="used-in-views-id-fb8f020ed88f43c39da9d13702f2baeb">
+																	<td><a href="../views/id-fb8f020ed88f43c39da9d13702f2baeb.html" target="view" title="1_Motivation View"> 1_Motivation View </a></td>
+																	<td><span class="i18n-viewpoint-" /></td>
+																</tr><tr id="used-in-views-id-e4b267b0c7294146b3889b1f1f1df14c">
+																	<td><a href="../views/id-e4b267b0c7294146b3889b1f1f1df14c.html" target="view" title="Domain-Stakeholder"> Domain-Stakeholder </a></td>
+																	<td><span class="i18n-viewpoint-" /></td>
+																</tr>
+							</tbody>
+						</table>
+						<table class="table table-striped table-hover table-condensed" id="model-relations">
+							<thead>
+								<tr><th colspan="4" class="i18n-model-relations" /></tr>
+								<tr>
+									<th class="i18n-name"></th>
+									<th class="i18n-type"></th>
+									<th class="i18n-source"></th>
+									<th class="i18n-target"></th>
+								</tr>
+							</thead>
+							<tbody>
+									<tr>
+											<td><a href="../elements/id-22d9bb21a8094a3da635ef187d086534.html" target="element" title=""></a></td>
+											<td><span class="i18n-elementtype-AssociationRelationship" /></td>
+											<td><a href="../elements/id-dbbc49add19c46e58a125decc60ab70d.html" target="element"> Dodr&#382;et da&#328;ov&#233; p&#345;edpisy</a></td>
+											<td><a href="../elements/id-74bce8232b3a41b28d2d323f1cd86118.html" target="element"> Da&#328;ov&#225; legislativa</a></td>
+										</tr>
+									<tr>
+											<td><a href="../elements/id-c70ba104f46446bc9dc8b097ea76e725.html" target="element" title=""></a></td>
+											<td><span class="i18n-elementtype-InfluenceRelationship" /></td>
+											<td><a href="../elements/id-a99c22679d0e4895ac768da6022d385a.html" target="element"> Compliance</a></td>
+											<td><a href="../elements/id-dbbc49add19c46e58a125decc60ab70d.html" target="element"> Dodr&#382;et da&#328;ov&#233; p&#345;edpisy</a></td>
+										</tr><tr>
+											<td><a href="../elements/id-afcfd4cf5c204beaafe7ede843676e05.html" target="element" title=""></a></td>
+											<td><span class="i18n-elementtype-RealizationRelationship" /></td>
+											<td><a href="../elements/id-c1f933a3b78d4826ade6b86fa3cab663.html" target="element"> Pricing core domain</a></td>
+											<td><a href="../elements/id-dbbc49add19c46e58a125decc60ab70d.html" target="element"> Dodr&#382;et da&#328;ov&#233; p&#345;edpisy</a></td>
+										</tr><tr>
+											<td><a href="../elements/id-d333d42024984f3e9cd6126de1c7ba42.html" target="element" title=""></a></td>
+											<td><span class="i18n-elementtype-RealizationRelationship" /></td>
+											<td><a href="../elements/id-49c2c8c429004b05bb38c406551e3fed.html" target="element"> Catalog generic domain</a></td>
+											<td><a href="../elements/id-dbbc49add19c46e58a125decc60ab70d.html" target="element"> Dodr&#382;et da&#328;ov&#233; p&#345;edpisy</a></td>
+										</tr><tr>
+											<td><a href="../elements/id-8c37eb81b57149fe94e9aa850a59b79c.html" target="element" title=""></a></td>
+											<td><span class="i18n-elementtype-RealizationRelationship" /></td>
+											<td><a href="../elements/id-c8a77814c80e4a718d5c3af45ab678ec.html" target="element"> Regulatory supporting domain</a></td>
+											<td><a href="../elements/id-dbbc49add19c46e58a125decc60ab70d.html" target="element"> Dodr&#382;et da&#328;ov&#233; p&#345;edpisy</a></td>
+										</tr><tr>
+											<td><a href="../elements/id-5a69257184e8421fa8e10605c224d7e3.html" target="element" title=""></a></td>
+											<td><span class="i18n-elementtype-RealizationRelationship" /></td>
+											<td><a href="../elements/id-6c1af88c99f544738a8ff59cefec55dc.html" target="element"> Basket Channel</a></td>
+											<td><a href="../elements/id-dbbc49add19c46e58a125decc60ab70d.html" target="element"> Dodr&#382;et da&#328;ov&#233; p&#345;edpisy</a></td>
+										</tr>
+							</tbody>
+						</table>
+					</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">imageMapResize();</script>
+</body>
+</html>
