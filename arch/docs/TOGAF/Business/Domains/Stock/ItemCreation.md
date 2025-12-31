@@ -12,18 +12,16 @@ Stock Item je business entita, která umožňuje:
 ---
 
 ## Spouštěč
-Produkt je uveden do nabídky (aktivace produktu nebo varianty).
+Produkt je zalistován v Product doméně
 
 ---
 
 ## Kroky procesu
 
-1. Produkt je uveden do nabídky.
+1. Produkt je zalistován
      - Produkt má definované SKU, varianty, parametry.
-     - Produkt nebo varianta je aktivována.
 
 2. Stock doména reaguje na informaci o produktu.
-
      - Ověří, zda pro daný SKU/Variant existuje odpovídající položka zásob.
      - Stock Item reprezentuje možnost držet, rezervovat a vydávat daný produkt.
      -  Business pravidla:
@@ -46,10 +44,11 @@ Produkt je uveden do nabídky (aktivace produktu nebo varianty).
      - Checkout může dotazovat dostupnost.
      - Fulfillment může plánovat výdej.
      - Pricing může pracovat s dostupností.
+     - Catalog staví snapshot pro budoucí indexaci
 
 Výsledek:
 
-- Produkt je plně integrovaný do skladového a prodejního procesu.
+- Produkt je založen a připraven pro integraci do skladového a prodejního procesu.
 - Systém umí:
      - zobrazit dostupnost,
      - přijímat rezervace,
@@ -57,13 +56,3 @@ Výsledek:
      - řídit replenishment.
 
 ---
-
-## Archimate view
-
-TBD
-
-<!-- <div class="iframe-wrapper">
-  <iframe 
-    src="../../../../Archi/id-a684dda0a38c46dd8ec32300560e4317/views/id-9d271ea16f4f4bd69d43dc69b6f64b15.html" loading="lazy">
-  </iframe>
-</div> -->

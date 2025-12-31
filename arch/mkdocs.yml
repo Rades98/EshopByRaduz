@@ -4,6 +4,7 @@ nav:
   - Home: index.md
   - Arch:
     - TOGAF:
+      - TOGAF/Dictionary.md 
       - Motivation: 
         - TOGAF/Motivation/Motivation.md 
         - Stakeholders: 
@@ -25,6 +26,12 @@ nav:
             - TOGAF/Business/Domains/Stock/Dictionary.md
             - Funkce: 
               - TOGAF/Business/Domains/Stock/ItemCreation.md
+      - Application:
+        - Domains:
+          - Stock:
+            - TOGAF/Application/Stock/Stock.md
+            - Funkce: 
+              - TOGAF/Application/Stock/CreateItem.md
 
     - ADR:
       - ADR/ADRs.md
@@ -63,6 +70,8 @@ plugins:
   - search
   - codeinclude
   - mermaid2
+  - drawio:
+      viewer_js: "https://viewer.diagrams.net/js/viewer-static.min.js"  
 
 theme:
   name: 'material'

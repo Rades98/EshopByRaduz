@@ -1,0 +1,3 @@
+# StockItemCreation
+
+![](StockItemCreation.drawio)
