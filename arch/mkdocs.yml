@@ -3,8 +3,8 @@ site_name: 'EshopByRaduz'
 nav:
   - Home: index.md
   - Arch:
+    - Dictionary.md 
     - TOGAF:
-      - TOGAF/Dictionary.md 
       - Motivation: 
         - TOGAF/Motivation/Motivation.md 
         - Stakeholders: 
@@ -30,8 +30,11 @@ nav:
         - Domains:
           - Stock:
             - TOGAF/Application/Stock/Stock.md
-            - Funkce: 
-              - TOGAF/Application/Stock/CreateItem.md
+            - TOGAF/Application/Stock/CreateItem.md
+      - Technology:
+        - Domains:
+          - Stock:
+            - TOGAF/Technology/Stock.md
 
     - ADR:
       - ADR/ADRs.md
@@ -56,6 +59,7 @@ nav:
       - ADR/ADR_00019.md
       - ADR/ADR_00020.md
       - ADR/ADR_00021.md
+      - ADR/ADR_00022.md
     - ITIL:
        - ITIL/IncidentManagement.md
        - ITIL/ChangeManagement.md

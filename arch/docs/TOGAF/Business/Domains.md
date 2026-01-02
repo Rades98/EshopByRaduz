@@ -4,11 +4,11 @@ Tento pohled představuje celkovou mapu domén a klíčových procesů napříč
 Slouží jako orientační vrstva, která propojuje business logiku s technickými doménami — od marketingu přes objednávky až po reklamace, platby a reporting.
 
 Každý proces (např. „Vytvoření objednávky“, „Platba“, „Reklamace“) je navázán na konkrétní doménu, která ho umožňuje realizovat.  
-Domény jsou rozděleny na **core**, **supporting**, **generic** a **channel**, podle jejich významu v architektuře.
+Domény jsou rozděleny na **core**, **supporting** a **generic**, podle jejich významu v architektuře.
 
 > Cílem tohoto pohledu není detailní specifikace, ale **navigační přehled**, který ukazuje, jak jednotlivé části systému spolupracují na doručení hodnoty.
 
-Tento pohled tvoří základ pro další, konkrétnější schémata per doména, kde jsou procesy rozpracovány do větší hloubky (např. Order, Checkout, Claims…).
+Tento pohled tvoří základ pro další, konkrétnější schémata per doména, kde jsou procesy rozpracovány do větší hloubky (např. Stock).
 
 ## Architektonické principy
 - Domény nejsou jen technické silo — jsou nositeli business významu  

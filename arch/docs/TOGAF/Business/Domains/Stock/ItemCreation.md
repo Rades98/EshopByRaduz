@@ -43,8 +43,7 @@ Produkt je zalistován v Product doméně
 
      - Checkout může dotazovat dostupnost.
      - Fulfillment může plánovat výdej.
-     - Pricing může pracovat s dostupností.
-     - Catalog staví snapshot pro budoucí indexaci
+     - Catalog staví snapshot pro budoucí indexaci + dostupnost
 
 Výsledek:
 
@@ -53,6 +52,4 @@ Výsledek:
      - zobrazit dostupnost,
      - přijímat rezervace,
      - plánovat výdej,
-     - řídit replenishment.
-
 ---
