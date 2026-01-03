@@ -3,7 +3,7 @@
   <folder name="Strategy" id="id-4242b9566e3c41f49df4d1c4cb7ae326" type="strategy"/>
   <folder name="Business" id="id-017c73ee889c460b9ac939aa1e07bd78" type="business">
     <element xsi:type="archimate:BusinessService" name="Basket Supporting domain" id="id-6c1af88c99f544738a8ff59cefec55dc"/>
-    <element xsi:type="archimate:BusinessService" name="Catalog generic domain" id="id-49c2c8c429004b05bb38c406551e3fed"/>
+    <element xsi:type="archimate:BusinessService" name="Catalog supporting domain" id="id-49c2c8c429004b05bb38c406551e3fed"/>
     <element xsi:type="archimate:BusinessService" name="Checkout Core domain" id="id-50f215348d1446aa99e922af5fa0ad7e"/>
     <element xsi:type="archimate:BusinessService" name="Order core domain" id="id-b22eb634a5e54a31b88f78cb04f51a26"/>
     <element xsi:type="archimate:BusinessService" name="Payments supporting domain" id="id-e7f18245e18c41c9a819e4dd48d2e0f8"/>
