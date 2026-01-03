@@ -17,6 +17,7 @@ nav:
             - TOGAF/Motivation/Stakeholders/IT.md
             - TOGAF/Motivation/Stakeholders/Customer.md
             - TOGAF/Motivation/Stakeholders/POs.md
+        - TOGAF/Motivation/Impact.md 
       - Business:
         - TOGAF/Business/DomainStakeholder.md
         - TOGAF/Business/Raci.md

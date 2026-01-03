@@ -2621,7 +2621,7 @@
             <bounds x="473" y="487" width="149" height="55"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id-793b3a631490441db7076f0fec858901" targetConnections="id-18336fd01e524e65ad603f96826198d4" fillColor="#cab102" archimateElement="id-112a5a66b3364dac96d90ecd78902b48">
-            <bounds x="1541" y="800" width="133" height="51"/>
+            <bounds x="1572" y="800" width="133" height="51"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id-12c9747ddc0b4a88ad2d99d365f72c39" targetConnections="id-dcc8e47cf40a4f9a83aa8af585d6eb52" fillColor="#cab102" archimateElement="id-30a538011c2e4d4a8102da91b0f867cc">
             <bounds x="1313" y="800" width="133" height="51"/>
