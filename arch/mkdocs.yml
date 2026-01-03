@@ -79,12 +79,12 @@ nav:
             - TOGAF/Business/Domains/Claims/Claims.md
             - TOGAF/Business/Domains/Claims/Dictionary.md
       - Application:
-        - Domains:
+        - Domény:
           - Stock:
             - TOGAF/Application/Stock/Stock.md
             - TOGAF/Application/Stock/CreateItem.md
       - Technology:
-        - Domains:
+        - Domény:
           - Stock:
             - TOGAF/Technology/Stock.md
 
