@@ -19,13 +19,65 @@ nav:
             - TOGAF/Motivation/Stakeholders/POs.md
       - Business:
         - TOGAF/Business/DomainStakeholder.md
-        - TOGAF/Business/Domains.md
-        - Domains: 
+        - TOGAF/Business/Raci.md
+        - Domény: 
+          - TOGAF/Business/Domains.md
+          - Product:
+            - TOGAF/Business/Domains/Product/Product.md
+            - TOGAF/Business/Domains/Product/Dictionary.md
+          - Procurement:
+            - TOGAF/Business/Domains/Procurement/Procurement.md
+            - TOGAF/Business/Domains/Procurement/Dictionary.md
           - Stock: 
             - TOGAF/Business/Domains/Stock/Stock.md
             - TOGAF/Business/Domains/Stock/Dictionary.md
             - Funkce: 
               - TOGAF/Business/Domains/Stock/ItemCreation.md
+          - Accounting:
+            - TOGAF/Business/Domains/Accounting/Accounting.md
+            - TOGAF/Business/Domains/Accounting/Dictionary.md
+          - Regulatory:
+            - TOGAF/Business/Domains/Regulatory/Regulatory.md
+            - TOGAF/Business/Domains/Regulatory/Dictionary.md
+          - Pricing:
+            - TOGAF/Business/Domains/Pricing/Pricing.md
+            - TOGAF/Business/Domains/Pricing/Dictionary.md
+          - Catalog:
+            - TOGAF/Business/Domains/Catalog/Catalog.md
+            - TOGAF/Business/Domains/Catalog/Dictionary.md
+          - Customer:
+            - TOGAF/Business/Domains/Customer/Customer.md
+            - TOGAF/Business/Domains/Customer/Dictionary.md
+          - Provisioning:
+            - TOGAF/Business/Domains/Provisioning/Provisioning.md
+            - TOGAF/Business/Domains/Provisioning/Dictionary.md
+          - Search:
+            - TOGAF/Business/Domains/Search/Search.md
+            - TOGAF/Business/Domains/Search/Dictionary.md
+          - Marketing:
+            - TOGAF/Business/Domains/Marketing/Marketing.md
+            - TOGAF/Business/Domains/Marketing/Dictionary.md
+          - Basket:
+            - TOGAF/Business/Domains/Basket/Basket.md
+            - TOGAF/Business/Domains/Basket/Dictionary.md
+          - Checkout:
+            - TOGAF/Business/Domains/Checkout/Checkout.md
+            - TOGAF/Business/Domains/Checkout/Dictionary.md
+          - Order:
+            - TOGAF/Business/Domains/Order/Order.md
+            - TOGAF/Business/Domains/Order/Dictionary.md
+          - Payments:
+            - TOGAF/Business/Domains/Payments/Payments.md
+            - TOGAF/Business/Domains/Payments/Dictionary.md
+          - Shipping:
+            - TOGAF/Business/Domains/Shipping/Shipping.md
+            - TOGAF/Business/Domains/Shipping/Dictionary.md
+          - Fulfillment:
+            - TOGAF/Business/Domains/Fulfillment/Fulfillment.md
+            - TOGAF/Business/Domains/Fulfillment/Dictionary.md
+          - Claims:
+            - TOGAF/Business/Domains/Claims/Claims.md
+            - TOGAF/Business/Domains/Claims/Dictionary.md
       - Application:
         - Domains:
           - Stock:
@@ -60,11 +112,6 @@ nav:
       - ADR/ADR_00020.md
       - ADR/ADR_00021.md
       - ADR/ADR_00022.md
-    - ITIL:
-       - ITIL/IncidentManagement.md
-       - ITIL/ChangeManagement.md
-       - ITIL/ProblemManagement.md
-       - ITIL/Sla.md
   - Codebase:
     - CommonLibs:
        - Code/Common/InOutbox.md

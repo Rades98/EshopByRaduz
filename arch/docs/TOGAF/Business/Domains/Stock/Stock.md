@@ -1,11 +1,6 @@
 # Stock Supporting Domain
 
-Tento pohled detailně rozpracovává doménu „Stock“ jako podpůrnou komponentu systému, která zajišťuje správu položek, dostupnosti, 
-rezervací a jejich životního cyklu napříč objednávkami, reklamací a fulfillmentem.
-
-Doména Stock není jen pasivní evidence — aktivně reaguje na události z Checkoutu, Orderu, Fulfillmentu i Procurementu.  
-Zajišťuje synchronizaci dostupnosti, validaci při checkoutu, rezervace položek a jejich přiřazení k objednávkám.  
-Podporuje také zpětné příjmy (vratky, reklamace) a synchronizuje CostSnapshoty pro účetnictví.
+- Správa položek, rezervací a dostupnosti pro objednávky a fulfillment.  
 
 ## Klíčové procesy
 - Založení položky a její metadata  
@@ -27,7 +22,6 @@ Podporuje také zpětné příjmy (vratky, reklamace) a synchronizuje CostSnapsh
 - CostSnapshotBuffer pro synchronizaci mezi Accounting a fyzickou realitou skladu
 
 > Tento pohled slouží jako základ pro pochopení, jak systém pracuje s fyzickými položkami a jejich dostupností v reálném čase.
-
 
 ---
 
