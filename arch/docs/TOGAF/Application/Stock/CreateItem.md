@@ -15,4 +15,7 @@
 - OutboxProcessor čte nové události z Outboxu a publikuje je do event systému
 
 ## View
+
+> Pokud view nenačítá, refreshujte, prosím, obrazovku
+
 ![](StockItemCreation.drawio)

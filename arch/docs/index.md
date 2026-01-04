@@ -5,3 +5,4 @@ Model je vytvořen v Archi a propojen s dokumentací v MkDocs.
 Kromě architektonických pohledů jsou některé klíčové funkcionality implementovány v C#.
 
 > Cílem není jen technická správnost, ale i strategická čitelnost a udržitelnost systému.
+
