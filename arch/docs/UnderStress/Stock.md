@@ -27,7 +27,6 @@
 - Dochází k vysoké konkurenci na agregátu StockItem.
 - Outbox generuje velké množství událostí → hrozí backlog.
 - Databáze je zatížena čtením i zápisem.
-- Škálování nemusí být řešení, jelikož bottleneck může být databáze
 
 #### Dopad na systém
 
@@ -51,6 +50,7 @@
 - Periodické čištění ghost rezervací pomocí BG jobu
 - Degradace systému - pending rezervace v checkoutu/soft rezervace s dokončením objednávky a hláškou o ověření po potvrzení objednávky
 - Sekundární databáze (failover, nikoli multi-writer)
+- Nenačítat zbytečně všechny units do agregátu v případě pokusu o rezervaci
 
 #### Disaster recovery
 
