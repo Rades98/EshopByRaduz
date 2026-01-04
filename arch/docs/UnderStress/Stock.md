@@ -17,7 +17,7 @@
 
 ## Problémy
 
-> Jde o teoretické scénáře a teoretická řešení. Provozní realita si, [stejně jako voda](https://www.youtube.com/watch?v=I4qv3HeVAzc), často najde vlastní cestu, takže skutečné incidenty mohou přinést jiné — někdy jednodušší, jindy mnohem komplexnější varianty.
+> Jde o teoretické scénáře a teoretická řešení. Provozní realita si, [stejně jako voda](https://www.youtube.com/watch?v=I4qv3HeVAzc&t=348s), často najde vlastní cestu, takže skutečné incidenty mohou přinést jiné — někdy jednodušší, jindy mnohem komplexnější varianty.
 
 ### Stock under stress
 
