@@ -9,3 +9,7 @@
 .iframe-wrapper{
     width: 65vw;
 }
+
+.md-content .mermaid {
+  width:65vw; 
+}

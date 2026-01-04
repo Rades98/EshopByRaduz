@@ -79,6 +79,8 @@ nav:
           - Claims:
             - TOGAF/Business/Domains/Claims/Claims.md
             - TOGAF/Business/Domains/Claims/Dictionary.md
+        - Procesy: 
+            - TOGAF/Business/Flows/Purchase.md
       - Application:
         - Domény:
           - Stock:
