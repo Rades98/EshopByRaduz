@@ -125,9 +125,7 @@ plugins:
   - codeinclude
   - mermaid2
   - drawio:
-      viewer_js: "https://viewer.diagrams.net/js/viewer.min.js"
-      embed: true
-      
+      viewer_js: "https://viewer.diagrams.net/js/viewer.min.js"      
 
 theme:
   name: 'material'
