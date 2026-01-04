@@ -20,15 +20,3 @@
     position: relative;
     width:65vw; 
 }
-
-.md-typeset__table table {
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-.md-typeset__table table td:first-child {
-    position: sticky;
-    left: 0;
-    background: rgb(247, 240, 240);
-    z-index: 2;
-}

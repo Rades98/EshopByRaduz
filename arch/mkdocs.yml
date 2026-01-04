@@ -115,10 +115,8 @@ nav:
       - ADR/ADR_00020.md
       - ADR/ADR_00021.md
       - ADR/ADR_00022.md
-  - Codebase:
-    - CommonLibs:
-       - Code/Common/InOutbox.md
-       - Code/Common/DomainObjects.md
+    - Under stress:
+      - UnderStress/Stock.md
 
 plugins:
   - search
