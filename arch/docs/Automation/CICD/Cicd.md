@@ -9,7 +9,7 @@ Tento proces je jediná cesta, jak dostat změny do produkčního prostředí.
 
 Change & Delivery Automation (CI/CD) je základní schopnost architektury zajišťující konzistentní a bezpečné chování v systému.
 Tento mechanismus zajišťuje, že všechny změny jsou sledovatelné, reprodukovatelné a řízené napříč celým životním cyklem systému.
-Vztváří auditní stopu rozhodnutí a pokusů o změny, tím je chráněna stabilita provozu a kontinuita nasazování.
+Vytváří auditní stopu rozhodnutí a pokusů o změny, tím je chráněna stabilita provozu a kontinuita nasazování.
 
 ### Garance
 

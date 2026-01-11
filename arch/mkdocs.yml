@@ -120,7 +120,7 @@ nav:
     - Automatizace:
       - Automation/Automation.md
       - Automation/CICD/Cicd.md
-    - Testy:
+    - Testování:
       - Tests/Tests.md
 
 plugins:
