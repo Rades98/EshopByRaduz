@@ -71,5 +71,4 @@ sequenceDiagram
 
     OrderAPI-->>CheckoutAPI: OrderCreated
     CheckoutAPI-->>User: Objednávka potvrzena
-
 ```

@@ -132,23 +132,31 @@ plugins:
   - search
   - codeinclude
   - mermaid2
+  - glightbox
+  - git-revision-date-localized: 
+      fallback_to_build_date: true
   - drawio:
       viewer_js: "https://viewer.diagrams.net/js/viewer.min.js"      
 
 theme:
   name: 'material'
   features:
+    - diagrams
     - navigation.top
     - navigation.tabs
     - footer.only_login
     - navigation.instant
     - navigation.tracking
+    - content.tabs.link
 
 markdown_extensions:
-  - markdown.extensions.admonition
-  - markdown.extensions.toc
+  - admonition
+  - toc
   - fenced_code
   - attr_list
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.extra:
       pymdownx.superfences:
         custom_fences:
