@@ -99,7 +99,7 @@ Tyto testy slouží k ověření chování po nasazení. Jejich cílem je monito
 
 ### Smoke testy
 
-Smoke testy běží bezprostředně po deployi a ověřují základní funčknost (health), je to první validace rolloutu.
+Smoke testy běží bezprostředně po deployi a ověřují základní funkčnost (health), je to první validace rolloutu.
 
 ### Synthetic monitoring
 

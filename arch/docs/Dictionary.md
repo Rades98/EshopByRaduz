@@ -24,3 +24,4 @@
 | **Replay**                | Opětovné zpracování historických událostí pro rebuild nebo analýzu.                                                 |
 | **Dead Letter Queue**     | Místo, kam se ukládají nezpracovatelné zprávy nebo eventy.                                                          |
 | **Idempotence**           | Vlastnost operace, která má stejný výsledek při opakovaném provedení.                                               |
+| **TCO**                   | Total Cost of Ownership - celkové náklady vlastnictví                                                               |

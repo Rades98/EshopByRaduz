@@ -123,6 +123,8 @@ nav:
       - Automation/Eia.md
     - Testování:
       - Tests/Tests.md
+    - Platform:
+      - Platform/Platform.md
     - Dopad:
       - Impact/Impact.md
 
