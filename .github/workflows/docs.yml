@@ -32,7 +32,6 @@ jobs:
           pip install mkdocs-git-revision-date-localized-plugin
           pip install pymdown-extensions
 
-
       - name: Build MkDocs site
         run: mkdocs build --strict
         working-directory: ./arch
