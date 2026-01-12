@@ -33,29 +33,31 @@ Firma má:
 
 === "GitHub Enterprise + GitHub Actions + ArgoCD + GitHub Copilot"
 
-    ## Varianta A – GitHub Enterprise + GitHub Actions + ArgoCD + GitHub Copilot
     | Oblast        | Tool / Funkce                                                   |
     |---------------|-----------------------------------------------------------------|
-    | CI/CD         | GitHub Actions (cloud + self-hosted runnery)                    |
+    | CI/CD         | GitHub Actions (cloud + self-hosted runners)                    |
     | GitOps        | ArgoCD                                                          |
     | AI tooling    | GitHub Copilot (BE/FE), AI-assisted PR review, generování testů |
     | AI v provozu  | Integrace na externí AIOps (Datadog / Elastic / Grafana ML)     |
     | Security AI   | GitHub Advanced Security *(volitelný placený add-on)*           |
-    | Hostování     | On-Prem runnery pro heavy joby, cloud pro lehké joby            |
+    | Hostování     | On-Prem runners pro heavy joby, cloud pro lehké joby            |
     
-    ### Výhody
+    **Výhody**
+
     - nejlepší developer experience na trhu  
     - nejsilnější AI tooling pro vývojáře (Copilot)  
     - ArgoCD jako de facto standard GitOps  
     - snadná integrace s Vaultem (External Secrets, CSI)  
     - nízký vendor lock-in (GitHub + ArgoCD + Kubernetes)  
     
-    ### Nevýhody
+    **Nevýhody**
+
     - vyšší cena za uživatele  
     - pricing GitHub Actions závislý na minutách (nutná optimalizace)  
     - GitHub Advanced Security je samostatně licencovaný add-on  
     
-    ### Self-hosted runnery
+    **Self-hosted runners**
+
     - build FE/BE  
     - integrační a e2e testy  
     - image buildy  
@@ -63,34 +65,34 @@ Firma má:
 
 === "GitLab Premium + GitLab CI/CD + GitLab Agent"
 
-    ## Varianta B – GitLab Premium + GitLab CI/CD + GitLab Agent
     | Oblast        | Tool / Funkce                                            |
     |---------------|----------------------------------------------------------|
-    | CI/CD         | GitLab CI/CD (primárně self-hosted runnery)              |
+    | CI/CD         | GitLab CI/CD (primárně self-hosted runners)              |
     | GitOps        | GitLab Agent                                             |
     | AI tooling    | GitLab Duo (základní AI asistence)                       |
     | AI v provozu  | Externí AIOps: Datadog, Dynatrace, New Relic, Elastic ML |
-    | Hostování     | On-Prem GitLab + On-Prem runnery                         |
+    | Hostování     | On-Prem GitLab + On-Prem runners                         |
     
-    ### Výhody
+    **Výhody**
+
     - jednotná platforma (Git, CI/CD, registry, security)  
     - silná podpora On-Prem scénářů  
     - dobrá integrace Git + CI/CD  
     
-    ### Nevýhody
+    **Nevýhody**
+
     - vyšší licenční náklady  
     - AI tooling výrazně méně vyspělý než GitHub Copilot  
     - GitOps méně flexibilní než ArgoCD  
     - vyšší provozní (ops) náročnost GitLab On-Prem  
     
-    ### Self-hosted runnery
+    **Self-hosted runners**
+
     - prakticky nutnost (jinak vysoké CI náklady)  
     - dobrá integrace, ale vyšší provozní složitost  
     
 
 === "Azure DevOps Server + On-Prem build agenti + FluxCD"
-
-    ## Varianta C – Azure DevOps Server + On-Prem build agenti + FluxCD
     
     | Oblast        | Tool / Funkce                                            |
     |---------------|----------------------------------------------------------|
@@ -100,17 +102,20 @@ Firma má:
     | AI v provozu  | Externí AIOps: Datadog, Dynatrace, New Relic, Elastic ML |
     | Hostování     | On-Prem ADO Server + On-Prem build agenti                |
     
-    ### Výhody
+    **Výhody**
+
     - robustní enterprise governance  
     - silná integrace s Microsoft stackem (.NET, AD, HSM)  
     - nejnižší licenční náklady  
     
-    ### Nevýhody
+    **Nevýhody**
+
     - GitOps není nativní součást platformy  
     - slabší developer experience  
     - AI tooling oddělený a neintegrovaný  
     - vyšší komplexita celkového řešení  
-    
+
+---    
 
 ## Pricing & Cost Governance
 
