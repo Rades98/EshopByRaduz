@@ -1,0 +1,1 @@
+# Dopad architektury - TBD

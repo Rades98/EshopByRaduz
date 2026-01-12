@@ -36,6 +36,8 @@ Architektura formou CI/CD zajišťuje:
 - `develop` je živý kód, nasazuje se pouze na DEV prostředí
 - `main` je kód který má lifecycle přes TEST->Stage->Prod
 
+> Pokud view nenačítá, refreshujte, prosím, obrazovku
+
 ![](gitflow.drawio)
 
 ### Povolené typy větví a target větve

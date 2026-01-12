@@ -16,7 +16,7 @@ od založení, přes změny zdrojového kódu až po provoz v produkčním prost
 --- 
 
 1. [Change & Delivery Automation (CI/CD)](CICD/Cicd.md)
-2. Environment & Infrastructure Automation
+2. [Environment & Infrastructure Automation](Eia.md)
 3. Runtime Operations Automation
 4. Observability & Incident Automation
 5. Security & Compliance Automation
