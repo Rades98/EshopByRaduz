@@ -137,8 +137,6 @@ plugins:
       fallback_to_build_date: true
   - drawio:
       viewer_js: "https://viewer.diagrams.net/js/viewer.min.js"    
-      options:
-        background: "#ffffff" 
 
 theme:
   name: 'material'
