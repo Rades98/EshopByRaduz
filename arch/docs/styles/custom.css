@@ -20,3 +20,26 @@
     position: relative;
     width:65vw; 
 }
+
+[dir=ltr] .md-sidebar__inner {
+    padding-right: calc(100% - 11.5rem);
+}
+
+.md-sidebar {
+    align-self: flex-start;
+    flex-shrink: 0;
+    padding: 1.2rem 0;
+    position: sticky;
+    top: 2.4rem;
+    width: 12.1rem;
+}
+
+.md-grid {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    max-width: 75rem;
+}
+
+.mxgraph{
+    background: #ffffff
+}
