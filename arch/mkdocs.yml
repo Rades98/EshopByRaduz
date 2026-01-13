@@ -119,6 +119,7 @@ nav:
       - ADR/ADR_00023.md
       - ADR/ADR_00024.md
       - ADR/ADR_00025.md
+      - ADR/ADR_00026.md
     - Under stress:
       - UnderStress/Stock.md
     - Automatizace:
