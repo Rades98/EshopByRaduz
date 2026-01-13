@@ -3956,10 +3956,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-domain-layer" class="md-nav__link">
+  <a href="#domain-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Domain Layer
+        Domain Layer
       
     </span>
   </a>
@@ -3967,10 +3967,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-application-layer" class="md-nav__link">
+  <a href="#application-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Application Layer
+        Application Layer
       
     </span>
   </a>
@@ -3978,10 +3978,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-infrastructure-layer" class="md-nav__link">
+  <a href="#infrastructure-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Infrastructure Layer
+        Infrastructure Layer
       
     </span>
   </a>
@@ -4634,6 +4634,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADR_00023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR_00023: Volba CDN jako primární distribuční vrstva
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADR_00024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR_00024: Prevence degradace služeb (auto‑healing &amp; adaptive load management)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ADR_00025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR_00025: Edge rendering pro zlepšení interaktivity (INP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -5213,10 +5297,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-domain-layer" class="md-nav__link">
+  <a href="#domain-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Domain Layer
+        Domain Layer
       
     </span>
   </a>
@@ -5224,10 +5308,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-application-layer" class="md-nav__link">
+  <a href="#application-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Application Layer
+        Application Layer
       
     </span>
   </a>
@@ -5235,10 +5319,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-infrastructure-layer" class="md-nav__link">
+  <a href="#infrastructure-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Infrastructure Layer
+        Infrastructure Layer
       
     </span>
   </a>
@@ -5362,7 +5446,7 @@
 <hr>
 <h2 id="decision">Decision</h2>
 <p>Každá core doména bude implementována pomocí <strong>striktně oddělených vrstev</strong>:</p>
-<h3 id="1-domain-layer">1. Domain Layer</h3>
+<h3 id="domain-layer">Domain Layer</h3>
 <p>Obsahuje:</p>
 <ul>
 <li>doménové entity</li>
@@ -5380,7 +5464,7 @@
 <li>testovatelná bez závislostí</li>
 </ul>
 <hr>
-<h3 id="2-application-layer">2. Application Layer</h3>
+<h3 id="application-layer">Application Layer</h3>
 <p>Obsahuje:</p>
 <ul>
 <li>aplikační služby (use-cases)</li>
@@ -5397,7 +5481,7 @@
 <li>je vstupním bodem pro API / workers</li>
 </ul>
 <hr>
-<h3 id="3-infrastructure-layer">3. Infrastructure Layer</h3>
+<h3 id="infrastructure-layer">Infrastructure Layer</h3>
 <p>Obsahuje:</p>
 <ul>
 <li>implementace repository</li>
@@ -5541,7 +5625,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 30, 2025 23:08:26 UTC">December 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 13, 2026 19:41:21 UTC">January 13, 2026</span>
   </span>
 
     
