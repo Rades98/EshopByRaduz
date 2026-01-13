@@ -31,6 +31,7 @@ jobs:
           pip install mkdocs-glightbox
           pip install mkdocs-git-revision-date-localized-plugin
           pip install pymdown-extensions
+          pip install mkdocs-charts-plugin
 
       - name: Build MkDocs site
         run: mkdocs build --strict
