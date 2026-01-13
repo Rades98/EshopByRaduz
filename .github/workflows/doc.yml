@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          sparse-checkout: |
+            arch/docs
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -30,8 +34,8 @@ jobs:
           pip install mkdocs-drawio
           pip install mkdocs-glightbox
           pip install mkdocs-git-revision-date-localized-plugin
-          pip install pymdown-extensions
           pip install mkdocs-charts-plugin
+          pip install pymdown-extensions
 
       - name: Build MkDocs site
         run: mkdocs build --strict
