@@ -48,7 +48,7 @@
     padding: 0 0.2rem;     
 }
 
-.md-header__button.md-logo img, .md-header__button.md-logo svg {
+.md-header__button.md-logo img {
     height: 4rem;
     margin: 0.2rem
 }
