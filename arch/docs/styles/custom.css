@@ -31,13 +31,19 @@
     padding: 1.2rem 0;
     position: sticky;
     top: 2.4rem;
-    width: 12.1rem;
+    width: 10rem;
+}
+
+.md-content{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 110rem;
 }
 
 .md-grid {
-    margin-left: 5rem;
-    margin-right: 5rem;
-    max-width: 75rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    max-width: 110rem;
 }
 
 .mxgraph{
