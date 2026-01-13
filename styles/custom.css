@@ -1,0 +1,42 @@
+.md-content iframe {
+    position: relative;
+    z-index: 2 !important;
+    width:100vw; 
+    
+    height: clamp(300px, 100vh, 120vh);
+}
+
+.iframe-wrapper{
+    width: 65vw;
+}
+
+.md-content .mermaid {
+  width:65vw; 
+  z-index: 2 !important;
+}
+
+.md-typeset__scrollwrap {
+    overflow-x: auto;
+    position: relative;
+    width:65vw; 
+}
+
+.md-content{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 110rem;
+}
+
+.md-grid {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    max-width: 110rem;
+}
+
+.mxgraph{
+    background: #ffffff
+}
+
+.md-header__button.md-logo img {
+    height: 80px;
+}
