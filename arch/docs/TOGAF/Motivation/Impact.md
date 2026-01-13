@@ -18,4 +18,3 @@
 | Složitý audit a monitoring změn                       | Core služby s jasnými pravidly                                                                   |
 | Náročný výpočet náročnosti                            | Menší BC v DDD jsou prediktivní - možnost rzchlejších změn a iterací, core změny dělá jeden tým  |
 | Složité plánování roadmapy                            | Dá se plánovat a ověřovat po doménách a ne jako celek.                                           |
-

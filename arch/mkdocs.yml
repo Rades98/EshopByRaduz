@@ -21,6 +21,7 @@ nav:
       - Business:
         - TOGAF/Business/DomainStakeholder.md
         - TOGAF/Business/Raci.md
+        - TOGAF/Business/WebVitals.md
         - Domény: 
           - TOGAF/Business/Domains.md
           - Product:
@@ -123,16 +124,18 @@ nav:
       - Automation/Eia.md
     - Testování:
       - Tests/Tests.md
-    - Platform:
+    - Platforma:
       - Platform/Platform.md
     - Dopad:
       - Impact/Impact.md
+      - Impact/Performance.md
 
 plugins:
   - search
   - codeinclude
   - mermaid2
   - glightbox
+  - charts
   - git-revision-date-localized: 
       fallback_to_build_date: true
   - drawio:
@@ -178,9 +181,16 @@ markdown_extensions:
           - name: mermaid
             class: mermaid
             format: !!python/name:pymdownx.superfences.fence_code_format
+          - name: vegalite
+            class: vegalite
+            format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
 
 extra_css: 
   - styles/custom.css
 
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js'
+  - https://cdn.jsdelivr.net/npm/vega@5
+  - https://cdn.jsdelivr.net/npm/vega-lite@5
+  - https://cdn.jsdelivr.net/npm/vega-embed@6
+
