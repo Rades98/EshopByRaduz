@@ -142,6 +142,7 @@ plugins:
 
 theme:
   name: 'material'
+  logo: 'logo.png'
   palette:
     - scheme: slate
       primary: teal
