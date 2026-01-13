@@ -6,28 +6,28 @@
       
       
       
-        <link rel="prev" href="../../../Dictionary/">
+        <link rel="prev" href="../ADR_00025/">
       
       
-        <link rel="next" href="../Stakeholders/BusinessOwner/">
+        <link rel="next" href="../../UnderStress/Stock/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>Motivace systému - EshopByRaduz</title>
+        <title>ADR_00026: Zavedení jednotného CI/CD procesu jako povinné cesty pro změny - EshopByRaduz</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -46,15 +46,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../styles/custom.css">
+      <link rel="stylesheet" href="../../styles/custom.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#motivace-systemu" class="md-skip">
+        <a href="#adr_00026-zavedeni-jednotneho-cicd-procesu-jako-povinne-cesty-pro-zmeny" class="md-skip">
           Skip to content
         </a>
       
@@ -97,9 +97,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="EshopByRaduz" class="md-header__button md-logo" aria-label="EshopByRaduz" data-md-component="logo">
+    <a href="../.." title="EshopByRaduz" class="md-header__button md-logo" aria-label="EshopByRaduz" data-md-component="logo">
       
-  <img src="../../../logo.png" alt="logo">
+  <img src="../../logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Motivace systému
+              ADR_00026: Zavedení jednotného CI/CD procesu jako povinné cesty pro změny
             
           </span>
         </div>
@@ -215,7 +215,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -238,7 +238,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../Dictionary/" class="md-tabs__link">
+        <a href="../../Dictionary/" class="md-tabs__link">
           
   
   
@@ -272,9 +272,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="EshopByRaduz" class="md-nav__button md-logo" aria-label="EshopByRaduz" data-md-component="logo">
+    <a href="../.." title="EshopByRaduz" class="md-nav__button md-logo" aria-label="EshopByRaduz" data-md-component="logo">
       
-  <img src="../../../logo.png" alt="logo">
+  <img src="../../logo.png" alt="logo">
 
     </a>
     EshopByRaduz
@@ -289,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -371,7 +371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Dictionary/" class="md-nav__link">
+      <a href="../../Dictionary/" class="md-nav__link">
         
   
   
@@ -396,8 +396,6 @@
                 
   
   
-    
-  
   
   
     
@@ -408,11 +406,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -433,7 +431,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -448,8 +446,6 @@
                 
   
   
-    
-  
   
   
     
@@ -460,11 +456,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1">
         
           
           <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
@@ -485,7 +481,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -500,37 +496,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Motivace systému
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../TOGAF/Motivation/Motivation/" class="md-nav__link">
         
   
   
@@ -546,81 +515,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#strategicky-kontext" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Strategický kontext
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#klicove-motivace" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Klíčové motivace
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#spolecny-jmenovatel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Společný jmenovatel
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architektonicky-princip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architektonický princip
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#archimate-view" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Archimate view
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -683,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/BusinessOwner/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/BusinessOwner/" class="md-nav__link">
         
   
   
@@ -711,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/Marketing/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/Marketing/" class="md-nav__link">
         
   
   
@@ -739,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/Management/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/Management/" class="md-nav__link">
         
   
   
@@ -767,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/Operations/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/Operations/" class="md-nav__link">
         
   
   
@@ -795,7 +689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/Finance/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/Finance/" class="md-nav__link">
         
   
   
@@ -823,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/Compliance/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/Compliance/" class="md-nav__link">
         
   
   
@@ -851,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/IT/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/IT/" class="md-nav__link">
         
   
   
@@ -879,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/Customer/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/Customer/" class="md-nav__link">
         
   
   
@@ -907,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stakeholders/POs/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Stakeholders/POs/" class="md-nav__link">
         
   
   
@@ -943,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Impact/" class="md-nav__link">
+      <a href="../../TOGAF/Motivation/Impact/" class="md-nav__link">
         
   
   
@@ -1029,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/DomainStakeholder/" class="md-nav__link">
+      <a href="../../TOGAF/Business/DomainStakeholder/" class="md-nav__link">
         
   
   
@@ -1057,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Raci/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Raci/" class="md-nav__link">
         
   
   
@@ -1085,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/WebVitals/" class="md-nav__link">
+      <a href="../../TOGAF/Business/WebVitals/" class="md-nav__link">
         
   
   
@@ -1163,7 +1057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/" class="md-nav__link">
         
   
   
@@ -1241,7 +1135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Product/Product/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Product/Product/" class="md-nav__link">
         
   
   
@@ -1269,7 +1163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Product/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Product/Dictionary/" class="md-nav__link">
         
   
   
@@ -1355,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Procurement/Procurement/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Procurement/Procurement/" class="md-nav__link">
         
   
   
@@ -1383,7 +1277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Procurement/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Procurement/Dictionary/" class="md-nav__link">
         
   
   
@@ -1469,7 +1363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Stock/Stock/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Stock/Stock/" class="md-nav__link">
         
   
   
@@ -1497,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Stock/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Stock/Dictionary/" class="md-nav__link">
         
   
   
@@ -1575,7 +1469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Stock/ItemCreation/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Stock/ItemCreation/" class="md-nav__link">
         
   
   
@@ -1669,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Accounting/Accounting/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Accounting/Accounting/" class="md-nav__link">
         
   
   
@@ -1697,7 +1591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Accounting/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Accounting/Dictionary/" class="md-nav__link">
         
   
   
@@ -1783,7 +1677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Regulatory/Regulatory/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Regulatory/Regulatory/" class="md-nav__link">
         
   
   
@@ -1811,7 +1705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Regulatory/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Regulatory/Dictionary/" class="md-nav__link">
         
   
   
@@ -1897,7 +1791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Pricing/Pricing/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Pricing/Pricing/" class="md-nav__link">
         
   
   
@@ -1925,7 +1819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Pricing/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Pricing/Dictionary/" class="md-nav__link">
         
   
   
@@ -2011,7 +1905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Catalog/Catalog/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Catalog/Catalog/" class="md-nav__link">
         
   
   
@@ -2039,7 +1933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Catalog/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Catalog/Dictionary/" class="md-nav__link">
         
   
   
@@ -2125,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Customer/Customer/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Customer/Customer/" class="md-nav__link">
         
   
   
@@ -2153,7 +2047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Customer/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Customer/Dictionary/" class="md-nav__link">
         
   
   
@@ -2239,7 +2133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Provisioning/Provisioning/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Provisioning/Provisioning/" class="md-nav__link">
         
   
   
@@ -2267,7 +2161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Provisioning/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Provisioning/Dictionary/" class="md-nav__link">
         
   
   
@@ -2353,7 +2247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Search/Search/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Search/Search/" class="md-nav__link">
         
   
   
@@ -2381,7 +2275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Search/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Search/Dictionary/" class="md-nav__link">
         
   
   
@@ -2467,7 +2361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Marketing/Marketing/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Marketing/Marketing/" class="md-nav__link">
         
   
   
@@ -2495,7 +2389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Marketing/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Marketing/Dictionary/" class="md-nav__link">
         
   
   
@@ -2581,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Basket/Basket/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Basket/Basket/" class="md-nav__link">
         
   
   
@@ -2609,7 +2503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Basket/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Basket/Dictionary/" class="md-nav__link">
         
   
   
@@ -2695,7 +2589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Checkout/Checkout/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Checkout/Checkout/" class="md-nav__link">
         
   
   
@@ -2723,7 +2617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Checkout/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Checkout/Dictionary/" class="md-nav__link">
         
   
   
@@ -2809,7 +2703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Order/Order/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Order/Order/" class="md-nav__link">
         
   
   
@@ -2837,7 +2731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Order/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Order/Dictionary/" class="md-nav__link">
         
   
   
@@ -2923,7 +2817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Payments/Payments/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Payments/Payments/" class="md-nav__link">
         
   
   
@@ -2951,7 +2845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Payments/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Payments/Dictionary/" class="md-nav__link">
         
   
   
@@ -3037,7 +2931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Shipping/Shipping/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Shipping/Shipping/" class="md-nav__link">
         
   
   
@@ -3065,7 +2959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Shipping/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Shipping/Dictionary/" class="md-nav__link">
         
   
   
@@ -3151,7 +3045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Fulfillment/Fulfillment/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Fulfillment/Fulfillment/" class="md-nav__link">
         
   
   
@@ -3179,7 +3073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Fulfillment/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Fulfillment/Dictionary/" class="md-nav__link">
         
   
   
@@ -3265,7 +3159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Claims/Claims/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Claims/Claims/" class="md-nav__link">
         
   
   
@@ -3293,7 +3187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Domains/Claims/Dictionary/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Domains/Claims/Dictionary/" class="md-nav__link">
         
   
   
@@ -3387,7 +3281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Business/Flows/Purchase/" class="md-nav__link">
+      <a href="../../TOGAF/Business/Flows/Purchase/" class="md-nav__link">
         
   
   
@@ -3581,7 +3475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Application/Stock/Stock/" class="md-nav__link">
+      <a href="../../TOGAF/Application/Stock/Stock/" class="md-nav__link">
         
   
   
@@ -3609,7 +3503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Application/Stock/CreateItem/" class="md-nav__link">
+      <a href="../../TOGAF/Application/Stock/CreateItem/" class="md-nav__link">
         
   
   
@@ -3811,7 +3705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Technology/Stock/" class="md-nav__link">
+      <a href="../../TOGAF/Technology/Stock/" class="md-nav__link">
         
   
   
@@ -3868,6 +3762,8 @@
                 
   
   
+    
+  
   
   
     
@@ -3878,11 +3774,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -3903,7 +3799,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3921,7 +3817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADRs/" class="md-nav__link">
+      <a href="../ADRs/" class="md-nav__link">
         
   
   
@@ -3949,7 +3845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00001/" class="md-nav__link">
+      <a href="../ADR_00001/" class="md-nav__link">
         
   
   
@@ -3977,7 +3873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00002/" class="md-nav__link">
+      <a href="../ADR_00002/" class="md-nav__link">
         
   
   
@@ -4005,7 +3901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00003/" class="md-nav__link">
+      <a href="../ADR_00003/" class="md-nav__link">
         
   
   
@@ -4033,7 +3929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00004/" class="md-nav__link">
+      <a href="../ADR_00004/" class="md-nav__link">
         
   
   
@@ -4061,7 +3957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00005/" class="md-nav__link">
+      <a href="../ADR_00005/" class="md-nav__link">
         
   
   
@@ -4089,7 +3985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00006/" class="md-nav__link">
+      <a href="../ADR_00006/" class="md-nav__link">
         
   
   
@@ -4117,7 +4013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00007/" class="md-nav__link">
+      <a href="../ADR_00007/" class="md-nav__link">
         
   
   
@@ -4145,7 +4041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00008/" class="md-nav__link">
+      <a href="../ADR_00008/" class="md-nav__link">
         
   
   
@@ -4173,7 +4069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00009/" class="md-nav__link">
+      <a href="../ADR_00009/" class="md-nav__link">
         
   
   
@@ -4201,7 +4097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00010/" class="md-nav__link">
+      <a href="../ADR_00010/" class="md-nav__link">
         
   
   
@@ -4229,7 +4125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00011/" class="md-nav__link">
+      <a href="../ADR_00011/" class="md-nav__link">
         
   
   
@@ -4257,7 +4153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00012/" class="md-nav__link">
+      <a href="../ADR_00012/" class="md-nav__link">
         
   
   
@@ -4285,7 +4181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00013/" class="md-nav__link">
+      <a href="../ADR_00013/" class="md-nav__link">
         
   
   
@@ -4313,7 +4209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00014/" class="md-nav__link">
+      <a href="../ADR_00014/" class="md-nav__link">
         
   
   
@@ -4341,7 +4237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00015/" class="md-nav__link">
+      <a href="../ADR_00015/" class="md-nav__link">
         
   
   
@@ -4369,7 +4265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00016/" class="md-nav__link">
+      <a href="../ADR_00016/" class="md-nav__link">
         
   
   
@@ -4397,7 +4293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00017/" class="md-nav__link">
+      <a href="../ADR_00017/" class="md-nav__link">
         
   
   
@@ -4425,7 +4321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00018/" class="md-nav__link">
+      <a href="../ADR_00018/" class="md-nav__link">
         
   
   
@@ -4453,7 +4349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00019/" class="md-nav__link">
+      <a href="../ADR_00019/" class="md-nav__link">
         
   
   
@@ -4481,7 +4377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00020/" class="md-nav__link">
+      <a href="../ADR_00020/" class="md-nav__link">
         
   
   
@@ -4509,7 +4405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00021/" class="md-nav__link">
+      <a href="../ADR_00021/" class="md-nav__link">
         
   
   
@@ -4537,7 +4433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00022/" class="md-nav__link">
+      <a href="../ADR_00022/" class="md-nav__link">
         
   
   
@@ -4565,7 +4461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00023/" class="md-nav__link">
+      <a href="../ADR_00023/" class="md-nav__link">
         
   
   
@@ -4593,7 +4489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00024/" class="md-nav__link">
+      <a href="../ADR_00024/" class="md-nav__link">
         
   
   
@@ -4621,7 +4517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00025/" class="md-nav__link">
+      <a href="../ADR_00025/" class="md-nav__link">
         
   
   
@@ -4646,10 +4542,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../ADR/ADR_00026/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR_00026: Zavedení jednotného CI/CD procesu jako povinné cesty pro změny
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4665,6 +4588,98 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consequences
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consequences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pozitiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pozitiva
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#negativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Negativa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rationale
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4735,7 +4750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../UnderStress/Stock/" class="md-nav__link">
+      <a href="../../UnderStress/Stock/" class="md-nav__link">
         
   
   
@@ -4821,7 +4836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Automation/Automation/" class="md-nav__link">
+      <a href="../../Automation/Automation/" class="md-nav__link">
         
   
   
@@ -4849,7 +4864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Automation/CICD/Cicd/" class="md-nav__link">
+      <a href="../../Automation/CICD/Cicd/" class="md-nav__link">
         
   
   
@@ -4877,7 +4892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Automation/Eia/" class="md-nav__link">
+      <a href="../../Automation/Eia/" class="md-nav__link">
         
   
   
@@ -4963,7 +4978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Tests/Tests/" class="md-nav__link">
+      <a href="../../Tests/Tests/" class="md-nav__link">
         
   
   
@@ -5049,7 +5064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Platform/Platform/" class="md-nav__link">
+      <a href="../../Platform/Platform/" class="md-nav__link">
         
   
   
@@ -5135,7 +5150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Impact/Impact/" class="md-nav__link">
+      <a href="../../Impact/Impact/" class="md-nav__link">
         
   
   
@@ -5163,7 +5178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Impact/Performance/" class="md-nav__link">
+      <a href="../../Impact/Performance/" class="md-nav__link">
         
   
   
@@ -5226,10 +5241,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#strategicky-kontext" class="md-nav__link">
+  <a href="#context" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Strategický kontext
+        Context
       
     </span>
   </a>
@@ -5237,10 +5252,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#klicove-motivace" class="md-nav__link">
+  <a href="#decision" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Klíčové motivace
+        Decision
       
     </span>
   </a>
@@ -5248,32 +5263,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#spolecny-jmenovatel" class="md-nav__link">
+  <a href="#consequences" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Společný jmenovatel
+        Consequences
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consequences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pozitiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pozitiva
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#architektonicky-princip" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#negativa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architektonický princip
+        Negativa
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#archimate-view" class="md-nav__link">
+  <a href="#rationale" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Archimate view
+        Rationale
       
     </span>
   </a>
@@ -5297,47 +5329,70 @@
 
 
 
-<h1 id="motivace-systemu">Motivace systému</h1>
-<h2 id="strategicky-kontext">Strategický kontext</h2>
-<p>E-shop není jen technický systém — je to živý organismus, který propojuje obchodní cíle, zákaznickou zkušenost, provozní realitu a regulatorní rámec. Každý stakeholder přináší jinou perspektivu, ale všichni směřují k jedinému cíli: <strong>udržitelný růst skrze hodnotu pro zákazníka</strong>.</p>
-<h2 id="klicove-motivace">Klíčové motivace</h2>
+<h1 id="adr_00026-zavedeni-jednotneho-cicd-procesu-jako-povinne-cesty-pro-zmeny">ADR_00026: Zavedení jednotného CI/CD procesu jako povinné cesty pro změny</h1>
+<p><strong>Status:</strong> Proposed / Accepted<br>
+<strong>Date:</strong> 2025-01-13 </p>
+<hr>
+<h2 id="context">Context</h2>
+<p>V rámci platformy je nutné zajistit konzistentní, auditovatelný a bezpečný způsob doručování změn, který nebude
+umožňovat manuální zásahy, nekonzistenci buildů a nejednotný proces, což by mohlo mít za následek provozní rizika a 
+nejasné odpovědnosti.</p>
+<hr>
+<h2 id="decision">Decision</h2>
+<p>Zavádí se povinné použití jednotného CI/CD procesu pro všechny repozitáře. Tento proces je jediným povoleným způsobem,
+jak dostat změny do Gitu a následné nasazení.</p>
+<hr>
+<h2 id="consequences">Consequences</h2>
+<p>Použití flow definovaného v <a href="../../Automation/CICD/Cicd">Change &amp; Delivery Automation (CI/CD)</a></p>
+<h3 id="pozitiva">Pozitiva</h3>
 <ul>
-<li>
-<p><strong>Zvýšit konverzi a prodeje</strong><br>
-  → Business Owner definuje cíle, které se promítají do marketingu, produktu i provozu.</p>
-</li>
-<li>
-<p><strong>Zajistit profitabilní provoz</strong><br>
-  → Finance sleduje marže, cash flow a reporting jako základ pro škálování.</p>
-</li>
-<li>
-<p><strong>Dodržet regulatorní požadavky</strong><br>
-  → Compliance chrání firmu před právními a reputačními riziky.</p>
-</li>
-<li>
-<p><strong>Zajistit spolehlivý technický základ</strong><br>
-  → IT garantuje stabilitu, škálovatelnost a bezvýpadkové nasazování.</p>
-</li>
-<li>
-<p><strong>Získat a udržet zákazníka</strong><br>
-  → Marketing, Operations i Management přispívají k důvěře, spokojenosti a návratnosti.</p>
-</li>
+<li>předvídatelné releasy</li>
+<li>ednotné chování napříč prostředími</li>
+<li>automatické rollbacky</li>
+<li>jasná odpovědnost a auditovatelnost</li>
+<li>snížení chybovosti způsobené lidským faktorem</li>
 </ul>
-<h2 id="spolecny-jmenovatel">Společný jmenovatel</h2>
-<p>Každý stakeholder má vlastní cíle, metriky a obavy. Ale všechny motivace se sbíhají v jednom bodě:<br>
-<strong>Zákazník, který důvěřuje systému, nakupuje opakovaně a přináší hodnotu.</strong></p>
-<h2 id="architektonicky-princip">Architektonický princip</h2>
-<p>Motivace nejsou jen texty v modelu — jsou to <strong>navigační body</strong>, které určují směr vývoje, prioritizace i validace.<br>
-Každý stakeholder view je rozpad konkrétní motivace, která má měřitelný dopad.</p>
-<blockquote>
-<p>Tento pohled slouží jako výchozí bod pro orientaci v stakeholder mapě.<br>
-Každý další view rozvíjí konkrétní motivaci v kontextu dané role.</p>
-</blockquote>
-<h2 id="archimate-view">Archimate view</h2>
-<div class="iframe-wrapper">
-  <iframe src="../../Archi/id-a684dda0a38c46dd8ec32300560e4317/views/id-fb8f020ed88f43c39da9d13702f2baeb.html" loading="lazy">
-  </iframe>
-</div>
+<h3 id="negativa">Negativa</h3>
+<ul>
+<li>nutnost přizpůsobit workflow týmů definovanému Gitflow</li>
+<li>zvýšené nároky na kvalitu commit message, větví a PR procesů</li>
+</ul>
+<hr>
+<h2 id="rationale">Rationale</h2>
+<table>
+<thead>
+<tr>
+<th>Rozhodnutí</th>
+<th>Důvod</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zavést jednotný CI/CD proces jako povinnou cestu pro všechny změny</td>
+<td>Eliminace manuálních zásahů, které jsou nejčastější příčinou incidentů</td>
+</tr>
+<tr>
+<td>Vynutit Gitflow a validaci větví/commitů</td>
+<td>Zajištění konzistence, čitelnosti a auditovatelnosti změn</td>
+</tr>
+<tr>
+<td>Používat pouze automatizované buildy a testy</td>
+<td>Reprodukovatelnost, odstranění variability mezi týmy, snížení rizika regresí</td>
+</tr>
+<tr>
+<td>Nasazovat výhradně přes GitOps controller</td>
+<td>Transparentní auditní stopa, řízené rollouty, automatické rollbacky</td>
+</tr>
+<tr>
+<td>Zakázat deploymenty mimo CI/CD a runtime zásahy</td>
+<td>Ochrana produkčního prostředí před neautorizovanými nebo neřízenými změnami</td>
+</tr>
+<tr>
+<td>Centralizovat proces promotion mezi prostředími přes Git</td>
+<td>Jednotný governance model, jasná odpovědnost, schvalovací</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -5358,7 +5413,7 @@ Každý další view rozvíjí konkrétní motivaci v kontextu dané role.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 30, 2025 10:01:25 UTC">December 30, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 13, 2026 19:56:04 UTC">January 13, 2026</span>
   </span>
 
     
@@ -5416,12 +5471,12 @@ Každý další view rozvíjí konkrétní motivaci v kontextu dané role.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["diagrams", "navigation.top", "navigation.tabs", "footer.only_login", "navigation.instant", "navigation.tracking", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["diagrams", "navigation.top", "navigation.tabs", "footer.only_login", "navigation.instant", "navigation.tracking", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../../js/mkdocs-charts-plugin.js"></script>
+        <script src="../../js/mkdocs-charts-plugin.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
       
