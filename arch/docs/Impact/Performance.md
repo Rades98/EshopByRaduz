@@ -4,8 +4,6 @@
 
 Web Vitals představují měřitelné ukazatele kvality UX. V EA kontextu fungují jako **KPI pro digitální kanály**.
 
-### 1.1 Konverze vs. rychlost načtení (LCP)
-
 LCP je čas vykreslení největšího prvku v aktuálním viewpointu. Nejčastěji se jedná o blokové prvky, ve kterých je 
 hlavní obsah. Nejčastěji se jedná o text a obrázky. V našem případě to může být landing page s menu a listem nejvíce atraktivních produktů, 
 či detail produktu, kde dominuje náhledové foto s galerií a základní informace o produktu.
@@ -18,7 +16,7 @@ hlavní obsah. Nejčastěji se jedná o text a obrázky. V našem případě to 
 | Vyžaduje zlepšení |	≤ 4,0 s | ≤ 2,4s  |
 | Špatná	          | > 4,0 s | > 2,4s  |
 
-#### Konverze vs rychlost načtení (LCP)
+### Konverze vs rychlost načtení (LCP)
 
 ```vegalite
 
@@ -53,7 +51,7 @@ hlavní obsah. Nejčastěji se jedná o text a obrázky. V našem případě to 
 
 ---
 
-## 2) Stabilita (CLS) – dopad na důvěru a UX
+## Stabilita (CLS) – dopad na důvěru a UX
 
 CLS je metrika, která měří největší skóre posunu layoutu (layout shift) pro každý neočekávaný posun prvků, ke kterému dojde během celého životního cyklu stránky.
 Layout shift nastane kdykoli, když viditelný prvek změní svou pozici mezi dvěma po sobě jdoucími renderovanými snímky (frames).
@@ -103,7 +101,7 @@ Layout shift nastane kdykoli, když viditelný prvek změní svou pozici mezi dv
 
 ---
 
-## 3) Interaktivita (INP/FID) – dopad na NPS a loajalitu
+## Interaktivita (INP/FID) – dopad na NPS a loajalitu
 
 ```vegalite
 {
@@ -135,9 +133,9 @@ Layout shift nastane kdykoli, když viditelný prvek změní svou pozici mezi dv
 
 ---
 
-## 4)  Provozní metriky – dopad na náklady
+##   Provozní metriky – dopad na náklady
 
-### 4.1 Error rate → náklady na support
+### Error rate → náklady na support
 
 ```vegalite
 {
@@ -167,7 +165,7 @@ Layout shift nastane kdykoli, když viditelný prvek změní svou pozici mezi dv
 
 ---
 
-## 5) Metriky jako řídicí mechanismus
+## Metriky jako řídicí mechanismus
 
 | Oblast        | Metrika       | Business dopad           | EA dopad                       |
 |---------------|---------------|--------------------------|--------------------------------|
@@ -179,23 +177,23 @@ Layout shift nastane kdykoli, když viditelný prvek změní svou pozici mezi dv
 
 ---
 
-## 6) Vazba na ADR a TOGAF
+## Vazba na ADR a TOGAF
 
-### 6.1 ADR
+### ADR
 Výkonové metriky jsou vstupem pro rozhodnutí typu:
 
 - [ADR_00023](../../ADR/ADR_00023): Volba CDN -> snížení LCP o 30–50 %
 - [ADR_00024](../../ADR/ADR_00024): Prevence degradace služeb -> snížení error rate
 - [ADR_00025](../../ADR/ADR_00025): Přechod na edge rendering -> zlepšení INP o 20–40 %
 
-### 6.2 TOGAF
+### TOGAF
 - **Business Architecture**: [Web Vitals jako KPI digitálních kanálů](../../TOGAF/Business/WebVitals)  
 - **Application Architecture**: volba frameworků, rendering strategií  
 - **Technology Architecture**: CDN, caching, observability stack  
 
 ---
 
-## 7) Governance & reporting
+## Governance & reporting
 
 Doporučené dashboardy:
 
