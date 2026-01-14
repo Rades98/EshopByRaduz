@@ -2608,13 +2608,13 @@
             <bounds x="675" y="184" width="139" height="43"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id-bcccc6da517b4d71aa6b6d323320c4f5" targetConnections="id-f2ed321f3a034258a292de2fe887d0e3" archimateElement="id-bd7cf1beddfa4f77873c1a259a757eae">
-            <bounds x="876" y="768" width="121" height="145"/>
+            <bounds x="876" y="768" width="151" height="145"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-7554896043084044bb5d2580374d46df" source="id-bcccc6da517b4d71aa6b6d323320c4f5" target="id-4ac5fbe4941f45619cec20a67c72790b" archimateRelationship="id-965639bd355f4d60a741862fe5a23849"/>
             <child xsi:type="archimate:DiagramObject" id="id-4ac5fbe4941f45619cec20a67c72790b" targetConnections="id-7554896043084044bb5d2580374d46df id-4d57678b4f214d94a76d6270280c36db" archimateElement="id-5ca416d523f94ec2be98de367b572aff">
-              <bounds x="12" y="48" width="97" height="85"/>
+              <bounds x="12" y="36" width="121" height="97"/>
               <sourceConnection xsi:type="archimate:Connection" id="id-cc5f1098b00b47a8b71f5004e8b2b2d0" source="id-4ac5fbe4941f45619cec20a67c72790b" target="id-e0273f93307d4f1f9d6ec8002f1fea19" archimateRelationship="id-1912f44175324b6b846c2dff8b1ee579"/>
               <child xsi:type="archimate:DiagramObject" id="id-e0273f93307d4f1f9d6ec8002f1fea19" targetConnections="id-cc5f1098b00b47a8b71f5004e8b2b2d0 id-2983636aecb74934ad62de2a3bebddff" archimateElement="id-bea249c508ae44db98cb3c73588bbba8">
-                <bounds y="36" width="97" height="49"/>
+                <bounds x="12" y="36" width="97" height="49"/>
               </child>
             </child>
           </child>

@@ -90,7 +90,8 @@ nav:
       - Technology:
         - Domény:
           - Stock:
-            - TOGAF/Technology/Stock.md
+            - TOGAF/Technology/Stock/Stock.md
+            - TOGAF/Technology/Stock/StockDatabaseSchema.md
 
     - ADR:
       - ADR/ADRs.md
@@ -176,6 +177,7 @@ markdown_extensions:
   - toc
   - fenced_code
   - attr_list
+  - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
