@@ -1,6 +1,7 @@
 # Dopad architektury
 
 Tato kapitola definuje, jak **výkon**, **stabilita** a **UX** ovlivňují:
+
 - strategické cíle platformy,
 - ekonomické výsledky,
 - provozní náklady,
